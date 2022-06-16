@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('admin/assets/images/favicon.png') }}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('admin/assets/images/favicon.ico') }}">
     <title>Register | Samgyup Fitness Center</title>
     <!-- Custom CSS -->
     <link href="{{ asset('admin/dist/css/style.min.css') }}" rel="stylesheet">
@@ -50,26 +50,23 @@
             <div class="auth-box bg-dark border-top border-secondary">
                 <div>
                     <div class="text-center p-t-20 p-b-20">
-                        <h1 class="text-white brand-logo">
-                            Samgyup Fitness Center
-                        </h1>
-                        <!-- <span class="db"><img src="{{ asset('admin/assets/images/logo.png') }}" alt="logo" /></span> -->
+                        <span class="db"><img src="{{ asset('admin/assets/images/brand.png') }}" width="300px" alt="logo" /></span>
                     </div>
-
-                    <!-- Start Validation Message -->
-                    <x-jet-validation-errors class="alert alert-secondary text-danger border border-danger" />
-                    @if (session('status'))
-                    <div class="mb-4 font-medium text-sm text-green-600">
-                        {{ session('status') }}
-                    </div>
-                    @endif
-                    <!-- End Validation Message -->
 
                     <!-- Form -->
                     <form class="form-horizontal m-t-20" method="POST" action="{{ route('register') }}">
                         @csrf
                         <div class="row p-b-30">
                             <div class="col-12">
+                                <!-- Start Validation Message -->
+                                <x-jet-validation-errors class="alert alert-secondary text-danger border border-danger" />
+                                @if (session('status'))
+                                <div class="mb-4 font-medium text-sm text-green-600">
+                                    {{ session('status') }}
+                                </div>
+                                @endif
+                                <!-- End Validation Message -->
+
                                 <div class="input-group mb-3">
                                     <div class="input-group-prepend">
                                         <span class="input-group-text input-icon text-white" id="basic-addon1"><i class="ti-user"></i></span>

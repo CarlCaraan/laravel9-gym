@@ -5,11 +5,13 @@
     display: flex;
 }
 .auth-box {
-    background-color: #252525 !important;
     border-top: 1px solid #b78d65 !important;
+    background-color: rgba(0, 0, 0, 0.7) !important;
+    backdrop-filter: blur(5px);
+    border-radius: 2px;
 }
 .auth-link {
-    color: #b78d65;
+    color: #fff;
 }
 .auth-link:hover {
     color: #c29e7c;
@@ -28,10 +30,10 @@
     background-color: #b78d65;
 }
 .home-inner {
-    background: url("../../assets/images/background/background.jpg");
+    background: url("../../assets/images/background/background2.jpg");
     /* Add the blur effect */
-    filter: blur(8px);
-    -webkit-filter: blur(4px);
+    /* filter: blur(2px);
+    -webkit-filter: blur(2px); */
 }
 .brand-logo {
     text-shadow: 0px 2px 2px rgba(183, 141, 101, 1);

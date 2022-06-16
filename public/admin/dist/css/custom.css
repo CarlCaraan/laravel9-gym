@@ -1,0 +1,38 @@
+.center {
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    display: flex;
+}
+.auth-box {
+    background-color: #252525 !important;
+    border-top: 1px solid #b78d65 !important;
+}
+.auth-link {
+    color: #b78d65;
+}
+.auth-link:hover {
+    color: #c29e7c;
+}
+.auth-btn {
+    border-radius: 0;
+    color: #fff;
+    font-size: 16px;
+    background-color: #b78d65;
+    border: none;
+}
+.auth-btn:hover {
+    background-color: #c29e7c;
+}
+.input-icon {
+    background-color: #b78d65;
+}
+.home-inner {
+    background: url("../../assets/images/background/background.jpg");
+    /* Add the blur effect */
+    filter: blur(8px);
+    -webkit-filter: blur(4px);
+}
+.brand-logo {
+    text-shadow: 0px 2px 2px rgba(183, 141, 101, 1);
+}

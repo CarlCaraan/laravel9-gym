@@ -9,10 +9,13 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon.png">
-    <title>Login | App Name</title>
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('admin/assets/images/favicon.png') }}">
+    <title>Login | Samgyup Fitness Center</title>
     <!-- Custom CSS -->
     <link href="{{ asset('admin/dist/css/style.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('admin/dist/css/custom.css') }}" rel="stylesheet">
+    <!-- Fixed CSS -->
+    <link href="{{ asset('admin/dist/css/fixed.css') }}" rel="stylesheet">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -22,6 +25,11 @@
 </head>
 
 <body>
+    <!-- Start Background Image -->
+    <div class="home-inner">
+    </div>
+    <!-- End Background Image -->
+
     <div class="main-wrapper">
         <!-- ============================================================== -->
         <!-- Preloader - style you can find in spinners.css -->
@@ -38,11 +46,14 @@
         <!-- ============================================================== -->
         <!-- Login box.scss -->
         <!-- ============================================================== -->
-        <div class="auth-wrapper d-flex no-block justify-content-center align-items-center bg-dark">
-            <div class="auth-box bg-dark border-top border-secondary">
+        <div class="auth-wrapper d-flex no-block justify-content-center align-items-center">
+            <div class="auth-box border-top border-secondary">
                 <div id="loginform">
                     <div class="text-center p-t-20 p-b-20">
-                        <span class="db"><img src="{{ asset('admin/assets/images/logo.png') }}" alt="logo" /></span>
+                        <!-- <span class="db"><img src="{{ asset('admin/assets/images/logo.png') }}" alt="logo" /></span> -->
+                        <h1 class="text-white brand-logo">
+                            Samgyup Fitness Center
+                        </h1>
                     </div>
 
                     <!-- Start Validation Message -->
@@ -61,13 +72,13 @@
                             <div class="col-12">
                                 <div class="input-group mb-3">
                                     <div class="input-group-prepend">
-                                        <span class="input-group-text bg-success text-white" id="basic-addon1"><i class="ti-user"></i></span>
+                                        <span class="input-group-text input-icon text-white" id="basic-addon1"><i class="ti-user"></i></span>
                                     </div>
-                                    <input type="email" class="form-control form-control-lg" placeholder="Email Address" aria-label="Email Address" aria-describedby="basic-addon1" name="email" :value="old('email')" id="email" autofocus>
+                                    <input type="email" class="form-control form-control-lg" placeholder="Email Address" aria-label="Email Address" aria-describedby="basic-addon1" name="email" value="{{ old('email') }}" id="email" autofocus>
                                 </div>
                                 <div class="input-group mb-3">
                                     <div class="input-group-prepend">
-                                        <span class="input-group-text bg-warning text-white" id="basic-addon2"><i class="ti-pencil"></i></span>
+                                        <span class="input-group-text input-icon text-white" id="basic-addon2"><i class="ti-pencil"></i></span>
                                     </div>
                                     <input type="password" class="form-control form-control-lg" placeholder="Password" aria-label="Password" aria-describedby="basic-addon1" name="password" id="password" autocomplete="current-password">
                                 </div>
@@ -78,14 +89,16 @@
                                 <div class="form-group">
                                     <div class="p-t-20">
                                         @if (Route::has('password.request'))
-                                        <a href="{{ route('password.request') }}" class="btn btn-info" type="button"><i class="fa fa-lock m-r-5"></i> Lost password?</a>
+                                        <a href="{{ route('password.request') }}" class="btn btn-info auth-btn" type="button"><i class="fa fa-lock m-r-5"></i> Lost password?</a>
                                         @endif
-                                        <button class="btn btn-success float-right" type="submit">Login</button>
+                                        <button class="btn btn-success float-right auth-btn" type="submit">Login</button>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <a href="{{ route('register') }}">Don't have an Account? Register</a>
+                        <div class="center">
+                            <a class="auth-link" href="{{ route('register') }}">Don't have an Account? Register</a>
+                        </div>
                     </form>
                 </div>
             </div>

@@ -63,8 +63,17 @@
                                     <div class="input-group-prepend">
                                         <span class="input-group-text bg-success text-white" id="basic-addon1"><i class="ti-user"></i></span>
                                     </div>
-                                    <input type="text" class="form-control form-control-lg" placeholder="Name" aria-label="Name" aria-describedby="basic-addon1" name="name" id="name" :value="old('name')" autofocus autocomplete="name">
+                                    <input type="text" class="form-control form-control-lg" placeholder="First Name" aria-label="first_name" aria-describedby="basic-addon1" name="first_name" id="first_name" :value="old('first_name')" autofocus autocomplete="first_name">
                                 </div>
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text bg-success text-white" id="basic-addon1"><i class="ti-user"></i></span>
+                                    </div>
+                                    <input type="text" class="form-control form-control-lg" placeholder="Last Name" aria-label="last_name" aria-describedby="basic-addon1" name="last_name" id="last_name" :value="old('last_name')" autofocus autocomplete="last_name">
+                                </div>
+
+
+
                                 <!-- email -->
                                 <div class="input-group mb-3">
                                     <div class="input-group-prepend">
@@ -83,6 +92,24 @@
                                         <span class="input-group-text bg-info text-white" id="basic-addon2"><i class="ti-pencil"></i></span>
                                     </div>
                                     <input type="password" class="form-control form-control-lg" placeholder="Confirm Password" aria-label="Password" aria-describedby="basic-addon1" name="password_confirmation" id="password_confirmation" autocomplete="new-password">
+                                </div>
+
+                                <label for="gender" class="text-light">Gender</label>
+                                <div class="form-check">
+                                    <div class="row">
+                                        <div class="col-3">
+                                            <input class="form-check-input" type="radio" name="gender" id="gender" value="Male">
+                                            <label class="form-check-label text-light" for="gender">
+                                                Male
+                                            </label>
+                                        </div>
+                                        <div class="col-3">
+                                            <input class="form-check-input" type="radio" name="gender" id="gender" value="Female">
+                                            <label class="form-check-label text-light" for="gender">
+                                                Female
+                                            </label>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>

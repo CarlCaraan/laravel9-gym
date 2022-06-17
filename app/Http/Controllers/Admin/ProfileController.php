@@ -82,7 +82,7 @@ class ProfileController extends Controller
                 'alert-type' => 'info',
             );
 
-            return redirect()->route('admin.logout')->with($notification);
+            return redirect()->route('password.logout');
         } else {
             $notification = array(
                 'message' => 'Current Password Incorrect!',

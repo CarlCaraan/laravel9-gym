@@ -12,4 +12,10 @@ class AdminController extends Controller
         Auth::logout();
         return redirect()->route('login');
     }
+
+    public function ChangePasswordLogout()
+    {
+        Auth::logout();
+        return redirect()->route('login')->with('success', 'User Password Updated Successfully');
+    }
 }

@@ -68,6 +68,17 @@
                                 @endif
                                 <!-- End Validation Message -->
 
+                                <!-- Start Success Message -->
+                                @if(session('success'))
+                                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                    <strong>{{ session('success') }}</strong>
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                @endif
+                                <!-- End Success Message -->
+
                                 <div class="input-group mb-3">
                                     <div class="input-group-prepend">
                                         <span class="input-group-text input-icon text-white" id="basic-addon1"><i class="ti-user"></i></span>
@@ -143,7 +154,6 @@
             $("#loginform").fadeIn();
         });
     </script>
-
 </body>
 
 </html>

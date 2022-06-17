@@ -20,7 +20,11 @@
     <!--[if lt IE 9]>
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+
 <![endif]-->
+
+    <!-- Toastr CSS CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css" />
 </head>
 
 <body>
@@ -94,6 +98,31 @@
     <script src="{{ asset('admin/assets/libs/flot.tooltip/js/jquery.flot.tooltip.min.js') }}"></script>
     <script src="{{ asset('admin/dist/js/pages/chart/chart-page-init.js') }}"></script>
 
+    <!-- Toastr JS CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    <script>
+        // Toastr
+        @if(Session::has('message'))
+        var type = "{{ Session::get('alert-type', 'info') }}"
+        switch (type) {
+            case 'info':
+                toastr.info("{{ Session::get('message') }}")
+                break;
+
+            case 'success':
+                toastr.success("{{ Session::get('message') }}")
+                break;
+
+            case 'warning':
+                toastr.warning("{{ Session::get('message') }}")
+                break;
+
+            case 'error':
+                toastr.error("{{ Session::get('message') }}")
+                break;
+        }
+        @endif
+    </script>
 </body>
 
 </html>

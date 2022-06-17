@@ -25,15 +25,19 @@
 <div class="container-fluid">
     <div class="card">
         <div class="card-body">
+            <small class="text-muted float-right">Last Updated: {{ date('d-m-Y', strtotime($user->updated_at)) }}</small>
             <h4>Basic Information</h4>
 
-            <img class="rounded-circle mb-3" style="width: 90px; height: 90px;" src="{{ (!empty($user->image)) ? url('upload/user_images/'.$user->image) : asset('admin/assets/images/users/1.jpg') }}" alt="User Avatar">
+            <img class="rounded-circle mb-3" style="width: 90px; height: 90px;" src="{{ (!empty($user->profile_photo_path)) ? url('upload/user_images/'.$user->profile_photo_path) : asset('admin/assets/images/users/1.jpg') }}" alt="User Avatar">
             <p>First Name: {{ $user->first_name }}</p>
             <p>Last Name: {{ $user->last_name }}</p>
-            <p>Gender: {{ $user->gender }}</p>
             <p>Email Address: {{ $user->email }}</p>
+            <p>Gender: {{ $user->gender }}</p>
             <p>Role: {{ $user->user_type }}</p>
-            <p>Last Updated: {{ date('d-m-Y', strtotime($user->updated_at)) }}</p>
+            <p>Joined: {{ date('d-m-Y', strtotime($user->created_at)) }}</p>
+            <a href="{{ route('profile.edit') }}" class="btn btn-info">
+                Edit Profile
+            </a>
         </div>
     </div>
 </div>

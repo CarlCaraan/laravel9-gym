@@ -20,9 +20,14 @@ Route::middleware([
     Route::get('/dashboard', function () {
         return view('admin.index');
     })->name('dashboard');
+
     // User Profile and Change Password
     Route::prefix('profile')->group(function () {
         Route::get('admin/view', [ProfileController::class, 'ProfileView'])->name('profile.view');
+        Route::get('admin/edit', [ProfileController::class, 'ProfileEdit'])->name('profile.edit');
+        Route::post('admin/update', [ProfileController::class, 'ProfileUpdate'])->name('profile.update');
+        Route::get('admin/edit_password', [ProfileController::class, 'PasswordEdit'])->name('password.edit');
+        Route::post('admin/update_password', [ProfileController::class, 'PasswordUpdate'])->name('password.update');
     });
 });
 
@@ -38,6 +43,5 @@ Route::middleware([
     })->name('home');
 });
 
-
-// Logout Route
+// ========= Logout Route =========
 Route::get('/admin/logout', [AdminController::class, 'Logout'])->name('admin.logout');

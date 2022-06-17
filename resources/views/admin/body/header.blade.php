@@ -83,14 +83,18 @@
                 <!-- ============================================================== -->
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark pro-pic" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <img src="{{ asset('admin/assets/images/users/1.jpg') }}" alt="user" class="rounded-circle" width="31">
+                        <!-- Show Image Correctly -->
+                        @php
+                        $user = DB::table('users')->where('id', Auth::user()->id)->first();
+                        @endphp
+                        <img src="{{ (!empty($user->profile_photo_path)) ? url('upload/user_images/'.$user->profile_photo_path) : asset('admin/assets/images/users/1.jpg') }}" alt="user" class="rounded-circle" width="31">
                         <span class="ml-2">
                             {{ Auth::user()->first_name . " " . Auth::user()->last_name }}
                         </span>
                     </a>
                     <div class="dropdown-menu dropdown-menu-right user-dd animated">
                         <a class="dropdown-item" href="{{ route('profile.view') }}"><i class="ti-user m-r-5 m-l-5"></i> Profile Settings</a>
-                        <a class="dropdown-item" href="javascript:void(0)"><i class="ti-settings m-r-5 m-l-5"></i> Change Password</a>
+                        <a class="dropdown-item" href="{{ route('password.edit') }}"><i class="ti-settings m-r-5 m-l-5"></i> Change Password</a>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="{{ route('admin.logout') }}"><i class="fa fa-power-off m-r-5 m-l-5"></i> Logout</a>
                         <div class="dropdown-divider"></div>

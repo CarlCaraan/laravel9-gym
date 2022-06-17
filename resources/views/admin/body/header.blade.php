@@ -1,3 +1,7 @@
+@php
+$prefix = Request::route()->getPrefix();
+$route = Route::current()->getName();
+@endphp
 <header class="topbar" data-navbarbg="skin5">
     <nav class="navbar top-navbar navbar-expand-md navbar-dark">
         <div class="navbar-header" data-logobg="skin5">
@@ -93,8 +97,8 @@
                         </span>
                     </a>
                     <div class="dropdown-menu dropdown-menu-right user-dd animated">
-                        <a class="dropdown-item" href="{{ route('profile.view') }}"><i class="ti-user m-r-5 m-l-5"></i> Profile Settings</a>
-                        <a class="dropdown-item" href="{{ route('password.edit') }}"><i class="ti-settings m-r-5 m-l-5"></i> Change Password</a>
+                        <a class="dropdown-item {{ ($route == 'profile.view' || $route == 'profile.edit') ? 'active' : '' }}" href=" {{ route('profile.view') }}"><i class="ti-user m-r-5 m-l-5"></i> Profile Settings</a>
+                        <a class="dropdown-item {{ ($route == 'password.edit') ? 'active' : '' }}" href="{{ route('password.edit') }}"><i class="ti-settings m-r-5 m-l-5"></i> Change Password</a>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="{{ route('admin.logout') }}"><i class="fa fa-power-off m-r-5 m-l-5"></i> Logout</a>
                         <div class="dropdown-divider"></div>

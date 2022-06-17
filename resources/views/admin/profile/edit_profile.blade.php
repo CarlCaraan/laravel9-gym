@@ -3,6 +3,7 @@
 @section('title') Edit | Profile @endsection
 
 @section('content')
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <!-- Bread crumb and right sidebar toggle -->
 <div class="page-breadcrumb">
     <div class="row">
@@ -33,7 +34,7 @@
                     <div class="form-group row">
                         <label for="fname" class="col-sm-3 text-right control-label col-form-label">Profile Avatar</label>
                         <div class="col-md-9 text-left">
-                            <img class="rounded-circle mb-3" style="width: 90px; height: 90px;" src="{{ (!empty($editData->profile_photo_path)) ? url('upload/user_images/'.$editData->profile_photo_path) : asset('admin/assets/images/users/1.jpg') }}" alt="User Avatar">
+                            <img class="rounded-circle mb-3" style="width: 90px; height: 90px;" id="show_image" src="{{ (!empty($editData->profile_photo_path)) ? url('upload/user_images/'.$editData->profile_photo_path) : asset('admin/assets/images/users/default_photo.jpg') }}" alt="User Avatar">
                         </div>
                     </div>
                     <div class="form-group row">
@@ -119,4 +120,17 @@
     </div>
 </div>
 <br />
+
+<script>
+    // Show Chosen Image Ajax
+    $(document).ready(function() {
+        $('#image').change(function(e) {
+            var reader = new FileReader();
+            reader.onload = function(e) {
+                $('#show_image').attr('src', e.target.result);
+            }
+            reader.readAsDataURL(e.target.files['0']);
+        });
+    });
+</script>
 @endsection

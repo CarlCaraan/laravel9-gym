@@ -15,15 +15,13 @@ $route = Route::current()->getName();
                 <b class="logo-icon p-l-10">
                     <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
                     <!-- Dark Logo icon -->
-                    <img src="{{ asset('admin/assets/images/brand.png') }}" width="200" alt="homepage" class="light-logo" />
-
+                    <img src="{{ asset('admin/assets/images/favicon.ico') }}" width="25" alt="homepage" class="light-logo" />
                 </b>
                 <!--End Logo icon -->
                 <!-- Logo text -->
                 <span class="logo-text">
                     <!-- dark Logo text -->
-                    <!-- <img src="assets/images/logo-text.png" alt="homepage" class="light-logo" /> -->
-
+                    <img src="{{ asset('admin/assets/images/brand.png') }}" width="175" alt="homepage" class="light-logo" />
                 </span>
                 <!-- Logo icon -->
                 <!-- <b class="logo-icon"> -->
@@ -91,7 +89,7 @@ $route = Route::current()->getName();
                         @php
                         $user = DB::table('users')->where('id', Auth::user()->id)->first();
                         @endphp
-                        <img src="{{ (!empty($user->profile_photo_path)) ? url('upload/user_images/'.$user->profile_photo_path) : asset('admin/assets/images/users/1.jpg') }}" alt="user" class="rounded-circle" width="31">
+                        <img src="{{ (!empty($user->profile_photo_path)) ? url('upload/user_images/'.$user->profile_photo_path) : asset('admin/assets/images/users/default_photo.jpg') }}" alt="user" class="rounded-circle" width="31">
                         <span class="ml-2">
                             {{ Auth::user()->first_name . " " . Auth::user()->last_name }}
                         </span>

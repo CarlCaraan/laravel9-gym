@@ -10,7 +10,7 @@
     <meta name="author" content="">
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('admin/assets/images/favicon.ico') }}">
-    <title>Dashboard | Admin</title>
+    <title>@yield('title')</title>
     <!-- Custom CSS -->
     <link href="{{ asset('admin/assets/libs/flot/css/float-chart.css') }}" rel="stylesheet">
     <!-- Custom CSS -->

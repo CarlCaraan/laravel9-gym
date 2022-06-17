@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\Admin\ProfileController;
 
 // ========= Landing Page Routes =========
 Route::get('/', function () {
@@ -19,6 +20,10 @@ Route::middleware([
     Route::get('/dashboard', function () {
         return view('admin.index');
     })->name('dashboard');
+    // User Profile and Change Password
+    Route::prefix('profile')->group(function () {
+        Route::get('admin/view', [ProfileController::class, 'ProfileView'])->name('profile.view');
+    });
 });
 
 // ========= Customer Routes =========

@@ -1,4 +1,7 @@
 @extends('admin.admin_master')
+
+@section('title') Dashboard | Respond Fitness @endsection
+
 @section('content')
 <!-- Bread crumb and right sidebar toggle -->
 <div class="page-breadcrumb">

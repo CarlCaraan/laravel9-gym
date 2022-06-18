@@ -28,7 +28,7 @@
             <small class="text-muted float-right">Last Updated: {{ date('d-m-Y', strtotime($user->updated_at)) }}</small>
             <h4>Basic Information</h4>
 
-            <img class="rounded-circle mb-3" style="width: 90px; height: 90px;" src="{{ (!empty($user->profile_photo_path)) ? url('upload/user_images/'.$user->profile_photo_path) : asset('admin/assets/images/users/1.jpg') }}" alt="User Avatar">
+            <img class="rounded-circle mb-3" style="width: 90px; height: 90px;" src="{{ (!empty($user->profile_photo_path)) ? url('upload/user_images/'.$user->profile_photo_path) : asset('admin/assets/images/users/default_photo.jpg') }}" alt="User Avatar">
             <p>First Name: {{ $user->first_name }}</p>
             <p>Last Name: {{ $user->last_name }}</p>
             <p>Email Address: {{ $user->email }}</p>

@@ -28,6 +28,7 @@ Route::middleware([
         Route::post('admin/update', [ProfileController::class, 'ProfileUpdate'])->name('profile.update');
         Route::get('admin/edit_password', [ProfileController::class, 'PasswordEdit'])->name('password.edit');
         Route::post('admin/update_password', [ProfileController::class, 'PasswordUpdate'])->name('password.update');
+        Route::get('admin/remove_avatar', [ProfileController::class, 'RemoveAvatar'])->name('remove.avatar');
     });
 });
 

@@ -15,6 +15,9 @@
     <link href="{{ asset('admin/assets/libs/flot/css/float-chart.css') }}" rel="stylesheet">
     <!-- Custom CSS -->
     <link href="{{ asset('admin/dist/css/style.min.css') }}" rel="stylesheet">
+
+    <!-- Datatables CSS -->
+    <link href="{{ asset('admin/assets/libs/datatables.net-bs4/css/dataTables.bootstrap4.css') }}" rel="stylesheet">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -122,6 +125,17 @@
                 break;
         }
         @endif
+    </script>
+
+    <!-- DATATABLE JS -->
+    <script src="{{ asset('admin/assets/extra-libs/multicheck/datatable-checkbox-init.js') }}"></script>
+    <script src="{{ asset('admin/extra-libs/multicheck/jquery.multicheck.js') }}assets/"></script>
+    <script src="{{ asset('admin/assets/extra-libs/DataTables/datatables.min.js') }}"></script>
+    <script>
+        /****************************************
+         *       Basic Table                   *
+         ****************************************/
+        $('#zero_config').DataTable();
     </script>
 </body>
 

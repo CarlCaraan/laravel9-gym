@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Admin\ProfileController;
+use App\Http\Controllers\Admin\UserController;
 
 // ========= Landing Page Routes =========
 Route::get('/', function () {
@@ -26,9 +27,15 @@ Route::middleware([
         Route::get('admin/view', [ProfileController::class, 'ProfileView'])->name('profile.view');
         Route::get('admin/edit', [ProfileController::class, 'ProfileEdit'])->name('profile.edit');
         Route::post('admin/update', [ProfileController::class, 'ProfileUpdate'])->name('profile.update');
-        Route::get('admin/edit_password', [ProfileController::class, 'PasswordEdit'])->name('password.edit');
         Route::post('admin/update_password', [ProfileController::class, 'PasswordUpdate'])->name('password.update');
         Route::get('admin/remove_avatar', [ProfileController::class, 'RemoveAvatar'])->name('remove.avatar');
+    });
+
+    // Account Management
+    Route::prefix('accounts')->group(function () {
+        Route::get('view', [UserController::class, 'UserView'])->name('user.view');
+        Route::get('add', [UserController::class, 'UserAdd'])->name('user.add');
+        Route::post('store', [UserController::class, 'UserStore'])->name('user.store');
     });
 });
 

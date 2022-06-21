@@ -1,3 +1,3 @@
 <footer class="footer text-center">
-    All Rights Reserved by BSIT 3A WAM. Designed and Developed by <a href="#">BSIT 3A WAM</a>.
+    All Rights Reserved &copy; 2022. <i class="mdi mdi-visualstudio"></i> Designed with <i class="mdi mdi-heart text-danger"></i> <a href="#">BSIT 3A WAM</a>.
 </footer>

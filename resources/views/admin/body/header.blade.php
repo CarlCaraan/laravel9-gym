@@ -95,13 +95,12 @@ $route = Route::current()->getName();
                         </span>
                     </a>
                     <div class="dropdown-menu dropdown-menu-right user-dd animated">
-                        <a class="dropdown-item {{ ($route == 'profile.view' || $route == 'profile.edit') ? 'active' : '' }}" href=" {{ route('profile.view') }}"><i class="ti-user m-r-5 m-l-5"></i> Profile Settings</a>
-                        <a class="dropdown-item {{ ($route == 'password.edit') ? 'active' : '' }}" href="{{ route('password.edit') }}"><i class="ti-settings m-r-5 m-l-5"></i> Change Password</a>
+                        <a class="dropdown-item {{ ($route == 'profile.view' || $route == 'profile.edit') ? 'active' : '' }}" href="{{ route('profile.edit') }}"><i class="ti-settings m-r-5 m-l-5"></i> Account Settings</a>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="{{ route('admin.logout') }}"><i class="fa fa-power-off m-r-5 m-l-5"></i> Logout</a>
                         <div class="dropdown-divider"></div>
-                        <div class="p-l-30 p-10"><a href="javascript:void(0)" class="btn btn-sm btn-success btn-rounded">View Profile</a></div>
-                    </div>
+                        <div class="p-l-30 p-10"><a href=" {{ route('profile.view') }}" class="btn btn-sm btn-success btn-rounded">View Profile</a></div>
+                        <div class="dropdown-divider"></div>
                 </li>
                 <!-- ============================================================== -->
                 <!-- User profile and search -->

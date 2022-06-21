@@ -60,11 +60,6 @@ class ProfileController extends Controller
         return redirect()->route('profile.view')->with($notification);
     } //End Method
 
-    public function PasswordEdit()
-    {
-        return view('admin.profile.edit_password');
-    }
-
     public function PasswordUpdate(Request $request)
     {
         $validateData = $request->validate([

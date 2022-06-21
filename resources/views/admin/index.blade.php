@@ -88,7 +88,12 @@
                     </div>
                     <div class="row">
                         <!-- column -->
-                        <div class="col-6">
+                        <div class="col-lg-9">
+                            <div class="flot-chart">
+                                <div class="flot-chart-content" id="flot-line-chart"></div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3">
                             <div class="row">
                                 <div class="col-6">
                                     <div class="bg-dark p-10 text-white text-center">

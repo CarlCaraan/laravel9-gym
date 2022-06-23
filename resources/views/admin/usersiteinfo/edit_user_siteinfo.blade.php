@@ -29,6 +29,7 @@
                 <div class="card-body">
                     <form class="form-horizontal" method="POST" action="{{ route('user.siteinfo.update', $editData->id) }}" enctype="multipart/form-data">
                         @csrf
+                        <h4 class="card-title">Navbar Mini</h4>
                         <div class="form-group row">
                             <label for="mobile" class="col-sm-3 text-right control-label col-form-label">Mobile</label>
                             <div class="col-sm-9">
@@ -84,16 +85,6 @@
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="address" class="col-sm-3 text-right control-label col-form-label">Address</label>
-                            <div class="col-sm-9">
-                                <input id="address" type="hidden" class="form-control" name="address" id="address" placeholder="address" value="{{ $editData->address }}">
-                                <trix-editor input="address"></trix-editor>
-                                @error('address')
-                                <span class="text-danger">{{ $message }}</span>
-                                @enderror
-                            </div>
-                        </div>
-                        <div class="form-group row">
                             <label for="terms" class="col-sm-3 text-right control-label col-form-label">Terms</label>
                             <div class="col-sm-9">
                                 <input id="terms" type="hidden" class="form-control" name="terms" id="terms" placeholder="Terms" value="{{ $editData->terms }}">
@@ -109,6 +100,19 @@
                                 <input id="privacy" type="hidden" class="form-control" name="privacy" id="privacy" placeholder="Privacy" value="{{ $editData->privacy }}">
                                 <trix-editor input="privacy"></trix-editor>
                                 @error('privacy')
+                                <span class="text-danger">{{ $message }}</span>
+                                @enderror
+                            </div>
+                        </div>
+                        <br />
+                        <hr />
+                        <h4 class="card-title">Footer Information</h4>
+                        <div class="form-group row">
+                            <label for="address" class="col-sm-3 text-right control-label col-form-label">Address</label>
+                            <div class="col-sm-9">
+                                <input id="address" type="hidden" class="form-control" name="address" id="address" placeholder="address" value="{{ $editData->address }}">
+                                <trix-editor input="address"></trix-editor>
+                                @error('address')
                                 <span class="text-danger">{{ $message }}</span>
                                 @enderror
                             </div>

@@ -13,10 +13,10 @@
                     </ul>
                 </li>
                 <li class="sidebar-item pt-3"><span class="text-secondary font-weight-bold ml-4">SITE INFO MANAGEMENT</span></li>
-                <li class="sidebar-item"> <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="mdi mdi-burst-mode"></i><span class="hide-menu">All Site Info</span></a>
+                <li class="sidebar-item"> <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="mdi mdi-burst-mode"></i><span class="hide-menu">Manage Site Info</span></a>
                     <ul aria-expanded="false" class="collapse  first-level">
-                        <li class="sidebar-item"><a href="form-basic.html" class="sidebar-link"><i class="mdi mdi-account-box"></i><span class="hide-menu">Manage Admin Page</span></a></li>
-                        <li class="sidebar-item"><a href="form-wizard.html" class="sidebar-link"><i class="mdi mdi-border-all"></i><span class="hide-menu">Manage Landing Page</span></a></li>
+                        <li class="sidebar-item"><a href="{{ route('admin.siteinfo.edit') }}" class="sidebar-link"><i class="mdi mdi-account-box"></i><span class="hide-menu">Admin Page</span></a></li>
+                        <li class="sidebar-item"><a href="form-wizard.html" class="sidebar-link"><i class="mdi mdi-border-all"></i><span class="hide-menu">Landing Page</span></a></li>
                     </ul>
                 </li>
             </ul>

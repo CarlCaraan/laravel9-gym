@@ -21,7 +21,10 @@ $route = Route::current()->getName();
                 <!-- Logo text -->
                 <span class="logo-text">
                     <!-- dark Logo text -->
-                    <img src="{{ asset('admin/assets/images/brand.png') }}" width="175" alt="homepage" class="light-logo" />
+                    @php
+                    $adminsiteinfo = DB::table('admin_site_infos')->first();
+                    @endphp
+                    <img class="light-logo" src="{{ (!empty($adminsiteinfo->admin_brand)) ? url('upload/admin_siteinfo/'.$adminsiteinfo->admin_brand) : url('upload/admin_siteinfo/default_photo.png') }}" width="175" height="35" alt="homepage" />
                 </span>
                 <!-- Logo icon -->
                 <!-- <b class="logo-icon"> -->

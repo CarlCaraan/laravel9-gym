@@ -62,7 +62,7 @@
                                 <!-- Start Validation Message -->
                                 <x-jet-validation-errors class="alert alert-secondary text-danger border border-danger" />
                                 @if (session('status'))
-                                <div class="mb-4 font-medium text-sm text-green-600">
+                                <div class="mb-4 font-medium text-sm text-success">
                                     {{ session('status') }}
                                 </div>
                                 @endif

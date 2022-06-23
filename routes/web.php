@@ -5,6 +5,7 @@ use App\Http\Controllers;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\Admin\AdminSiteInfoController;
 
 // ========= Landing Page Routes =========
 Route::get('/', function () {
@@ -27,7 +28,7 @@ Route::middleware([
         Route::get('admin/view', [ProfileController::class, 'ProfileView'])->name('profile.view');
         Route::get('admin/edit', [ProfileController::class, 'ProfileEdit'])->name('profile.edit');
         Route::post('admin/update', [ProfileController::class, 'ProfileUpdate'])->name('profile.update');
-        Route::post('admin/update_password', [ProfileController::class, 'PasswordUpdate'])->name('password.update');
+        Route::post('admin/update_password', [ProfileController::class, 'PasswordUpdate'])->name('admin.password.update');
         Route::get('admin/remove_avatar', [ProfileController::class, 'RemoveAvatar'])->name('remove.avatar');
     });
 
@@ -39,6 +40,13 @@ Route::middleware([
         Route::get('edit/{id}', [UserController::class, 'UserEdit'])->name('user.edit');
         Route::post('update/{id}', [UserController::class, 'UserUpdate'])->name('user.update');
         Route::get('delete/{id}', [UserController::class, 'UserDelete'])->name('user.delete');
+    });
+
+    // Site Info Management
+    Route::prefix('siteinfo')->group(function () {
+        Route::get('edit', [AdminSiteInfoController::class, 'AdminSiteInfoEdit'])->name('admin.siteinfo.edit');
+        Route::post('update/{id}', [AdminSiteInfoController::class, 'AdminSiteInfoUpdate'])->name('admin.siteinfo.update');
+        Route::get('admin/remove_admin_brand', [AdminSiteInfoController::class, 'RemoveAdminBrand'])->name('remove.admin_brand');
     });
 });
 

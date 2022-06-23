@@ -29,13 +29,20 @@ class ProfileController extends Controller
 
     public function ProfileUpdate(Request $request)
     {
-        $validatedData = $request->validate([
-            'first_name' => 'required',
-            'last_name' => 'required',
-            'email' => 'required',
-            'gender' => 'required',
-            'user_type' => 'required',
-        ]);
+        $validatedData = $request->validate(
+            [
+                'first_name' => 'required',
+                'last_name' => 'required',
+                'email' => 'required',
+                'gender' => 'required',
+                'user_type' => 'required',
+                'image' => 'image|mimes:jpeg,png,jpg|max:2048'
+            ],
+            // ~Custom Error messages
+            [
+                'image' => 'File format must be JPG, PNG nad JPeG!',
+            ]
+        );
 
         $data = User::find(Auth::user()->id);
         $data->first_name = $request->first_name;

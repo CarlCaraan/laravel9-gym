@@ -22,6 +22,7 @@ class AdminSiteInfoController extends Controller
             [
                 'footer' => 'required',
                 'admin_brand' => 'image|mimes:jpeg,png,jpg|max:2048',
+                'admin_brand_mini' => 'image|mimes:jpeg,png,jpg|max:2048',
             ],
             // ~Custom Error messages
             [
@@ -38,6 +39,13 @@ class AdminSiteInfoController extends Controller
             $filename = date('YmdHi') . $file->getClientOriginalName();
             $file->move(public_path('upload/admin_siteinfo'), $filename);
             $data['admin_brand'] = $filename;
+        }
+        if ($request->file('admin_brand_mini')) {
+            $file = $request->file('admin_brand_mini');
+            @unlink(public_path('upload/admin_siteinfo/' . $data->admin_brand_mini));
+            $filename = date('YmdHi') . $file->getClientOriginalName();
+            $file->move(public_path('upload/admin_siteinfo'), $filename);
+            $data['admin_brand_mini'] = $filename;
         }
 
         $data->save();
@@ -58,6 +66,20 @@ class AdminSiteInfoController extends Controller
 
         $notification = array(
             'message' => 'Admin Brand Image removed successfully!',
+            'alert-type' => 'success',
+        );
+
+        return redirect()->route('admin.siteinfo.edit')->with($notification);
+    }
+    public function RemoveAdminBrandMini()
+    {
+        $data = AdminSiteInfo::first();
+        @unlink(public_path('upload/admin_siteinfo/' . $data->admin_brand_mini));
+        $data->admin_brand_mini = NULL;
+        $data->save();
+
+        $notification = array(
+            'message' => 'Admin Brand Mini Image removed successfully!',
             'alert-type' => 'success',
         );
 

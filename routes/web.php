@@ -6,10 +6,12 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\AdminSiteInfoController;
+use App\Http\Controllers\Admin\UserSiteInfoController;
 
 // ========= Landing Page Routes =========
 Route::get('/', function () {
-    return view('welcome');
+    $allData = DB::table('user_site_infos')->first();
+    return view('welcome', compact('allData'));
 });
 
 // ========= Admin Routes =========
@@ -34,19 +36,26 @@ Route::middleware([
 
     // Account Management
     Route::prefix('accounts')->group(function () {
-        Route::get('view', [UserController::class, 'UserView'])->name('user.view');
-        Route::get('add', [UserController::class, 'UserAdd'])->name('user.add');
-        Route::post('store', [UserController::class, 'UserStore'])->name('user.store');
-        Route::get('edit/{id}', [UserController::class, 'UserEdit'])->name('user.edit');
-        Route::post('update/{id}', [UserController::class, 'UserUpdate'])->name('user.update');
-        Route::get('delete/{id}', [UserController::class, 'UserDelete'])->name('user.delete');
+        Route::get('admin/view', [UserController::class, 'UserView'])->name('user.view');
+        Route::get('admin/add', [UserController::class, 'UserAdd'])->name('user.add');
+        Route::post('admin/store', [UserController::class, 'UserStore'])->name('user.store');
+        Route::get('admin/edit/{id}', [UserController::class, 'UserEdit'])->name('user.edit');
+        Route::post('admin/update/{id}', [UserController::class, 'UserUpdate'])->name('user.update');
+        Route::get('admin/delete/{id}', [UserController::class, 'UserDelete'])->name('user.delete');
     });
 
     // Site Info Management
     Route::prefix('siteinfo')->group(function () {
-        Route::get('edit', [AdminSiteInfoController::class, 'AdminSiteInfoEdit'])->name('admin.siteinfo.edit');
-        Route::post('update/{id}', [AdminSiteInfoController::class, 'AdminSiteInfoUpdate'])->name('admin.siteinfo.update');
+        Route::get('admin/edit', [AdminSiteInfoController::class, 'AdminSiteInfoEdit'])->name('admin.siteinfo.edit');
+        Route::post('admin/update/{id}', [AdminSiteInfoController::class, 'AdminSiteInfoUpdate'])->name('admin.siteinfo.update');
         Route::get('admin/remove_admin_brand', [AdminSiteInfoController::class, 'RemoveAdminBrand'])->name('remove.admin_brand');
+        Route::get('admin/remove_admin_brand_mini', [AdminSiteInfoController::class, 'RemoveAdminBrandMini'])->name('remove.admin_brand_mini');
+    });
+
+    // User Info Management
+    Route::prefix('siteinfo')->group(function () {
+        Route::get('user/edit', [UserSiteInfoController::class, 'UserSiteInfoEdit'])->name('user.siteinfo.edit');
+        Route::post('user/update/{id}', [UserSiteInfoController::class, 'UserSiteInfoUpdate'])->name('user.siteinfo.update');
     });
 });
 

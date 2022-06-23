@@ -30,7 +30,7 @@
                 <div class="card-body">
                     <form class="form-horizontal" method="POST" action="{{ route('admin.siteinfo.update', $editData->id) }}" enctype="multipart/form-data">
                         @csrf
-
+                        <!-- Header Brand -->
                         <div class="form-group row">
                             <label for="image" class="col-sm-3 text-right control-label col-form-label">Header Brand</label>
                             <div class="col-md-9 text-left">
@@ -38,7 +38,7 @@
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="image" class="col-sm-3 text-right control-label col-form-label">Image Upload</label>
+                            <label for="image" class="col-sm-3 text-right control-label col-form-label"></label>
                             <div class="col-md-9">
                                 <div class="custom-file">
                                     <input type="file" class="custom-file-input" name="admin_brand" id="image">
@@ -56,13 +56,43 @@
                                 <a href="{{ route('remove.admin_brand') }}" class="btn btn-secondary">Remove</a>
                             </div>
                         </div>
+                        <hr />
+
+                        <!-- Header Brand Mini -->
                         <div class="form-group row">
-                            <label for="first_name" class="col-sm-3 text-right control-label col-form-label">Footer Text</label>
+                            <label for="image" class="col-sm-3 text-right control-label col-form-label">Header Brand Mini</label>
+                            <div class="col-md-9 text-left">
+                                <img class="mb-3 img-fluid img-thumbnail" id="show_image2" src="{{ (!empty($editData->admin_brand_mini)) ? url('upload/admin_siteinfo/'.$editData->admin_brand_mini) : url('upload/admin_siteinfo/default_photo2.png') }}" alt="Admin Brand">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="image" class="col-sm-3 text-right control-label col-form-label"></label>
+                            <div class="col-md-9">
+                                <div class="custom-file">
+                                    <input type="file" class="custom-file-input" name="admin_brand_mini" id="image2">
+                                    <label class="custom-file-label" for="image">Choose file...</label>
+                                </div>
+                                @error('admin_brand_mini')
+                                <span class="text-danger">{{ $message }}</span>
+                                @enderror
+                            </div>
+                        </div>
+                        <!-- Remove Image -->
+                        <div class="form-group row">
+                            <label for="image" class="col-sm-3 text-right control-label col-form-label"></label>
+                            <div class="col-md-9">
+                                <a href="{{ route('remove.admin_brand_mini') }}" class="btn btn-secondary">Remove</a>
+                            </div>
+                        </div>
+                        <hr />
+
+                        <div class="form-group row">
+                            <label for="footer" class="col-sm-3 text-right control-label col-form-label">Footer Text</label>
                             <div class="col-sm-9">
                                 <input id="content" type="hidden" class="form-control" name="footer" id="footer" placeholder="Footer Text" value="{{ $editData->footer }}">
                                 <trix-editor input="content"></trix-editor>
                                 @error('footer')
-                                <span class="text-danger">{{ $footer }}</span>
+                                <span class="text-danger">{{ $message }}</span>
                                 @enderror
                             </div>
                         </div>
@@ -87,6 +117,15 @@
             var reader = new FileReader();
             reader.onload = function(e) {
                 $('#show_image').attr('src', e.target.result);
+            }
+            reader.readAsDataURL(e.target.files['0']);
+        });
+    });
+    $(document).ready(function() {
+        $('#image2').change(function(e) {
+            var reader = new FileReader();
+            reader.onload = function(e) {
+                $('#show_image2').attr('src', e.target.result);
             }
             reader.readAsDataURL(e.target.files['0']);
         });

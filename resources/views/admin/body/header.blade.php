@@ -15,15 +15,15 @@ $route = Route::current()->getName();
                 <b class="logo-icon p-l-10">
                     <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
                     <!-- Dark Logo icon -->
-                    <img src="{{ asset('admin/assets/images/favicon.ico') }}" width="25" alt="homepage" class="light-logo" />
+                    @php
+                    $adminsiteinfo = DB::table('admin_site_infos')->first();
+                    @endphp
+                    <img src="{{ (!empty($adminsiteinfo->admin_brand_mini)) ? url('upload/admin_siteinfo/'.$adminsiteinfo->admin_brand_mini) : url('upload/admin_siteinfo/default_photo2.png') }}" width="25" alt="homepage" class="light-logo" />
                 </b>
                 <!--End Logo icon -->
                 <!-- Logo text -->
                 <span class="logo-text">
                     <!-- dark Logo text -->
-                    @php
-                    $adminsiteinfo = DB::table('admin_site_infos')->first();
-                    @endphp
                     <img class="light-logo" src="{{ (!empty($adminsiteinfo->admin_brand)) ? url('upload/admin_siteinfo/'.$adminsiteinfo->admin_brand) : url('upload/admin_siteinfo/default_photo.png') }}" width="175" height="35" alt="homepage" />
                 </span>
                 <!-- Logo icon -->

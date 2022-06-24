@@ -15,6 +15,10 @@ return new class extends Migration
     {
         Schema::create('user_abouts', function (Blueprint $table) {
             $table->id();
+            $table->string('title')->nullable();
+            $table->text('body')->nullable();
+            $table->string('image')->nullable();
+            $table->string('background')->nullable();
             $table->timestamps();
         });
     }

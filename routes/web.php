@@ -11,6 +11,7 @@ use App\Http\Controllers\Admin\UserHerosectionController;
 use App\Http\Controllers\Admin\UserServicesController;
 use App\Http\Controllers\Admin\UserFacilitiesController;
 use App\Http\Controllers\Admin\UserTrainersController;
+use App\Http\Controllers\Admin\UserAboutController;
 
 // ========= Landing Page Routes =========
 Route::get('/', function () {
@@ -105,6 +106,14 @@ Route::middleware([
         Route::post('user/update/{id}', [UserTrainersController::class, 'UserTrainersUpdate'])->name('user.trainers.update');
         Route::get('user/delete/{id}', [UserTrainersController::class, 'UserTrainersDelete'])->name('user.trainers.delete');
         Route::get('user/remove_image/{id}', [UserTrainersController::class, 'UserTrainersRemoveImage'])->name('user.trainers.remove_image');
+    });
+
+    // About Management
+    Route::prefix('about')->group(function () {
+        Route::get('user/edit', [UserAboutController::class, 'UserAboutEdit'])->name('user.about.edit');
+        Route::post('user/update/{id}', [UserAboutController::class, 'UserAboutUpdate'])->name('user.about.update');
+        Route::get('user/remove_image', [UserAboutController::class, 'UserAboutRemoveImage'])->name('user.about.remove_image');
+        Route::get('user/remove_background', [UserAboutController::class, 'UserAboutRemoveBackground'])->name('user.about.remove_background');
     });
 });
 

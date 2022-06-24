@@ -47,6 +47,11 @@
                         <li class="sidebar-item"><a href="{{ route('user.trainers.add') }}" class="sidebar-link"><i class="fas fa-plus-circle"></i><span class="hide-menu">Add Trainers</span></a></li>
                     </ul>
                 </li>
+                <li class="sidebar-item"> <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="mdi mdi-information"></i><span class="hide-menu">Manage About</span></a>
+                    <ul aria-expanded="false" class="collapse  first-level">
+                        <li class="sidebar-item"><a href="{{ route('user.about.edit') }}" class="sidebar-link"><i class="mdi mdi-pencil"></i><span class="hide-menu">Edit About</span></a></li>
+                    </ul>
+                </li>
             </ul>
         </nav>
         <!-- End Sidebar navigation -->

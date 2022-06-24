@@ -25,84 +25,87 @@
 <!-- Container fluid  -->
 <div class="container-fluid">
     <div class="row">
-        <div class="col-8">
+        <div class="col-12">
             <div class="card">
                 <div class="card-body">
-                    <form class="form-horizontal" method="POST" action="{{ route('admin.siteinfo.update', $editData->id) }}" enctype="multipart/form-data">
-                        @csrf
-                        <!-- Header Brand -->
-                        <div class="form-group row">
-                            <label for="image" class="col-sm-3 text-right control-label col-form-label">Header Brand</label>
-                            <div class="col-md-9 text-left">
-                                <img class="mb-3 img-fluid img-thumbnail" id="show_image" src="{{ (!empty($editData->admin_brand)) ? url('upload/admin_siteinfo/'.$editData->admin_brand) : url('upload/admin_siteinfo/default_photo.png') }}" alt="Admin Brand">
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="image" class="col-sm-3 text-right control-label col-form-label"></label>
-                            <div class="col-md-9">
-                                <div class="custom-file">
-                                    <input type="file" class="custom-file-input" name="admin_brand" id="image">
-                                    <label class="custom-file-label" for="image">Choose file...</label>
+                    <div class="col-8">
+                        <form class="form-horizontal" method="POST" action="{{ route('admin.siteinfo.update', $editData->id) }}" enctype="multipart/form-data">
+                            @csrf
+                            <!-- Header Brand -->
+                            <div class="form-group row">
+                                <label for="image" class="col-sm-3 text-right control-label col-form-label">Header Brand</label>
+                                <div class="col-md-9 text-left">
+                                    <img class="mb-3 img-fluid img-thumbnail" id="show_image" src="{{ (!empty($editData->admin_brand)) ? url('upload/admin_siteinfo/'.$editData->admin_brand) : url('upload/admin_siteinfo/default_photo.png') }}" alt="Admin Brand">
                                 </div>
-                                @error('admin_brand')
-                                <span class="text-danger">{{ $message }}</span>
-                                @enderror
                             </div>
-                        </div>
-                        <!-- Remove Image -->
-                        <div class="form-group row">
-                            <label for="image" class="col-sm-3 text-right control-label col-form-label"></label>
-                            <div class="col-md-9">
-                                <a href="{{ route('remove.admin_brand') }}" class="btn btn-secondary">Remove</a>
-                            </div>
-                        </div>
-                        <hr />
-
-                        <!-- Header Brand Mini -->
-                        <div class="form-group row">
-                            <label for="image" class="col-sm-3 text-right control-label col-form-label">Header Brand Mini</label>
-                            <div class="col-md-9 text-left">
-                                <img class="mb-3 img-fluid img-thumbnail" id="show_image2" src="{{ (!empty($editData->admin_brand_mini)) ? url('upload/admin_siteinfo/'.$editData->admin_brand_mini) : url('upload/admin_siteinfo/default_photo2.png') }}" alt="Admin Brand">
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="image" class="col-sm-3 text-right control-label col-form-label"></label>
-                            <div class="col-md-9">
-                                <div class="custom-file">
-                                    <input type="file" class="custom-file-input" name="admin_brand_mini" id="image2">
-                                    <label class="custom-file-label" for="image">Choose file...</label>
+                            <div class="form-group row">
+                                <label for="image" class="col-sm-3 text-right control-label col-form-label"></label>
+                                <div class="col-md-9">
+                                    <div class="custom-file">
+                                        <input type="file" class="custom-file-input" name="admin_brand" id="image">
+                                        <label class="custom-file-label" for="image">Choose file...</label>
+                                    </div>
+                                    @error('admin_brand')
+                                    <span class="text-danger">{{ $message }}</span>
+                                    @enderror
                                 </div>
-                                @error('admin_brand_mini')
-                                <span class="text-danger">{{ $message }}</span>
-                                @enderror
                             </div>
-                        </div>
-                        <!-- Remove Image -->
-                        <div class="form-group row">
-                            <label for="image" class="col-sm-3 text-right control-label col-form-label"></label>
-                            <div class="col-md-9">
-                                <a href="{{ route('remove.admin_brand_mini') }}" class="btn btn-secondary">Remove</a>
+                            <!-- Remove Image -->
+                            <div class="form-group row">
+                                <label for="image" class="col-sm-3 text-right control-label col-form-label"></label>
+                                <div class="col-md-9">
+                                    <a href="{{ route('remove.admin_brand') }}" class="btn btn-secondary">Remove</a>
+                                </div>
                             </div>
-                        </div>
-                        <hr />
+                            <hr />
 
-                        <div class="form-group row">
-                            <label for="footer" class="col-sm-3 text-right control-label col-form-label">Footer Text</label>
-                            <div class="col-sm-9">
-                                <input id="content" type="hidden" class="form-control" name="footer" id="footer" placeholder="Footer Text" value="{{ $editData->footer }}">
-                                <trix-editor input="content"></trix-editor>
-                                @error('footer')
-                                <span class="text-danger">{{ $message }}</span>
-                                @enderror
+                            <!-- Header Brand Mini -->
+                            <div class="form-group row">
+                                <label for="image" class="col-sm-3 text-right control-label col-form-label">Header Brand Mini</label>
+                                <div class="col-md-9 text-left">
+                                    <img class="mb-3 img-fluid img-thumbnail" id="show_image2" src="{{ (!empty($editData->admin_brand_mini)) ? url('upload/admin_siteinfo/'.$editData->admin_brand_mini) : url('upload/admin_siteinfo/default_photo2.png') }}" alt="Admin Brand">
+                                </div>
                             </div>
-                        </div>
+                            <div class="form-group row">
+                                <label for="image" class="col-sm-3 text-right control-label col-form-label"></label>
+                                <div class="col-md-9">
+                                    <div class="custom-file">
+                                        <input type="file" class="custom-file-input" name="admin_brand_mini" id="image2">
+                                        <label class="custom-file-label" for="image">Choose file...</label>
+                                    </div>
+                                    @error('admin_brand_mini')
+                                    <span class="text-danger">{{ $message }}</span>
+                                    @enderror
+                                </div>
+                            </div>
+                            <!-- Remove Image -->
+                            <div class="form-group row">
+                                <label for="image" class="col-sm-3 text-right control-label col-form-label"></label>
+                                <div class="col-md-9">
+                                    <a href="{{ route('remove.admin_brand_mini') }}" class="btn btn-secondary">Remove</a>
+                                </div>
+                            </div>
+                            <hr />
 
-                        <div class="border-top">
-                            <div class="card-body">
-                                <button type="submit" class="btn btn-primary">Update</button>
+                            <div class="form-group row">
+                                <label for="footer" class="col-sm-3 text-right control-label col-form-label">Footer Text</label>
+                                <div class="col-sm-9">
+                                    <input id="content" type="hidden" class="form-control" name="footer" id="footer" placeholder="Footer Text" value="{{ $editData->footer }}">
+                                    <trix-editor input="content"></trix-editor>
+                                    @error('footer')
+                                    <span class="text-danger">{{ $message }}</span>
+                                    @enderror
+                                </div>
                             </div>
-                        </div>
-                    </form>
+
+                            <div class="border-top">
+                                <div class="card-body">
+                                    <button type="submit" class="btn btn-primary">Update</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+
                 </div>
             </div>
         </div>

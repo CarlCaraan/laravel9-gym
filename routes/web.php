@@ -9,6 +9,7 @@ use App\Http\Controllers\Admin\AdminSiteInfoController;
 use App\Http\Controllers\Admin\UserSiteInfoController;
 use App\Http\Controllers\Admin\UserHerosectionController;
 use App\Http\Controllers\Admin\UserServicesController;
+use App\Http\Controllers\Admin\UserFacilitiesController;
 
 // ========= Landing Page Routes =========
 Route::get('/', function () {
@@ -81,6 +82,17 @@ Route::middleware([
         Route::get('user/delete/{id}', [UserServicesController::class, 'UserServicesDelete'])->name('user.services.delete');
         Route::get('user/remove_image/{id}', [UserServicesController::class, 'UserServicesRemoveImage'])->name('user.services.remove_image');
         Route::get('user/remove_background/{id}', [UserServicesController::class, 'UserServicesRemoveBackground'])->name('user.services.remove_background');
+    });
+
+    // Facilities Management
+    Route::prefix('facilities')->group(function () {
+        Route::get('user/view', [UserFacilitiesController::class, 'UserFacilitiesView'])->name('user.facilities.view');
+        Route::get('user/add', [UserFacilitiesController::class, 'UserFacilitiesAdd'])->name('user.facilities.add');
+        Route::post('user/store', [UserFacilitiesController::class, 'UserFacilitiesStore'])->name('user.facilities.store');
+        Route::get('user/edit/{id}', [UserFacilitiesController::class, 'UserFacilitiesEdit'])->name('user.facilities.edit');
+        Route::post('user/update/{id}', [UserFacilitiesController::class, 'UserFacilitiesUpdate'])->name('user.facilities.update');
+        Route::get('user/delete/{id}', [UserFacilitiesController::class, 'UserFacilitiesDelete'])->name('user.facilities.delete');
+        Route::get('user/remove_image/{id}', [UserFacilitiesController::class, 'UserFacilitiesRemoveImage'])->name('user.facilities.remove_image');
     });
 });
 

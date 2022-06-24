@@ -56,7 +56,7 @@
                     <!-- Form -->
                     <form class="form-horizontal m-t-20" method="POST" action="{{ route('register') }}">
                         @csrf
-                        <div class="row p-b-30">
+                        <div class="row">
                             <div class="col-12">
                                 <!-- Start Validation Message -->
                                 <x-jet-validation-errors class="alert alert-secondary text-danger border border-danger" />
@@ -102,14 +102,14 @@
 
                                 <label for="gender" class="text-light">Gender</label>
                                 <div class="form-check">
-                                    <div class="row">
-                                        <div class="col-3">
+                                    <div class="row text-center">
+                                        <div class="col-6">
                                             <input class="form-check-input" type="radio" name="gender" id="gender" value="Male">
                                             <label class="form-check-label text-light" for="gender">
                                                 Male
                                             </label>
                                         </div>
-                                        <div class="col-3">
+                                        <div class="col-6">
                                             <input class="form-check-input" type="radio" name="gender" id="gender" value="Female">
                                             <label class="form-check-label text-light" for="gender">
                                                 Female
@@ -117,8 +117,23 @@
                                         </div>
                                     </div>
                                 </div>
+                                <!-- Start Terms and Condition -->
+                                @if (Laravel\Jetstream\Jetstream::hasTermsAndPrivacyPolicyFeature())
+                                <x-jet-label for="terms" class="mt-4 text-light">
+                                    <div class="flex items-center">
+                                        <x-jet-checkbox name="terms" id="terms" />
+
+                                        {!! __('I agree to the :terms_of_service and :privacy_policy', [
+                                        'terms_of_service' => '<a target="_blank" href="'.route('terms.show').'" class="underline text-sm text-gray-600 hover:text-gray-900">'.__('Terms of Service').'</a>',
+                                        'privacy_policy' => '<a target="_blank" href="'.route('policy.show').'" class="underline text-sm text-gray-600 hover:text-gray-900">'.__('Privacy Policy').'</a>',
+                                        ]) !!}
+                                    </div>
+                                </x-jet-label>
+                                @endif
+                                <!-- End Terms and Condition -->
                             </div>
                         </div>
+
                         <div class="row border-top border-secondary">
                             <div class="col-12">
                                 <div class="form-group">

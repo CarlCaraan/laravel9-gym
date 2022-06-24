@@ -49,7 +49,7 @@
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="facebook_link" class="col-sm-3 text-right control-label col-form-label">Facebook Link</label>
+                            <label for="facebook_link" class="col-sm-3 text-right control-label col-form-label">Facebook Link <i class="mdi mdi-facebook-box"></i></label>
                             <div class="col-sm-9">
                                 <input type="text" class="form-control" name="facebook_link" id="facebook_link" placeholder="Facebook Link" value="{{ $editData->facebook_link }}">
                                 @error('facebook_link')
@@ -58,7 +58,7 @@
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="twitter_link" class="col-sm-3 text-right control-label col-form-label">Twitter Link</label>
+                            <label for="twitter_link" class="col-sm-3 text-right control-label col-form-label">Twitter Link <i class="mdi mdi-twitter-box"></i></label>
                             <div class="col-sm-9">
                                 <input type="text" class="form-control" name="twitter_link" id="twitter_link" placeholder="Twitter Link" value="{{ $editData->twitter_link }}">
                                 @error('twitter_link')
@@ -67,7 +67,7 @@
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="linkedin_link" class="col-sm-3 text-right control-label col-form-label">Linkedin Link</label>
+                            <label for="linkedin_link" class="col-sm-3 text-right control-label col-form-label">Linkedin Link <i class="mdi mdi-linkedin-box"></i></label>
                             <div class="col-sm-9">
                                 <input type="text" class="form-control" name="linkedin_link" id="linkedin_link" placeholder="Linkedin Link" value="{{ $editData->linkedin_link }}">
                                 @error('linkedin_link')
@@ -76,7 +76,7 @@
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="instagram_link" class="col-sm-3 text-right control-label col-form-label">Instagram Link</label>
+                            <label for="instagram_link" class="col-sm-3 text-right control-label col-form-label">Instagram Link <i class="mdi mdi-instagram"></i></label>
                             <div class="col-sm-9">
                                 <input type="text" class="form-control" name="instagram_link" id="instagram_link" placeholder="Instagram Link" value="{{ $editData->instagram_link }}">
                                 @error('instagram_link')

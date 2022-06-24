@@ -15,8 +15,9 @@ use App\Http\Controllers\Admin\UserAboutController;
 
 // ========= Landing Page Routes =========
 Route::get('/', function () {
-    $allData = DB::table('user_site_infos')->first();
-    return view('welcome', compact('allData'));
+    $data['userSiteInfos'] = DB::table('user_site_infos')->first();
+    $data['userServices'] = DB::table('user_services')->get();
+    return view('welcome', $data);
 });
 
 // ========= Admin Routes =========

@@ -1,18 +1,18 @@
 @extends('admin.admin_master')
 
-@section('title') View Users | Respond Fitness @endsection
+@section('title') View Herosection | Respond Fitness @endsection
 
 @section('content')
 <!-- Bread crumb and right sidebar toggle -->
 <div class="page-breadcrumb">
     <div class="row">
         <div class="col-12 d-flex no-block align-items-center">
-            <h4 class="page-title">View Users</h4>
+            <h4 class="page-title">View Herosection</h4>
             <div class="ml-auto text-right">
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Home</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">View Users</li>
+                        <li class="breadcrumb-item active" aria-current="page">View Herosection</li>
                     </ol>
                 </nav>
             </div>
@@ -27,7 +27,7 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-header">
-                    <a class="btn btn-primary" href="{{ route('user.add') }}">Add User</a>
+                    <a class="btn btn-primary" href="{{ route('user.herosection.add') }}">Add Herosection</a>
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
@@ -35,28 +35,24 @@
                             <thead>
                                 <tr>
                                     <th>ID No.</th>
-                                    <th>Avatar</th>
-                                    <th>Name</th>
-                                    <th>Email</th>
-                                    <th>Gender</th>
-                                    <th>Role</th>
-                                    <th>Joined Date</th>
+                                    <th>Main Title</th>
+                                    <th width="30%">Body</th>
+                                    <th>Background Image</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($allData as $key => $user)
+                                @foreach ($allData as $key => $herosection)
                                 <tr>
                                     <td>{{ $key+1 }}</td>
-                                    <td><img src="{{ (!empty($user->profile_photo_path)) ? url('upload/user_images/'.$user->profile_photo_path) : asset('admin/assets/images/users/default_photo.jpg') }}" alt="user" class="img-fluid" width="40px"></td>
-                                    <td>{{ $user->first_name . " " . $user->last_name }}</td>
-                                    <td>{{ $user->email }}</td>
-                                    <td>{{ $user->gender }}</td>
-                                    <td>{{ $user->user_type }}</td>
-                                    <td>{{ date('m-d-Y', strtotime($user->created_at)) }}</td>
+                                    <td>{{ $herosection->title }}</td>
+                                    <td>{{ $herosection->body }}</td>
                                     <td>
-                                        <a href="{{ route('user.edit', $user->id) }}" class="btn btn-primary text-white">Edit</a>
-                                        <a href="{{ route('user.delete', $user->id) }}" class="btn btn-danger text-white" id="delete">Delete</a>
+                                        <img src="{{ (!empty($herosection->image)) ? url('upload/user_siteinfo/herosection/'.$herosection->image) : url('upload/user_siteinfo/herosection/default_photo.jpg') }}" alt="image" class="img-fluid" width="60px">
+                                    </td>
+                                    <td>
+                                        <a href="{{ route('user.herosection.edit', $herosection->id) }}" class="btn btn-primary text-white">Edit</a>
+                                        <a href="{{ route('user.herosection.delete', $herosection->id) }}" class="btn btn-danger text-white" id="delete">Delete</a>
                                     </td>
                                 </tr>
                                 @endforeach

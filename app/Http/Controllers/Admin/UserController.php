@@ -73,8 +73,6 @@ class UserController extends Controller
             'user_type' => 'required',
         ]);
 
-
-
         try {
             $data = User::find($id);
             $data->first_name = $request->first_name;

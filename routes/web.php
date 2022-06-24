@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\AdminSiteInfoController;
 use App\Http\Controllers\Admin\UserSiteInfoController;
+use App\Http\Controllers\Admin\UserHerosectionController;
 
 // ========= Landing Page Routes =========
 Route::get('/', function () {
@@ -52,10 +53,20 @@ Route::middleware([
         Route::get('admin/remove_admin_brand_mini', [AdminSiteInfoController::class, 'RemoveAdminBrandMini'])->name('remove.admin_brand_mini');
     });
 
-    // User Info Management
+    // User Site Info Management
     Route::prefix('siteinfo')->group(function () {
         Route::get('user/edit', [UserSiteInfoController::class, 'UserSiteInfoEdit'])->name('user.siteinfo.edit');
         Route::post('user/update/{id}', [UserSiteInfoController::class, 'UserSiteInfoUpdate'])->name('user.siteinfo.update');
+    });
+
+    // Herosection Management
+    Route::prefix('herosection')->group(function () {
+        Route::get('user/view', [UserHerosectionController::class, 'UserHerosectionView'])->name('user.herosection.view');
+        Route::get('user/add', [UserHerosectionController::class, 'UserHerosectionAdd'])->name('user.herosection.add');
+        Route::post('user/store', [UserHerosectionController::class, 'UserHerosectionStore'])->name('user.herosection.store');
+        Route::get('user/edit/{id}', [UserHerosectionController::class, 'UserHerosectionEdit'])->name('user.herosection.edit');
+        Route::post('user/update/{id}', [UserHerosectionController::class, 'UserHerosectionUpdate'])->name('user.herosection.update');
+        Route::get('user/delete/{id}', [UserHerosectionController::class, 'UserHerosectionDelete'])->name('user.herosection.delete');
     });
 });
 

@@ -13,8 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('user_site_contents', function (Blueprint $table) {
+        Schema::create('user_herosections', function (Blueprint $table) {
             $table->id();
+            $table->string('title')->nullable();
+            $table->text('body')->nullable();
+            $table->string('image')->nullable();
             $table->timestamps();
         });
     }
@@ -26,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('user_site_contents');
+        Schema::dropIfExists('user_herosections');
     }
 };

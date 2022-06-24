@@ -41,6 +41,12 @@
                         <li class="sidebar-item"><a href="{{ route('user.facilities.add') }}" class="sidebar-link"><i class="fas fa-plus-circle"></i><span class="hide-menu">Add Facilities</span></a></li>
                     </ul>
                 </li>
+                <li class="sidebar-item"> <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="mdi mdi-library"></i><span class="hide-menu">Manage Trainers</span></a>
+                    <ul aria-expanded="false" class="collapse  first-level">
+                        <li class="sidebar-item"><a href="{{ route('user.trainers.view') }}" class="sidebar-link"><i class="fas fa-list-alt"></i><span class="hide-menu">View Trainers</span></a></li>
+                        <li class="sidebar-item"><a href="{{ route('user.trainers.add') }}" class="sidebar-link"><i class="fas fa-plus-circle"></i><span class="hide-menu">Add Trainers</span></a></li>
+                    </ul>
+                </li>
             </ul>
         </nav>
         <!-- End Sidebar navigation -->

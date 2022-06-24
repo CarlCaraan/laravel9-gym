@@ -30,6 +30,9 @@
 
     <!-- Template Stylesheet -->
     <link href="{{ asset('landing_page/assets/css/style.css') }}" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="{{ asset('landing_page/assets/css/custom.css') }}" rel="stylesheet">
 </head>
 
 <body>
@@ -39,7 +42,6 @@
         <img class="position-absolute top-50 start-50 translate-middle" src="{{ asset('landing_page/assets/img/favicon.ico') }}" width="50px" alt="Icon">
     </div>
     <!-- Spinner End -->
-
 
     <!-- Topbar Start -->
     <div class="container-fluid bg-dark p-0 wow fadeIn" data-wow-delay="0.1s">
@@ -68,7 +70,7 @@
 
 
     <!-- Navbar Start -->
-    <nav class="navbar navbar-expand-lg bg-white navbar-light sticky-top py-lg-0 px-lg-5 wow fadeIn" data-wow-delay="0.1s">
+    <nav class="navbar navbar-expand-lg bg-white navbar-light py-lg-0 px-lg-5" data-wow-delay="0.1s">
         <a href="index.html" class="navbar-brand ms-4 ms-lg-0">
             <h1 class="text-primary m-0">
                 <img class="me-3" src="{{ asset('landing_page/assets/img/brand-text.png') }}" width="250px" alt="Logo">
@@ -79,11 +81,11 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarCollapse">
             <div class="navbar-nav ms-auto p-4 p-lg-0">
-                <a href="index.html" class="nav-item nav-link active">Home</a>
-                <a href="service.html" class="nav-item nav-link">Services</a>
-                <a href="service.html" class="nav-item nav-link">Facilities & Equipments</a>
-                <a href="service.html" class="nav-item nav-link">Trainers & Experts</a>
-                <a href="about.html" class="nav-item nav-link">About</a>
+                <a href="{{ url('/') }}" class="nav-item nav-link">Home</a>
+                <a href="#services" class="nav-item nav-link">Services</a>
+                <a href="#facilities" class="nav-item nav-link">Facilities & Equipments</a>
+                <a href="#trainers" class="nav-item nav-link">Trainers & Experts</a>
+                <a href="#about" class="nav-item nav-link">About</a>
             </div>
             <a href="{{ route('login') }}" class="btn btn-primary py-2 px-4 d-none d-lg-block">Login</a>
         </div>
@@ -93,48 +95,28 @@
     <!-- Herosection Start -->
     <div class="container-fluid p-0 pb-5 wow fadeIn" data-wow-delay="0.1s">
         <div class="owl-carousel header-carousel position-relative">
-            <div class="owl-carousel-item position-relative" data-dot="<img src='{{ asset('landing_page/assets/img/carousel-1.jpg') }}'>">
+            <div class="owl-carousel-item position-relative" data-dot="<img src='{{ asset('landing_page/assets/') }}'>">
                 <img class="img-fluid" src="{{ asset('landing_page/assets/img/carousel-1.jpg') }}" alt="">
                 <div class="owl-carousel-inner">
                     <div class="container">
                         <div class="row justify-content-start">
                             <div class="col-10 col-lg-8">
-                                <h1 class="display-1 text-white animated slideInDown">Best Architecture And Interior Design
-                                    Services</h1>
-                                <p class="fs-5 fw-medium text-white mb-4 pb-3">Vero elitr justo clita lorem. Ipsum dolor at
-                                    sed stet sit diam no. Kasd rebum ipsum et diam justo clita et kasd rebum sea elitr.</p>
+                                <h1 class="display-1 text-white animated slideInDown">Best Architecture And Interior Design Services</h1>
+                                <p class="fs-5 fw-medium text-white mb-4 pb-3">Vero elitr justo clita lorem. Ipsum dolor at sed stet sit diam no. Kasd rebum ipsum et diam justo clita et kasd rebum sea elitr.</p>
                                 <a href="" class="btn btn-primary py-3 px-5 animated slideInLeft">Read More</a>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="owl-carousel-item position-relative" data-dot="<img src='{{ asset('landing_page/assets/img/carousel-2.jpg') }}'>">
-                <img class="img-fluid" src="{{ asset('landing_page/assets/img/carousel-2.jpg') }}" alt="">
+            <div class="owl-carousel-item position-relative" data-dot="<img src='{{ asset('landing_page/assets/') }}'>">
+                <img class="img-fluid" src="{{ asset('landing_page/assets/img/carousel-1.jpg') }}" alt="">
                 <div class="owl-carousel-inner">
                     <div class="container">
                         <div class="row justify-content-start">
                             <div class="col-10 col-lg-8">
-                                <h1 class="display-1 text-white animated slideInDown">Best Architecture And Interior Design
-                                    Services</h1>
-                                <p class="fs-5 fw-medium text-white mb-4 pb-3">Vero elitr justo clita lorem. Ipsum dolor at
-                                    sed stet sit diam no. Kasd rebum ipsum et diam justo clita et kasd rebum sea elitr.</p>
-                                <a href="" class="btn btn-primary py-3 px-5 animated slideInLeft">Read More</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="owl-carousel-item position-relative" data-dot="<img src='{{ asset('landing_page/assets/img/carousel-3.jpg') }}'>">
-                <img class="img-fluid" src="{{ asset('landing_page/assets/img/carousel-3.jpg') }}" alt="">
-                <div class="owl-carousel-inner">
-                    <div class="container">
-                        <div class="row justify-content-start">
-                            <div class="col-10 col-lg-8">
-                                <h1 class="display-1 text-white animated slideInDown">Best Architecture And Interior Design
-                                    Services</h1>
-                                <p class="fs-5 fw-medium text-white mb-4 pb-3">Vero elitr justo clita lorem. Ipsum dolor at
-                                    sed stet sit diam no. Kasd rebum ipsum et diam justo clita et kasd rebum sea elitr.</p>
+                                <h1 class="display-1 text-white animated slideInDown">Best Architecture And Interior Design Services</h1>
+                                <p class="fs-5 fw-medium text-white mb-4 pb-3">Vero elitr justo clita lorem. Ipsum dolor at sed stet sit diam no. Kasd rebum ipsum et diam justo clita et kasd rebum sea elitr.</p>
                                 <a href="" class="btn btn-primary py-3 px-5 animated slideInLeft">Read More</a>
                             </div>
                         </div>
@@ -146,7 +128,7 @@
     <!-- Herosection End -->
 
     <!-- Services Start -->
-    <div class="container-xxl py-5">
+    <div class="container-xxl py-5 offset" id="services">
         <div class="container">
             <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;">
                 <h4 class="section-title">Our Services</h4>
@@ -195,7 +177,7 @@
     <!-- Services End -->
 
     <!-- Facilities and Equipments Start -->
-    <div class="container-xxl project py-5">
+    <div class="container-xxl project py-5 offset" id="facilities">
         <div class="container">
             <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;">
                 <h4 class="section-title">Facilities and Equipments</h4>
@@ -304,7 +286,7 @@
     <!-- Facilities and Equipments End -->
 
     <!-- Trainers and Experts Start -->
-    <div class="container-xxl py-5">
+    <div class="container-xxl py-5 offset" id="trainers">
         <div class="container">
             <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;">
                 <h4 class="section-title">Trainers & Experts</h4>
@@ -314,7 +296,7 @@
                 <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
                     <div class="team-item position-relative">
                         <div class="position-relative">
-                            <img class="img-fluid" src="img/team-1.jpg" alt="">
+                            <img class="img-fluid" src="{{ asset('landing_page/assets/img/team-1.jpg') }}" alt="">
                             <div class="team-social text-center">
                                 <a class="btn btn-square" href=""><i class="fab fa-facebook-f"></i></a>
                                 <a class="btn btn-square" href=""><i class="fab fa-twitter"></i></a>
@@ -330,7 +312,7 @@
                 <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
                     <div class="team-item position-relative">
                         <div class="position-relative">
-                            <img class="img-fluid" src="img/team-2.jpg" alt="">
+                            <img class="img-fluid" src="{{ asset('landing_page/assets/img/team-2.jpg') }}" alt="">
                             <div class="team-social text-center">
                                 <a class="btn btn-square" href=""><i class="fab fa-facebook-f"></i></a>
                                 <a class="btn btn-square" href=""><i class="fab fa-twitter"></i></a>
@@ -346,7 +328,7 @@
                 <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
                     <div class="team-item position-relative">
                         <div class="position-relative">
-                            <img class="img-fluid" src="img/team-3.jpg" alt="">
+                            <img class="img-fluid" src="{{ asset('landing_page/assets/img/team-3.jpg') }}" alt="">
                             <div class="team-social text-center">
                                 <a class="btn btn-square" href=""><i class="fab fa-facebook-f"></i></a>
                                 <a class="btn btn-square" href=""><i class="fab fa-twitter"></i></a>
@@ -362,7 +344,7 @@
                 <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.7s">
                     <div class="team-item position-relative">
                         <div class="position-relative">
-                            <img class="img-fluid" src="img/team-4.jpg" alt="">
+                            <img class="img-fluid" src="{{ asset('landing_page/assets/img/team-4.jpg') }}" alt="">
                             <div class="team-social text-center">
                                 <a class="btn btn-square" href=""><i class="fab fa-facebook-f"></i></a>
                                 <a class="btn btn-square" href=""><i class="fab fa-twitter"></i></a>
@@ -381,7 +363,7 @@
     <!-- Trainers and Experts End -->
 
     <!-- About Start -->
-    <div class="container-xxl py-5">
+    <div class="container-xxl py-5 offset" id="about">
         <div class="container">
             <div class="row g-5">
                 <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">

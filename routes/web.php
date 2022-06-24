@@ -10,6 +10,7 @@ use App\Http\Controllers\Admin\UserSiteInfoController;
 use App\Http\Controllers\Admin\UserHerosectionController;
 use App\Http\Controllers\Admin\UserServicesController;
 use App\Http\Controllers\Admin\UserFacilitiesController;
+use App\Http\Controllers\Admin\UserTrainersController;
 
 // ========= Landing Page Routes =========
 Route::get('/', function () {
@@ -93,6 +94,17 @@ Route::middleware([
         Route::post('user/update/{id}', [UserFacilitiesController::class, 'UserFacilitiesUpdate'])->name('user.facilities.update');
         Route::get('user/delete/{id}', [UserFacilitiesController::class, 'UserFacilitiesDelete'])->name('user.facilities.delete');
         Route::get('user/remove_image/{id}', [UserFacilitiesController::class, 'UserFacilitiesRemoveImage'])->name('user.facilities.remove_image');
+    });
+
+    // Trainers Management
+    Route::prefix('trainers')->group(function () {
+        Route::get('user/view', [UserTrainersController::class, 'UserTrainersView'])->name('user.trainers.view');
+        Route::get('user/add', [UserTrainersController::class, 'UserTrainersAdd'])->name('user.trainers.add');
+        Route::post('user/store', [UserTrainersController::class, 'UserTrainersStore'])->name('user.trainers.store');
+        Route::get('user/edit/{id}', [UserTrainersController::class, 'UserTrainersEdit'])->name('user.trainers.edit');
+        Route::post('user/update/{id}', [UserTrainersController::class, 'UserTrainersUpdate'])->name('user.trainers.update');
+        Route::get('user/delete/{id}', [UserTrainersController::class, 'UserTrainersDelete'])->name('user.trainers.delete');
+        Route::get('user/remove_image/{id}', [UserTrainersController::class, 'UserTrainersRemoveImage'])->name('user.trainers.remove_image');
     });
 });
 

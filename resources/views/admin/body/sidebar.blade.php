@@ -29,6 +29,12 @@
                         <li class="sidebar-item"><a href="{{ route('user.herosection.add') }}" class="sidebar-link"><i class="mdi mdi-border-all"></i><span class="hide-menu">Add Herosection</span></a></li>
                     </ul>
                 </li>
+                <li class="sidebar-item"> <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="mdi mdi-burst-mode"></i><span class="hide-menu">Manage Services</span></a>
+                    <ul aria-expanded="false" class="collapse  first-level">
+                        <li class="sidebar-item"><a href="{{ route('user.services.view') }}" class="sidebar-link"><i class="mdi mdi-border-all"></i><span class="hide-menu">View Services</span></a></li>
+                        <li class="sidebar-item"><a href="{{ route('user.services.add') }}" class="sidebar-link"><i class="mdi mdi-border-all"></i><span class="hide-menu">Add Services</span></a></li>
+                    </ul>
+                </li>
             </ul>
         </nav>
         <!-- End Sidebar navigation -->

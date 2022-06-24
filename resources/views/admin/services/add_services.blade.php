@@ -1,6 +1,6 @@
 @extends('admin.admin_master')
 
-@section('title') Edit Herosection | Respond Fitness @endsection
+@section('title') Add Services | Respond Fitness @endsection
 
 @section('content')
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -8,12 +8,12 @@
 <div class="page-breadcrumb">
     <div class="row">
         <div class="col-12 d-flex no-block align-items-center">
-            <h4 class="page-title">Edit Herosection</h4>
+            <h4 class="page-title">Add Services</h4>
             <div class="ml-auto text-right">
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Home</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Edit Herosection</li>
+                        <li class="breadcrumb-item active" aria-current="page">Add Services</li>
                     </ol>
                 </nav>
             </div>
@@ -29,12 +29,12 @@
             <div class="card">
                 <div class="card-body">
                     <div class="col-6">
-                        <form class="form-horizontal" method="POST" action="{{ route('user.herosection.update', $editData->id) }}" enctype="multipart/form-data">
+                        <form class="form-horizontal" method="POST" action="{{ route('user.services.store') }}" enctype="multipart/form-data">
                             @csrf
                             <div class="form-group row">
-                                <label for="" class="col-sm-3 text-right control-label col-form-label">Herosection Background</label>
+                                <label for="" class="col-sm-3 text-right control-label col-form-label">Service Logo</label>
                                 <div class="col-md-9 text-left">
-                                    <img class="img-thumbnail mb-3" style="width: 400px; height: 400px;" src="{{ (!empty($editData->image)) ? url('upload/user_siteinfo/herosection/'.$editData->image) : url('upload/user_siteinfo/herosection/default_photo.png') }}" id="show_image" alt="User Avatar">
+                                    <img class="img-thumbnail mb-3" style="width: 400px; height: 400px;" src="{{ url('upload/user_siteinfo/services/default_photo.png')}}" id="show_image" alt="User Avatar">
                                 </div>
                             </div>
                             <div class="form-group row">
@@ -49,11 +49,22 @@
                                     @enderror
                                 </div>
                             </div>
-                            <!-- Remove Image -->
+                            <div class="form-group row">
+                                <label for="" class="col-sm-3 text-right control-label col-form-label">Background Image</label>
+                                <div class="col-md-9 text-left">
+                                    <img class="img-thumbnail mb-3" style="width: 400px; height: 400px;" src="{{ url('upload/user_siteinfo/services/default_photo.png')}}" id="show_image2" alt="User Avatar">
+                                </div>
+                            </div>
                             <div class="form-group row">
                                 <label for="image" class="col-sm-3 text-right control-label col-form-label"></label>
                                 <div class="col-md-9">
-                                    <a href="{{ route('user.herosection.remove_image', $editData->id) }}" class="btn btn-secondary">Remove</a>
+                                    <div class="custom-file">
+                                        <input type="file" class="custom-file-input" name="background" id="image2">
+                                        <label class="custom-file-label" for="background">Choose file...</label>
+                                    </div>
+                                    @error('background')
+                                    <span class="text-danger">{{ $message }}</span>
+                                    @enderror
                                 </div>
                             </div>
                             <hr />
@@ -62,7 +73,7 @@
                             <div class="form-group row">
                                 <label for="title" class="col-sm-3 text-right control-label col-form-label">Main Title</label>
                                 <div class="col-sm-9">
-                                    <input type="text" class="form-control" name="title" id="title" placeholder="Title" value="{{ $editData->title }}">
+                                    <input type="text" class="form-control" name="title" id="title" placeholder="Title">
                                     @error('title')
                                     <span class="text-danger">{{ $message }}</span>
                                     @enderror
@@ -71,7 +82,7 @@
                             <div class="form-group row">
                                 <label for="body" class="col-sm-3 text-right control-label col-form-label">Body</label>
                                 <div class="col-sm-9">
-                                    <textarea class="form-control" name="body" id="body" placeholder="Short description" rows="5">{{ $editData->body }}</textarea>
+                                    <textarea class="form-control" name="body" id="body" placeholder="Short description" rows="5"></textarea>
                                     @error('body')
                                     <span class="text-danger">{{ $message }}</span>
                                     @enderror
@@ -79,7 +90,7 @@
                             </div>
                             <div class="border-top">
                                 <div class="card-body">
-                                    <button type="submit" class="btn btn-primary">Update Herosection</button>
+                                    <button type="submit" class="btn btn-primary">Add Services</button>
                                 </div>
                             </div>
                         </form>
@@ -98,6 +109,15 @@
             var reader = new FileReader();
             reader.onload = function(e) {
                 $('#show_image').attr('src', e.target.result);
+            }
+            reader.readAsDataURL(e.target.files['0']);
+        });
+    });
+    $(document).ready(function() {
+        $('#image2').change(function(e) {
+            var reader = new FileReader();
+            reader.onload = function(e) {
+                $('#show_image2').attr('src', e.target.result);
             }
             reader.readAsDataURL(e.target.files['0']);
         });

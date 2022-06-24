@@ -18,7 +18,7 @@ class AdminSiteInfoSeeder extends Seeder
         DB::table('admin_site_infos')->insert([
             'admin_brand' => NULL,
             'admin_brand_mini' => NULL,
-            'footer' => "All Rights Reserved &copy; 2022. <i class='mdi mdi-visualstudio'></i> Designed with <i class='mdi mdi-heart text-danger'></i> by <a href='https://github.com/CarlCaraan'>BSIT 3A WAM</a>.",
+            'footer' => "All Rights Reserved &copy; 2022. <i class='mdi mdi-visualstudio'></i> Designed with <i class='fas fa-heart text-danger'></i> by <a href='https://github.com/CarlCaraan'>BSIT 3A WAM</a>.",
         ]);
     }
 }

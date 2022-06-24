@@ -8,6 +8,7 @@ use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\AdminSiteInfoController;
 use App\Http\Controllers\Admin\UserSiteInfoController;
 use App\Http\Controllers\Admin\UserHerosectionController;
+use App\Http\Controllers\Admin\UserServicesController;
 
 // ========= Landing Page Routes =========
 Route::get('/', function () {
@@ -67,6 +68,19 @@ Route::middleware([
         Route::get('user/edit/{id}', [UserHerosectionController::class, 'UserHerosectionEdit'])->name('user.herosection.edit');
         Route::post('user/update/{id}', [UserHerosectionController::class, 'UserHerosectionUpdate'])->name('user.herosection.update');
         Route::get('user/delete/{id}', [UserHerosectionController::class, 'UserHerosectionDelete'])->name('user.herosection.delete');
+        Route::get('user/remove_image/{id}', [UserHerosectionController::class, 'UserHerosectionRemoveImage'])->name('user.herosection.remove_image');
+    });
+
+    // Services Management
+    Route::prefix('services')->group(function () {
+        Route::get('user/view', [UserServicesController::class, 'UserServicesView'])->name('user.services.view');
+        Route::get('user/add', [UserServicesController::class, 'UserServicesAdd'])->name('user.services.add');
+        Route::post('user/store', [UserServicesController::class, 'UserServicesStore'])->name('user.services.store');
+        Route::get('user/edit/{id}', [UserServicesController::class, 'UserServicesEdit'])->name('user.services.edit');
+        Route::post('user/update/{id}', [UserServicesController::class, 'UserServicesUpdate'])->name('user.services.update');
+        Route::get('user/delete/{id}', [UserServicesController::class, 'UserServicesDelete'])->name('user.services.delete');
+        Route::get('user/remove_image/{id}', [UserServicesController::class, 'UserServicesRemoveImage'])->name('user.services.remove_image');
+        Route::get('user/remove_background/{id}', [UserServicesController::class, 'UserServicesRemoveBackground'])->name('user.services.remove_background');
     });
 });
 

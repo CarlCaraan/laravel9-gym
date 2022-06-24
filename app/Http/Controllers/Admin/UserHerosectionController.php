@@ -95,4 +95,19 @@ class UserHerosectionController extends Controller
         );
         return redirect()->route('user.herosection.view')->with($notification);
     }
+
+    public function UserHerosectionRemoveImage($id)
+    {
+        $data = UserHerosection::find($id);
+        @unlink(public_path('upload/user_siteinfo/herosection/' . $data->image));
+        $data->image = NULL;
+        $data->save();
+
+        $notification = array(
+            'message' => 'Background Image removed successfully!',
+            'alert-type' => 'success',
+        );
+
+        return redirect()->route('user.herosection.view')->with($notification);
+    }
 }

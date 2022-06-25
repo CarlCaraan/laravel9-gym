@@ -23,8 +23,8 @@ class UserServicesController extends Controller
     public function UserServicesStore(Request $request)
     {
         $validatedData = $request->validate([
-            'image' => 'required|image|mimes:jpeg,png,jpg|max:2048',
-            'background' => 'required|image|mimes:jpeg,png,jpg|max:2048',
+            'image' => 'required|image|mimes:jpeg,png,jpg|max:10000',
+            'background' => 'required|image|mimes:jpeg,png,jpg|max:10000',
             'title' => 'required',
             'body' => 'required',
         ]);
@@ -64,8 +64,8 @@ class UserServicesController extends Controller
     public function UserServicesUpdate(Request $request, $id)
     {
         $validatedData = $request->validate([
-            'image' => 'image|mimes:jpeg,png,jpg|max:2048',
-            'background' => 'image|mimes:jpeg,png,jpg|max:2048',
+            'image' => 'image|mimes:jpeg,png,jpg|max:10000',
+            'background' => 'image|mimes:jpeg,png,jpg|max:10000',
             'title' => 'required',
             'body' => 'required',
         ]);

@@ -23,7 +23,7 @@ class UserFacilitiesController extends Controller
     public function UserFacilitiesStore(Request $request)
     {
         $validatedData = $request->validate([
-            'image' => 'required|image|mimes:jpeg,png,jpg|max:2048',
+            'image' => 'required|image|mimes:jpeg,png,jpg|max:5000',
             'name' => 'required',
             'title' => 'required',
             'body' => 'required',
@@ -59,7 +59,7 @@ class UserFacilitiesController extends Controller
     public function UserFacilitiesUpdate(Request $request, $id)
     {
         $validatedData = $request->validate([
-            'image' => 'image|mimes:jpeg,png,jpg|max:2048',
+            'image' => 'image|mimes:jpeg,png,jpg|max:10000',
             'name' => 'required',
             'title' => 'required',
             'body' => 'required',

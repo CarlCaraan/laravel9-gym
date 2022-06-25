@@ -48,14 +48,14 @@
         <div class="row gx-0 d-none d-lg-flex">
             <div class="col-lg-7 px-5 text-start">
                 <div class="h-100 d-inline-flex align-items-center py-3 me-3">
-                    <a class="text-body px-2" href="tel:+0123456789"><i class="fa fa-phone-alt text-primary me-2"></i>{{ $userSiteInfos->mobile }}</a>
-                    <a class="text-body px-2" href="mailto:samgyup@fitness.com"><i class="fa fa-envelope-open text-primary me-2"></i>{{ $userSiteInfos->email }}</a>
+                    <a class="text-light px-2" href="tel:+0123456789"><i class="fa fa-phone-alt text-primary me-2"></i>{{ $userSiteInfos->mobile }}</a>
+                    <a class="text-light px-2" href="mailto:samgyup@fitness.com"><i class="fa fa-envelope-open text-primary me-2"></i>{{ $userSiteInfos->email }}</a>
                 </div>
             </div>
             <div class="col-lg-5 px-5 text-end">
                 <div class="h-100 d-inline-flex align-items-center py-3 me-2">
-                    <a class="text-body px-2" href="{{ route('terms.show') }}">Terms</a>
-                    <a class="text-body px-2" href="{{ route('policy.show') }}">Privacy</a>
+                    <a class="text-light px-2" href="{{ route('terms.show') }}">Terms</a>
+                    <a class="text-light px-2" href="{{ route('policy.show') }}">Privacy</a>
                 </div>
                 <div class="h-100 d-inline-flex align-items-center">
                     <a class="btn btn-sm-square btn-outline-body me-1" href="{{ $userSiteInfos->facebook_link }}" target="_blank"><i class="fab fa-facebook-f"></i></a>
@@ -67,7 +67,6 @@
         </div>
     </div>
     <!-- Topbar End -->
-
 
     <!-- Navbar Start -->
     <nav class="navbar navbar-expand-lg bg-white navbar-light py-lg-0 px-lg-5" data-wow-delay="0.1s">
@@ -141,18 +140,18 @@
         <div class="container">
             <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;">
                 <h4 class="section-title">Our Services</h4>
-                <h1 class="display-5 mb-4">Samgyup Fitness Center offers 90% cooking and 10% eating.</h1>
+                <h1 class="display-5 mb-4">Reach your fitness goal with our service offers.</h1>
             </div>
             <div class="row g-4">
                 @foreach ($userServices as $key => $userService)
                 <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.{{ $key+3 }}s">
                     <div class="service-item d-flex position-relative text-center h-100">
-                        <img class="bg-img" src="{{ (!empty($userService->background)) ? url('upload/user_siteinfo/services/'.$userService->background) : url('upload/user_siteinfo/services/default_photo.png') }}" alt="">
+                        <img class="bg-img img-fluid" src="{{ (!empty($userService->background)) ? url('upload/user_siteinfo/services/'.$userService->background) : url('upload/user_siteinfo/services/default_photo.png') }}" alt="">
                         <div class="service-text p-5">
-                            <img class="mb-4" src="{{ (!empty($userService->image)) ? url('upload/user_siteinfo/services/'.$userService->image) : url('upload/user_siteinfo/services/default_photo.png') }}" alt="Icon">
+                            <img class="mb-4 img-fluid" src="{{ (!empty($userService->image)) ? url('upload/user_siteinfo/services/'.$userService->image) : url('upload/user_siteinfo/services/default_photo.png') }}" alt="Icon">
                             <h3 class="mb-3">{{ $userService->title }}</h3>
                             <p class="mb-4">{{ $userService->body }}</p>
-                            <a class="btn" href=""><i class="fa fa-plus text-primary me-3"></i>Get Started</a>
+                            <a class="btn" href="{{ route('login') }}"><i class="fa fa-plus text-primary me-3"></i>Get Started</a>
                         </div>
                     </div>
                 </div>
@@ -167,7 +166,7 @@
         <div class="container">
             <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;">
                 <h4 class="section-title">Facilities and Equipments</h4>
-                <h1 class="display-5 mb-4">Visit Our Latest Equipments And Our Trainings</h1>
+                <h1 class="display-5 mb-4">Visit Our Latest Equipments And Facilities</h1>
             </div>
             <div class="row g-4 wow fadeInUp" data-wow-delay="0.3s">
                 <div class="col-lg-4">
@@ -209,7 +208,7 @@
         <div class="container">
             <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;">
                 <h4 class="section-title">Trainers & Experts</h4>
-                <h1 class="display-5 mb-4">We Are Batang Hamog Team For Your Dream Body</h1>
+                <h1 class="display-5 mb-4">Team For Your Dream Body</h1>
             </div>
             <div class="row g-0 team-items">
                 @foreach ($userTrainers as $key => $userTrainer)
@@ -242,7 +241,7 @@
                 <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
                     <h4 class="section-title">About Us!</h4>
                     <h1 class="display-5 mb-4">{{ $userAbout->title }}</h1>
-                    <p class="mb-4">{{ $userAbout->body }}</p>
+                    <p class="mb-5">{!! $userAbout->body !!}</p>
                 </div>
                 <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.5s">
                     <div class="feature-img">

@@ -19,14 +19,14 @@ class UserServicesTableSeeder extends Seeder
             [
                 [
                     'id' => "1",
-                    'title' => "Weight Lifting",
+                    'title' => "Personal Training",
                     'body' => "Erat ipsum justo amet duo et elitr dolor, est duo duo eos lorem sed diam stet diam sed stet.",
                     'image' => NULL,
                     'background' => NULL,
                 ],
                 [
                     'id' => "2",
-                    'title' => "Mind & Conditioning",
+                    'title' => "Weight Lifting",
                     'body' => "Erat ipsum justo amet duo et elitr dolor, est duo duo eos lorem sed diam stet diam sed stet.",
                     'image' => NULL,
                     'background' => NULL,

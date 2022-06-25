@@ -25,8 +25,8 @@ class UserAboutController extends Controller
     {
         $validatedData = $request->validate(
             [
-                'image' => 'image|mimes:jpeg,png,jpg|max:2048',
-                'background' => 'image|mimes:jpeg,png,jpg|max:2048',
+                'image' => 'image|mimes:jpeg,png,jpg|max:5000',
+                'background' => 'image|mimes:jpeg,png,jpg|max:5000',
                 'title' => 'required',
                 'body' => 'required',
             ],

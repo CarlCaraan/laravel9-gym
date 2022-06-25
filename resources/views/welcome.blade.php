@@ -92,7 +92,96 @@
     </nav>
     <!-- Navbar End -->
 
+    <!-- Herosection Start -->
+    <div class="container-fluid p-0 pb-5 wow fadeIn" data-wow-delay="0.1s">
+        <div class="owl-carousel header-carousel position-relative">
+            @foreach ($userHerosections as $key => $userHerosection)
+            <div class="owl-carousel-item position-relative" data-dot="<img src='{{ (!empty($userHerosection->image)) ? url('upload/user_siteinfo/herosection/'.$userHerosection->image) : url('upload/user_siteinfo/herosection/default_photo.png') }}'>">
+                <img class="img-fluid" src="{{ (!empty($userHerosection->image)) ? url('upload/user_siteinfo/herosection/'.$userHerosection->image) : url('upload/user_siteinfo/herosection/default_photo.png') }}" alt="">
+                <div class="owl-carousel-inner">
+                    <div class="container">
+                        <div class="row justify-content-start">
+                            <div class="col-10 col-lg-8">
+                                <h1 class="display-1 text-white animated slideInDown">{{ $userHerosection->title }}</h1>
+                                <p class="fs-5 fw-medium text-white mb-4 pb-3">{{ $userHerosection->body }}</p>
+                                <a href="{{ route('login') }}" class="btn btn-primary py-3 px-5 animated slideInLeft">Join Us</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            @endforeach
+        </div>
+    </div>
+    <!-- Herosection End -->
 
+    <!-- Services Start -->
+    <div class="container-xxl py-5 offset" id="services">
+        <div class="container">
+            <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;">
+                <h4 class="section-title">Our Services</h4>
+                <h1 class="display-5 mb-4">Samgyup Fitness Center offers 90% cooking and 10% eating.</h1>
+            </div>
+            <div class="row g-4">
+                @foreach ($userServices as $key => $userService)
+                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                    <div class="service-item d-flex position-relative text-center h-100">
+                        <img class="bg-img" src="{{ (!empty($userService->background)) ? url('upload/user_siteinfo/services/'.$userService->background) : url('upload/user_siteinfo/services/default_photo.png') }}" alt="">
+                        <div class="service-text p-5">
+                            <img class="mb-4" src="{{ (!empty($userService->image)) ? url('upload/user_siteinfo/services/'.$userService->image) : url('upload/user_siteinfo/services/default_photo.png') }}" alt="Icon">
+                            <h3 class="mb-3">{{ $userService->title }}</h3>
+                            <p class="mb-4">{{ $userService->body }}</p>
+                            <a class="btn" href=""><i class="fa fa-plus text-primary me-3"></i>Get Started</a>
+                        </div>
+                    </div>
+                </div>
+                @endforeach
+            </div>
+        </div>
+    </div>
+    <!-- Services End -->
+
+    <!-- Facilities and Equipments Start -->
+    <div class="container-xxl project py-5 offset" id="facilities">
+        <div class="container">
+            <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;">
+                <h4 class="section-title">Facilities and Equipments</h4>
+                <h1 class="display-5 mb-4">Visit Our Latest Equipments And Our Trainings</h1>
+            </div>
+            <div class="row g-4 wow fadeInUp" data-wow-delay="0.3s">
+                <div class="col-lg-4">
+                    <div class="nav nav-pills d-flex justify-content-between w-100 h-100 me-4">
+                        @foreach ($userFacilities as $key => $userFacility)
+                        <button class="nav-link w-100 d-flex align-items-center text-start p-4 mb-4 {{ ($key++ == '0') ? 'active' : '' }}" data-bs-toggle="pill" data-bs-target="#tab-pane-{{ $userFacility->id }}" type="button">
+                            <h3 class="m-0">{{ $userFacility->name }}</h3>
+                        </button>
+                        @endforeach
+                    </div>
+                </div>
+                <div class="col-lg-8">
+                    <div class="tab-content w-100">
+                        @foreach ($userFacilities as $key => $userFacility)
+                        <div class="tab-pane fade {{ ($key++ == '0') ? 'show active' : ''}}" id="tab-pane-{{ $userFacility->id }}">
+                            <div class="row g-4">
+                                <div class="col-md-6" style="min-height: 350px;">
+                                    <div class="position-relative h-100">
+                                        <img class="position-absolute img-fluid w-100 h-100" src="{{ (!empty($userFacility->image)) ? url('upload/user_siteinfo/facilities/'.$userFacility->image) : url('upload/user_siteinfo/facilities/default_photo.png') }}" style="object-fit: cover;" alt="">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <h1 class="mb-3">{{ $userFacility->title }}</h1>
+                                    <p class="mb-4">{{ $userFacility->body }}</p>
+                                    <a href="{{ route('login') }}" class="btn btn-primary py-3 px-5 mt-3">Read More</a>
+                                </div>
+                            </div>
+                        </div>
+                        @endforeach
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Facilities and Equipments End -->
 
     <!-- Footer Start -->
     <div class="container-fluid bg-dark text-body footer mt-5 pt-5 px-0 wow fadeIn" data-wow-delay="0.1s">
@@ -113,7 +202,7 @@
                 <div class="col-lg-4 col-md-6">
                     <h3 class="text-light mb-4">Services</h3>
                     @foreach ($userServices as $key => $userService)
-                    <a class="btn btn-link" href="">{{ $userService->title }}</a>
+                    <a class="btn btn-link" href="#services">{{ $userService->title }}</a>
                     @endforeach
                 </div>
                 <div class="col-lg-4 col-md-6">

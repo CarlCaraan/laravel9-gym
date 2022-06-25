@@ -25,7 +25,10 @@ class DatabaseSeeder extends Seeder
             UserSeeder::class,
             AdminSiteInfoSeeder::class,
             UserSiteInfoTableSeeder::class,
-            AboutTableSeeder::class,
+            UserAboutTableSeeder::class,
+            UserHerosectionTableSeeder::class,
+            UserServicesTableSeeder::class,
+            UserFacilitiesTableSeeder::class,
         ]);
     }
 }

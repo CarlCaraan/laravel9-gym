@@ -12,13 +12,10 @@ use App\Http\Controllers\Admin\UserServicesController;
 use App\Http\Controllers\Admin\UserFacilitiesController;
 use App\Http\Controllers\Admin\UserTrainersController;
 use App\Http\Controllers\Admin\UserAboutController;
+use App\Http\Controllers\WelcomeController;
 
 // ========= Landing Page Routes =========
-Route::get('/', function () {
-    $data['userSiteInfos'] = DB::table('user_site_infos')->first();
-    $data['userServices'] = DB::table('user_services')->get();
-    return view('welcome', $data);
-});
+Route::get('/', [WelcomeController::class, 'WelcomeView']);
 
 // ========= Admin Routes =========
 Route::middleware([

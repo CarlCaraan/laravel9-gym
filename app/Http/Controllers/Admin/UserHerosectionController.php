@@ -23,7 +23,7 @@ class UserHerosectionController extends Controller
     public function UserHerosectionStore(Request $request)
     {
         $validatedData = $request->validate([
-            'image' => 'required|image|mimes:jpeg,png,jpg|max:2048',
+            'image' => 'required|image|mimes:jpeg,png,jpg|max:5000',
             'title' => 'required',
             'body' => 'required',
         ]);
@@ -57,7 +57,7 @@ class UserHerosectionController extends Controller
     public function UserHerosectionUpdate(Request $request, $id)
     {
         $validatedData = $request->validate([
-            'image' => 'image|mimes:jpeg,png,jpg|max:2048',
+            'image' => 'image|mimes:jpeg,png,jpg|max:5000',
             'title' => 'required',
             'body' => 'required',
         ]);

@@ -183,6 +183,57 @@
     </div>
     <!-- Facilities and Equipments End -->
 
+    <!-- Trainers and Experts Start -->
+    <div class="container-xxl py-5 offset" id="trainers">
+        <div class="container">
+            <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;">
+                <h4 class="section-title">Trainers & Experts</h4>
+                <h1 class="display-5 mb-4">We Are Batang Hamog Team For Your Dream Body</h1>
+            </div>
+            <div class="row g-0 team-items">
+                @foreach ($userTrainers as $key => $userTrainer)
+                <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                    <div class="team-item position-relative">
+                        <div class="position-relative">
+                            <img class="img-fluid w-100 h-100" src="{{ (!empty($userTrainer->image)) ? url('upload/user_siteinfo/trainers/'.$userTrainer->image) : url('upload/user_siteinfo/trainers/default_photo.png') }}" alt="">
+                            <div class="team-social text-center">
+                                <a class="btn btn-square" href="{{ $userTrainer->facebook_link }}"><i class="fab fa-facebook-f"></i></a>
+                                <a class="btn btn-square" href="{{ $userTrainer->twitter_link }}"><i class="fab fa-twitter"></i></a>
+                                <a class="btn btn-square" href="{{ $userTrainer->instagram_link }}"><i class="fab fa-instagram"></i></a>
+                            </div>
+                        </div>
+                        <div class="bg-light text-center p-4">
+                            <h3 class="mt-2">{{ $userTrainer->name }}</h3>
+                            <span class="text-primary">{{ $userTrainer->position }}</span>
+                        </div>
+                    </div>
+                </div>
+                @endforeach
+            </div>
+        </div>
+    </div>
+    <!-- Trainers and Experts End -->
+
+    <!-- About Start -->
+    <div class="container-xxl py-5 offset" id="about">
+        <div class="container">
+            <div class="row g-5">
+                <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
+                    <h4 class="section-title">About Us!</h4>
+                    <h1 class="display-5 mb-4">{{ $userAbout->title }}</h1>
+                    <p class="mb-4">{{ $userAbout->body }}</p>
+                </div>
+                <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.5s">
+                    <div class="feature-img">
+                        <img class="img-fluid" src="{{ (!empty($userAbout->background)) ? url('upload/user_siteinfo/about/'.$userAbout->background) : url('upload/user_siteinfo/about/default_photo.png') }}" alt="image">
+                        <img class="img-fluid" src="{{ (!empty($userAbout->image)) ? url('upload/user_siteinfo/about/'.$userAbout->image) : url('upload/user_siteinfo/about/default_photo.png') }}" alt="background">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- About End -->
+
     <!-- Footer Start -->
     <div class="container-fluid bg-dark text-body footer mt-5 pt-5 px-0 wow fadeIn" data-wow-delay="0.1s">
         <div class="container py-5">

@@ -1,6 +1,6 @@
 @extends('admin.admin_master')
 
-@section('title') Edit User Site Info | Profile @endsection
+@section('title') Edit Landing Site Info | Profile @endsection
 
 @section('content')
 <!-- Bread crumb and right sidebar toggle -->

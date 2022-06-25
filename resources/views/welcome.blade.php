@@ -124,7 +124,7 @@
             </div>
             <div class="row g-4">
                 @foreach ($userServices as $key => $userService)
-                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.{{ $key+3 }}s">
                     <div class="service-item d-flex position-relative text-center h-100">
                         <img class="bg-img" src="{{ (!empty($userService->background)) ? url('upload/user_siteinfo/services/'.$userService->background) : url('upload/user_siteinfo/services/default_photo.png') }}" alt="">
                         <div class="service-text p-5">
@@ -152,7 +152,7 @@
                 <div class="col-lg-4">
                     <div class="nav nav-pills d-flex justify-content-between w-100 h-100 me-4">
                         @foreach ($userFacilities as $key => $userFacility)
-                        <button class="nav-link w-100 d-flex align-items-center text-start p-4 mb-4 {{ ($key++ == '0') ? 'active' : '' }}" data-bs-toggle="pill" data-bs-target="#tab-pane-{{ $userFacility->id }}" type="button">
+                        <button class="nav-link w-100 d-flex align-items-center text-start p-4 mb-4 wow slideInLeft {{ ($key++ == '0') ? 'active' : '' }}" data-wow-delay="0.{{ $key+3 }}s" data-bs-toggle="pill" data-bs-target="#tab-pane-{{ $userFacility->id }}" type="button">
                             <h3 class="m-0">{{ $userFacility->name }}</h3>
                         </button>
                         @endforeach
@@ -192,7 +192,7 @@
             </div>
             <div class="row g-0 team-items">
                 @foreach ($userTrainers as $key => $userTrainer)
-                <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.{{ $key+3 }}s">
                     <div class="team-item position-relative">
                         <div class="position-relative">
                             <img class="img-fluid w-100 h-100" src="{{ (!empty($userTrainer->image)) ? url('upload/user_siteinfo/trainers/'.$userTrainer->image) : url('upload/user_siteinfo/trainers/default_photo.png') }}" alt="">

@@ -20,7 +20,7 @@ class UserTrainersTableSeeder extends Seeder
                 [
                     'id' => "1",
                     'name' => "Johnny Sins",
-                    'position' => "Water Boy",
+                    'position' => "Cardio Vascular Expert",
                     'image' => NULL,
                     'facebook_link' => "https://www.facebook.com/",
                     'twitter_link' => "https://www.twitter.com/",
@@ -46,8 +46,8 @@ class UserTrainersTableSeeder extends Seeder
                 ],
                 [
                     'id' => "4",
-                    'name' => "Le Slicks",
-                    'position' => "Professional Boxer",
+                    'name' => "Peter Parker",
+                    'position' => "Professional Wrestler",
                     'image' => NULL,
                     'facebook_link' => "https://www.facebook.com/",
                     'twitter_link' => "https://www.twitter.com/",

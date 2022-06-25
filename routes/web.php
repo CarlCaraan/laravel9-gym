@@ -13,6 +13,7 @@ use App\Http\Controllers\Admin\UserFacilitiesController;
 use App\Http\Controllers\Admin\UserTrainersController;
 use App\Http\Controllers\Admin\UserAboutController;
 use App\Http\Controllers\WelcomeController;
+use App\Http\Controllers\Customer\CustomerController;
 
 // ========= Landing Page Routes =========
 Route::get('/', [WelcomeController::class, 'WelcomeView']);
@@ -121,10 +122,9 @@ Route::middleware([
     config('jetstream.auth_session'),
     'verified',
 ])->group(function () {
-    Route::get('/home', function () {
-        return view('welcome');
-        // return view('customer.index');
-    })->name('home');
+    Route::prefix('customer')->group(function () {
+        Route::get('/home', [CustomerController::class, "WelcomeView"])->name('customer.home');
+    });
 });
 
 // ========= Logout Route =========

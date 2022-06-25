@@ -77,7 +77,7 @@
                                     <div class="input-group-prepend">
                                         <span class="input-group-text input-icon text-white" id="basic-addon1"><i class="ti-user"></i></span>
                                     </div>
-                                    <input type="text" class="form-control form-control-lg" placeholder="Last Name" aria-label="last_name" aria-describedby="basic-addon1" name="last_name" id="last_name" value="{{ old('last_name') }}" autofocus autocomplete="last_name">
+                                    <input type="text" class="form-control form-control-lg" placeholder="Last Name" aria-label="last_name" aria-describedby="basic-addon1" name="last_name" id="last_name" value="{{ old('last_name') }}">
                                 </div>
 
                                 <!-- email -->

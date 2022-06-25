@@ -103,6 +103,7 @@ $route = Route::current()->getName();
                         <a class="dropdown-item" href="{{ route('admin.logout') }}"><i class="fa fa-power-off m-r-5 m-l-5"></i> Logout</a>
                         <div class="dropdown-divider"></div>
                         <div class="p-l-30 p-10"><a href=" {{ route('profile.view') }}" class="btn btn-sm btn-success btn-rounded">View Profile</a></div>
+                        <div class="p-l-30 p-10"><a href=" {{ route('customer.home') }}" class="btn btn-sm btn-primary btn-rounded">View Customer Page</a></div>
                         <div class="dropdown-divider"></div>
                 </li>
                 <!-- ============================================================== -->

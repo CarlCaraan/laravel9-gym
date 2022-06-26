@@ -54,91 +54,78 @@ Route::group(['middleware' => 'prevent-back-history'], function () {
         });
 
         // ========= SiteInfo Management =========
-        // Site Info Management
         Route::prefix('siteinfo')->group(function () {
+            // Site Info Management
             Route::get('admin/edit', [AdminSiteInfoController::class, 'AdminSiteInfoEdit'])->name('admin.siteinfo.edit');
             Route::post('admin/update/{id}', [AdminSiteInfoController::class, 'AdminSiteInfoUpdate'])->name('admin.siteinfo.update');
             Route::get('admin/remove_admin_brand', [AdminSiteInfoController::class, 'RemoveAdminBrand'])->name('remove.admin_brand');
             Route::get('admin/remove_admin_brand_mini', [AdminSiteInfoController::class, 'RemoveAdminBrandMini'])->name('remove.admin_brand_mini');
-        });
 
-        // User Site Info Management
-        Route::prefix('siteinfo')->group(function () {
+            // User Site Info Management
             Route::get('user/edit', [UserSiteInfoController::class, 'UserSiteInfoEdit'])->name('user.siteinfo.edit');
             Route::post('user/update/{id}', [UserSiteInfoController::class, 'UserSiteInfoUpdate'])->name('user.siteinfo.update');
-        });
 
-        // Herosection Management
-        Route::prefix('herosection')->group(function () {
-            Route::get('user/view', [UserHerosectionController::class, 'UserHerosectionView'])->name('user.herosection.view');
-            Route::get('user/add', [UserHerosectionController::class, 'UserHerosectionAdd'])->name('user.herosection.add');
-            Route::post('user/store', [UserHerosectionController::class, 'UserHerosectionStore'])->name('user.herosection.store');
-            Route::get('user/edit/{id}', [UserHerosectionController::class, 'UserHerosectionEdit'])->name('user.herosection.edit');
-            Route::post('user/update/{id}', [UserHerosectionController::class, 'UserHerosectionUpdate'])->name('user.herosection.update');
-            Route::get('user/delete/{id}', [UserHerosectionController::class, 'UserHerosectionDelete'])->name('user.herosection.delete');
-            Route::get('user/remove_image/{id}', [UserHerosectionController::class, 'UserHerosectionRemoveImage'])->name('user.herosection.remove_image');
-        });
+            // Herosection Management
+            Route::get('herosection/view', [UserHerosectionController::class, 'UserHerosectionView'])->name('user.herosection.view');
+            Route::get('herosection/add', [UserHerosectionController::class, 'UserHerosectionAdd'])->name('user.herosection.add');
+            Route::post('herosection/store', [UserHerosectionController::class, 'UserHerosectionStore'])->name('user.herosection.store');
+            Route::get('herosection/edit/{id}', [UserHerosectionController::class, 'UserHerosectionEdit'])->name('user.herosection.edit');
+            Route::post('herosection/update/{id}', [UserHerosectionController::class, 'UserHerosectionUpdate'])->name('user.herosection.update');
+            Route::get('herosection/delete/{id}', [UserHerosectionController::class, 'UserHerosectionDelete'])->name('user.herosection.delete');
+            Route::get('herosection/remove_image/{id}', [UserHerosectionController::class, 'UserHerosectionRemoveImage'])->name('user.herosection.remove_image');
 
-        // Services Management
-        Route::prefix('services')->group(function () {
-            Route::get('user/view', [UserServicesController::class, 'UserServicesView'])->name('user.services.view');
-            Route::get('user/add', [UserServicesController::class, 'UserServicesAdd'])->name('user.services.add');
-            Route::post('user/store', [UserServicesController::class, 'UserServicesStore'])->name('user.services.store');
-            Route::get('user/edit/{id}', [UserServicesController::class, 'UserServicesEdit'])->name('user.services.edit');
-            Route::post('user/update/{id}', [UserServicesController::class, 'UserServicesUpdate'])->name('user.services.update');
-            Route::get('user/delete/{id}', [UserServicesController::class, 'UserServicesDelete'])->name('user.services.delete');
-            Route::get('user/remove_image/{id}', [UserServicesController::class, 'UserServicesRemoveImage'])->name('user.services.remove_image');
-            Route::get('user/remove_background/{id}', [UserServicesController::class, 'UserServicesRemoveBackground'])->name('user.services.remove_background');
-        });
+            // Services Management
+            Route::get('services/view', [UserServicesController::class, 'UserServicesView'])->name('user.services.view');
+            Route::get('services/add', [UserServicesController::class, 'UserServicesAdd'])->name('user.services.add');
+            Route::post('services/store', [UserServicesController::class, 'UserServicesStore'])->name('user.services.store');
+            Route::get('services/edit/{id}', [UserServicesController::class, 'UserServicesEdit'])->name('user.services.edit');
+            Route::post('services/update/{id}', [UserServicesController::class, 'UserServicesUpdate'])->name('user.services.update');
+            Route::get('services/delete/{id}', [UserServicesController::class, 'UserServicesDelete'])->name('user.services.delete');
+            Route::get('services/remove_image/{id}', [UserServicesController::class, 'UserServicesRemoveImage'])->name('user.services.remove_image');
+            Route::get('services/remove_background/{id}', [UserServicesController::class, 'UserServicesRemoveBackground'])->name('user.services.remove_background');
 
-        // Facilities Management
-        Route::prefix('facilities')->group(function () {
-            Route::get('user/view', [UserFacilitiesController::class, 'UserFacilitiesView'])->name('user.facilities.view');
-            Route::get('user/add', [UserFacilitiesController::class, 'UserFacilitiesAdd'])->name('user.facilities.add');
-            Route::post('user/store', [UserFacilitiesController::class, 'UserFacilitiesStore'])->name('user.facilities.store');
-            Route::get('user/edit/{id}', [UserFacilitiesController::class, 'UserFacilitiesEdit'])->name('user.facilities.edit');
-            Route::post('user/update/{id}', [UserFacilitiesController::class, 'UserFacilitiesUpdate'])->name('user.facilities.update');
-            Route::get('user/delete/{id}', [UserFacilitiesController::class, 'UserFacilitiesDelete'])->name('user.facilities.delete');
-            Route::get('user/remove_image/{id}', [UserFacilitiesController::class, 'UserFacilitiesRemoveImage'])->name('user.facilities.remove_image');
-        });
+            // Facilities Management
+            Route::get('facilities/view', [UserFacilitiesController::class, 'UserFacilitiesView'])->name('user.facilities.view');
+            Route::get('facilities/add', [UserFacilitiesController::class, 'UserFacilitiesAdd'])->name('user.facilities.add');
+            Route::post('facilities/store', [UserFacilitiesController::class, 'UserFacilitiesStore'])->name('user.facilities.store');
+            Route::get('facilities/edit/{id}', [UserFacilitiesController::class, 'UserFacilitiesEdit'])->name('user.facilities.edit');
+            Route::post('facilities/update/{id}', [UserFacilitiesController::class, 'UserFacilitiesUpdate'])->name('user.facilities.update');
+            Route::get('facilities/delete/{id}', [UserFacilitiesController::class, 'UserFacilitiesDelete'])->name('user.facilities.delete');
+            Route::get('ufacilitiesser/remove_image/{id}', [UserFacilitiesController::class, 'UserFacilitiesRemoveImage'])->name('user.facilities.remove_image');
 
-        // Trainers Management
-        Route::prefix('trainers')->group(function () {
-            Route::get('user/view', [UserTrainersController::class, 'UserTrainersView'])->name('user.trainers.view');
-            Route::get('user/add', [UserTrainersController::class, 'UserTrainersAdd'])->name('user.trainers.add');
-            Route::post('user/store', [UserTrainersController::class, 'UserTrainersStore'])->name('user.trainers.store');
-            Route::get('user/edit/{id}', [UserTrainersController::class, 'UserTrainersEdit'])->name('user.trainers.edit');
-            Route::post('user/update/{id}', [UserTrainersController::class, 'UserTrainersUpdate'])->name('user.trainers.update');
-            Route::get('user/delete/{id}', [UserTrainersController::class, 'UserTrainersDelete'])->name('user.trainers.delete');
-            Route::get('user/remove_image/{id}', [UserTrainersController::class, 'UserTrainersRemoveImage'])->name('user.trainers.remove_image');
-        });
+            // Trainers Management
+            Route::get('trainers/view', [UserTrainersController::class, 'UserTrainersView'])->name('user.trainers.view');
+            Route::get('trainers/add', [UserTrainersController::class, 'UserTrainersAdd'])->name('user.trainers.add');
+            Route::post('trainers/store', [UserTrainersController::class, 'UserTrainersStore'])->name('user.trainers.store');
+            Route::get('trainers/edit/{id}', [UserTrainersController::class, 'UserTrainersEdit'])->name('user.trainers.edit');
+            Route::post('trainers/update/{id}', [UserTrainersController::class, 'UserTrainersUpdate'])->name('user.trainers.update');
+            Route::get('trainers/delete/{id}', [UserTrainersController::class, 'UserTrainersDelete'])->name('user.trainers.delete');
+            Route::get('trainers/remove_image/{id}', [UserTrainersController::class, 'UserTrainersRemoveImage'])->name('user.trainers.remove_image');
 
-        // About Management
-        Route::prefix('about')->group(function () {
-            Route::get('user/edit', [UserAboutController::class, 'UserAboutEdit'])->name('user.about.edit');
-            Route::post('user/update/{id}', [UserAboutController::class, 'UserAboutUpdate'])->name('user.about.update');
-            Route::get('user/remove_image', [UserAboutController::class, 'UserAboutRemoveImage'])->name('user.about.remove_image');
-            Route::get('user/remove_background', [UserAboutController::class, 'UserAboutRemoveBackground'])->name('user.about.remove_background');
+            // About Management
+            Route::get('about/edit', [UserAboutController::class, 'UserAboutEdit'])->name('user.about.edit');
+            Route::post('about/update/{id}', [UserAboutController::class, 'UserAboutUpdate'])->name('user.about.update');
+            Route::get('about/remove_image', [UserAboutController::class, 'UserAboutRemoveImage'])->name('user.about.remove_image');
+            Route::get('about/remove_background', [UserAboutController::class, 'UserAboutRemoveBackground'])->name('user.about.remove_background');
         });
 
         // ========= Inventory Management =========
         // Equipment Category
-        Route::prefix('inventory/equipment')->group(function () {
-            Route::get('category/view', [EquipmentCategoryController::class, 'EquipmentCategoryView'])->name('equipment.category.view');
-            Route::get('category/add', [EquipmentCategoryController::class, 'EquipmentCategoryAdd'])->name('equipment.category.add');
-            Route::post('category/store', [EquipmentCategoryController::class, 'EquipmentCategoryStore'])->name('equipment.category.store');
-            Route::get('category/edit/{id}', [EquipmentCategoryController::class, 'EquipmentCategoryEdit'])->name('equipment.category.edit');
-            Route::post('category/update/{id}', [EquipmentCategoryController::class, 'EquipmentCategoryUpdate'])->name('equipment.category.update');
-            Route::get('category/delete/{id}', [EquipmentCategoryController::class, 'EquipmentCategoryDelete'])->name('equipment.category.delete');
-        });
-        // Facility Category
-        Route::prefix('inventory/facility')->group(function () {
-            Route::get('category/view', [FacilityCategoryController::class, 'FacilityCategoryView'])->name('facility.category.view');
-            Route::get('category/add', [FacilityCategoryController::class, 'FacilityCategoryAdd'])->name('facility.category.add');
-            Route::post('category/store', [FacilityCategoryController::class, 'FacilityCategoryStore'])->name('facility.category.store');
-            Route::get('category/edit/{id}', [FacilityCategoryController::class, 'FacilityCategoryEdit'])->name('facility.category.edit');
-            Route::post('category/update/{id}', [FacilityCategoryController::class, 'FacilityCategoryUpdate'])->name('facility.category.update');
-            Route::get('category/delete/{id}', [FacilityCategoryController::class, 'FacilityCategoryDelete'])->name('facility.category.delete');
+        Route::prefix('inventory')->group(function () {
+            Route::get('equipment/category/view', [EquipmentCategoryController::class, 'EquipmentCategoryView'])->name('equipment.category.view');
+            Route::get('equipment/category/add', [EquipmentCategoryController::class, 'EquipmentCategoryAdd'])->name('equipment.category.add');
+            Route::post('equipment/category/store', [EquipmentCategoryController::class, 'EquipmentCategoryStore'])->name('equipment.category.store');
+            Route::get('equipment/category/edit/{id}', [EquipmentCategoryController::class, 'EquipmentCategoryEdit'])->name('equipment.category.edit');
+            Route::post('equipment/category/update/{id}', [EquipmentCategoryController::class, 'EquipmentCategoryUpdate'])->name('equipment.category.update');
+            Route::get('equipment/category/delete/{id}', [EquipmentCategoryController::class, 'EquipmentCategoryDelete'])->name('equipment.category.delete');
+
+            // Facility Category
+            Route::get('facility/category/view', [FacilityCategoryController::class, 'FacilityCategoryView'])->name('facility.category.view');
+            Route::get('facility/category/add', [FacilityCategoryController::class, 'FacilityCategoryAdd'])->name('facility.category.add');
+            Route::post('facility/category/store', [FacilityCategoryController::class, 'FacilityCategoryStore'])->name('facility.category.store');
+            Route::get('facility/category/edit/{id}', [FacilityCategoryController::class, 'FacilityCategoryEdit'])->name('facility.category.edit');
+            Route::post('facility/category/update/{id}', [FacilityCategoryController::class, 'FacilityCategoryUpdate'])->name('facility.category.update');
+            Route::get('facility/category/delete/{id}', [FacilityCategoryController::class, 'FacilityCategoryDelete'])->name('facility.category.delete');
         });
     });
 

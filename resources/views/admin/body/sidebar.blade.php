@@ -7,101 +7,36 @@ $route = Route::current()->getName();
     <div class="scroll-sidebar">
         <!-- Sidebar navigation-->
         <nav class="sidebar-nav">
-            <ul id="sidebarnav" class="p-t-30" style="overflow-y: scroll; height: 85vh">
+            <ul id="sidebarnav" class="p-t-30">
                 <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{ route('dashboard') }}" aria-expanded="false"><i class="mdi mdi-view-dashboard text-warning"></i><span class="hide-menu">Dashboard</span></a></li>
 
                 <!-- ========= SITE INFO MANAGEMENT ========= -->
-                <li class="sidebar-item pt-3">
-                    <span class="hide-menu text-secondary font-weight-bold ml-3">SITE INFO MANAGEMENT</span>
-                </li>
-
-                <li class="sidebar-item"> <a class="sidebar-link has-arrow waves-effect waves-dark{{ ($prefix == '/siteinfo' || $prefix == '/herosection' || $prefix == '/services' ||$prefix == '/facilities' || $prefix == '/trainers' || $prefix == '/about') ? 'active' : '' }}" href="javascript:void(0)" aria-expanded="false"><i class="fas fa-address-card text-warning"></i><span class="hide-menu">Manage Admin Site Info</span></a>
-                    <ul aria-expanded="false" class="{{ ($prefix == '/siteinfo' || $prefix == '/herosection' || $prefix == '/services' ||$prefix == '/facilities' || $prefix == '/trainers' || $prefix == '/about') ? 'collapsed' : 'collapse' }}">
-                        <li class="sidebar-item"> <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="fas fa-address-card text-info"></i><span class="hide-menu">Manage Admin Site Info</span></a>
-                            <ul aria-expanded="false" class="collapse first-level">
-                                <li class="sidebar-item"><a href="{{ route('admin.siteinfo.edit') }}" class="sidebar-link"><span class="hide-menu pl-4"><i class="mdi mdi-pencil"></i>Edit Admin Site Info</span></a></li>
-                            </ul>
-                        </li>
-                        <li class="sidebar-item"> <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="fas fa-align-center text-info"></i><span class="hide-menu">Manage Landing Site Info</span></a>
-                            <ul aria-expanded="false" class="collapse  first-level">
-                                <li class="sidebar-item"><a href="{{ route('user.siteinfo.edit') }}" class="sidebar-link"><span class="hide-menu pl-4"><i class="mdi mdi-pencil"></i>Edit Landing Site Info</span></a></li>
-                            </ul>
-                        </li>
-                        <li class="sidebar-item"> <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="mdi mdi-burst-mode text-info"></i><span class="hide-menu">Manage Herosection</span></a>
-                            <ul aria-expanded="false" class="{{ ($prefix == '/herosection') ? 'collapsed' : 'collapse' }}  first-level">
-                                <li class="sidebar-item"><a href="{{ route('user.herosection.view') }}" class="sidebar-link"><span class="hide-menu pl-4"><i class="fas fa-list-alt"></i>View Herosection</span></a></li>
-                                <li class="sidebar-item"><a href="{{ route('user.herosection.add') }}" class="sidebar-link"><span class="hide-menu pl-4"><i class="fas fa-plus-circle"></i>Add Herosection</span></a></li>
-                            </ul>
-                        </li>
-                        <li class="sidebar-item"> <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="mdi mdi-run-fast text-info"></i><span class="hide-menu">Manage Services</span></a>
-                            <ul aria-expanded="false" class="{{ ($prefix == '/services') ? 'collapsed' : 'collapse' }}  first-level">
-                                <li class="sidebar-item"><a href="{{ route('user.services.view') }}" class="sidebar-link"><span class="hide-menu pl-4"><i class="fas fa-list-alt"></i>View Services</span></a></li>
-                                <li class="sidebar-item"><a href="{{ route('user.services.add') }}" class="sidebar-link"><span class="hide-menu pl-4"><i class="fas fa-plus-circle"></i>Add Services</span></a></li>
-                            </ul>
-                        </li>
-                        <li class="sidebar-item"> <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="far fa-building text-info"></i><span class="hide-menu">Manage Facilities</span></a>
-                            <ul aria-expanded="false" class="{{ ($prefix == '/facilities') ? 'collapsed' : 'collapse' }}  first-level">
-                                <li class="sidebar-item"><a href="{{ route('user.facilities.view') }}" class="sidebar-link"><span class="hide-menu pl-4"><i class="fas fa-list-alt"></i>View Facilities</span></a></li>
-                                <li class="sidebar-item"><a href="{{ route('user.facilities.add') }}" class="sidebar-link"><span class="hide-menu pl-4"><i class="fas fa-plus-circle"></i>Add Facilities</span></a></li>
-                            </ul>
-                        </li>
-                        <li class="sidebar-item"> <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="mdi mdi-library text-info"></i><span class="hide-menu">Manage Trainers</span></a>
-                            <ul aria-expanded="false" class="{{ ($prefix == '/trainers') ? 'collapsed' : 'collapse' }}  first-level">
-                                <li class="sidebar-item"><a href="{{ route('user.trainers.view') }}" class="sidebar-link"><span class="hide-menu pl-4"><i class="fas fa-list-alt"></i>View Trainers</span></a></li>
-                                <li class="sidebar-item"><a href="{{ route('user.trainers.add') }}" class="sidebar-link"><span class="hide-menu pl-4"><i class="fas fa-plus-circle"></i>Add Trainers</span></a></li>
-                            </ul>
-                        </li>
-                        <li class="sidebar-item"> <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="mdi mdi-information text-info"></i><span class="hide-menu">Manage About</span></a>
-                            <ul aria-expanded="false" class="{{ ($prefix == '/about') ? 'collapsed' : 'collapse' }}  first-level">
-                                <li class="sidebar-item"><a href="{{ route('user.about.edit') }}" class="sidebar-link"><span class="hide-menu pl-4"><i class="mdi mdi-pencil"></i>Edit About</span></a></li>
-                            </ul>
-                        </li>
+                <li class="sidebar-item {{ ($prefix == '/siteinfo') ? 'selected' : '' }}"> <a class="sidebar-link has-arrow waves-effect waves-dark {{ ($prefix == '/siteinfo') ? 'active' : '' }}" href="javascript:void(0)" aria-expanded="false"><i class="fas fa-align-center text-warning"></i><span class="hide-menu">Site Info Management</span></a>
+                    <ul aria-expanded="false" class="{{ ($prefix == '/siteinfo') ? 'collapse  first-level in' : 'collapse first-level' }}">
+                        <li class="sidebar-item {{ ($route == 'admin.siteinfo.edit') ? 'active' : '' }}"><a href="{{ route('admin.siteinfo.edit') }}" class="sidebar-link"><i class="mdi mdi-pencil-box"></i><span class="hide-menu">Admin Site Info</span></a></li>
+                        <li class="sidebar-item {{ ($route == 'user.siteinfo.edit') ? 'active' : '' }}"><a href="{{ route('user.siteinfo.edit') }}" class="sidebar-link"><i class="mdi mdi-pencil-box"></i><span class="hide-menu">Landing Site Info</span></a></li>
+                        <li class="sidebar-item {{ ($route == 'user.about.edit') ? 'active' : '' }}"><a href="{{ route('user.about.edit') }}" class="sidebar-link"><i class="mdi mdi-pencil-box"></i><span class="hide-menu">About</span></a></li>
+                        <li class="sidebar-item {{ ($route == 'user.herosection.edit' || $route == 'user.herosection.add') ? 'active' : '' }}"><a href="{{ route('user.herosection.view') }}" class="sidebar-link"><i class="mdi mdi-burst-mode"></i><span class="hide-menu">Herosection</span></a></li>
+                        <li class="sidebar-item {{ ($route == 'user.services.edit' || $route == 'user.services.add') ? 'active' : '' }}"><a href="{{ route('user.services.view') }}" class="sidebar-link"><i class="mdi mdi-run-fast"></i><span class="hide-menu">Services</span></a></li>
+                        <li class="sidebar-item {{ ($route == 'user.facilities.edit' || $route == 'user.facilities.add') ? 'active' : '' }}"><a href="{{ route('user.facilities.view') }}" class="sidebar-link"><i class="far fa-building"></i><span class="hide-menu">Facilities</span></a></li>
+                        <li class="sidebar-item {{ ($route == 'user.trainers.edit' || $route == 'user.trainers.add') ? 'active' : '' }}"><a href="{{ route('user.trainers.view') }}" class="sidebar-link"><i class="mdi mdi-library"></i><span class="hide-menu">Trainers</span></a></li>
                     </ul>
                 </li>
 
                 <!-- ========= INVENTORY MANAGEMENT ========= -->
-                <li class="sidebar-item pt-3">
-                    <span class="hide-menu text-secondary font-weight-bold ml-3">INVENTORY MANAGEMENT</span>
-                </li>
-
-                <li class="sidebar-item"> <a class="sidebar-link has-arrow waves-effect waves-dark {{ ($prefix == '/inventory') ? 'active' : '' }}" href="javascript:void(0)" aria-expanded="false"><i class="mdi mdi-collage text-warning"></i><span class="hide-menu">Inventory Management</span></a>
-                    <ul aria-expanded="false" class="{{ ($prefix == '/inventory') ? 'collapsed' : 'collapse' }}">
-                        <li class="sidebar-item"> <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="mdi mdi-collage text-info"></i><span class="hide-menu">Equipment Category</span></a>
-                            <ul aria-expanded="false" class="{{ ($prefix == '/inventory/equipment') ? 'collapsed' : 'collapse' }}  first-level">
-                                <li class="sidebar-item"><a href="{{ route('equipment.category.view') }}" class="sidebar-link"><span class="hide-menu pl-4"><i class="fas fa-list-alt"></i>View Category</span></a></li>
-                                <li class="sidebar-item"><a href="{{ route('equipment.category.add') }}" class="sidebar-link"><span class="hide-menu pl-4"><i class="fas fa-plus-circle"></i>Add Category</span></a></li>
-                            </ul>
-                        </li>
-
-                        <li class="sidebar-item"> <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="mdi mdi-arrow-down-bold-hexagon-outline text-info"></i><span class="hide-menu">Facilities Category</span></a>
-                            <ul aria-expanded="false" class="{{ ($prefix == '/inventory/facility') ? 'collapsed' : 'collapse' }}  first-level">
-                                <li class="sidebar-item"><a href="{{ route('facility.category.view') }}" class="sidebar-link"><span class="hide-menu pl-4"><i class="fas fa-list-alt"></i>View Category</span></a></li>
-                                <li class="sidebar-item"><a href="{{ route('facility.category.add') }}" class="sidebar-link"><span class="hide-menu pl-4"><i class="fas fa-plus-circle"></i>Add Category</span></a></li>
-                            </ul>
-                        </li>
-
-                        <!-- <li class="sidebar-item"> <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="mdi mdi-basket text-info"></i><span class="hide-menu">Manage Equipments</span></a>
-                            <ul aria-expanded="false" class="collapse  first-level">
-                                <li class="sidebar-item"><a href="" class="sidebar-link"><span class="hide-menu pl-4"><i class="fas fa-list-alt"></i>View Equipments</span></a></li>
-                                <li class="sidebar-item"><a href="" class="sidebar-link"><span class="hide-menu pl-4"><i class="fas fa-plus-circle"></i>Add Equipments</span></a></li>
-                            </ul>
-                        </li>
-
-                        <li class="sidebar-item"> <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="mdi mdi-archive text-info"></i><span class="hide-menu">Manage Stocks</span></a>
-                            <ul aria-expanded="false" class="collapse  first-level">
-                                <li class="sidebar-item"><a href="" class="sidebar-link"><span class="hide-menu pl-4"><i class="fas fa-list-alt"></i>View Stocks</span></a></li>
-                            </ul>
-                        </li> -->
+                <li class="sidebar-item  {{ ($prefix == '/inventory') ? 'selected' : '' }}"> <a class="sidebar-link has-arrow waves-effect waves-dark {{ ($prefix == '/inventory') ? 'active' : '' }}" href="javascript:void(0)" aria-expanded="false"><i class="mdi mdi-cube text-warning"></i><span class="hide-menu">Inventory Management</span></a>
+                    <ul aria-expanded="false" class="{{ ($prefix == '/inventory') ? 'collapse  first-level in' : 'collapse first-level' }}">
+                        <li class="sidebar-item {{ ($route == 'equipment.category.edit' || $route == 'equipment.category.add') ? 'active' : '' }}"><a href="{{ route('equipment.category.view') }}" class="sidebar-link"><i class="mdi mdi-collage"></i><span class="hide-menu">Equipment Category</span></a></li>
+                        <li class="sidebar-item {{ ($route == 'facility.category.edit' || $route == 'facility.category.add') ? 'active' : '' }}"><a href="{{ route('facility.category.view') }}" class="sidebar-link"><i class="mdi mdi-arrow-down-bold-hexagon-outline"></i><span class="hide-menu">Facilities Category</span></a></li>
+                        <!-- <li class="sidebar-item"><a href="" class="sidebar-link"><i class="mdi mdi-basket"></i><span class="hide-menu">Equipments</span></a></li> -->
+                        <!-- <li class="sidebar-item"><a href="" class="sidebar-link"><i class="mdi mdi-archive"></i><span class="hide-menu">Stocks</span></a></li> -->
                     </ul>
                 </li>
 
                 <!-- ========= ACCOUNT MANAGEMENT ========= -->
-                <li class="sidebar-item pt-3">
-                    <span class="hide-menu text-secondary font-weight-bold ml-3">ACCOUNT MANAGEMENT</span>
-                </li>
                 <li class="sidebar-item"> <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="mdi mdi-account-multiple text-warning"></i><span class="hide-menu">Manage Users</span></a>
                     <ul aria-expanded="false" class="collapse  first-level">
-                        <li class="sidebar-item"><a href="{{ route('user.view') }}" class="sidebar-link"><i class="mdi mdi-account"></i><span class=" hide-menu">View Users</span></a></li>
+                        <li class="sidebar-item"><a href="{{ route('user.view') }}" class="sidebar-link"><i class="mdi mdi-account"></i><span class="hide-menu">View Users</span></a></li>
                         <li class="sidebar-item"><a href="{{ route('user.add') }}" class="sidebar-link"><i class="mdi mdi-account-multiple-plus"></i><span class="hide-menu">Add User</span></a></li>
                     </ul>
                 </li>

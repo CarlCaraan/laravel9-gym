@@ -13,8 +13,9 @@
     <title>@yield('title')</title>
     <!-- Custom CSS -->
     <link href="{{ asset('admin/assets/libs/flot/css/float-chart.css') }}" rel="stylesheet">
-    <!-- Custom CSS -->
     <link href="{{ asset('admin/dist/css/style.min.css') }}" rel="stylesheet">
+
+    <link href="{{ asset('admin/dist/css/custom.css') }}" rel="stylesheet">
 
     <!-- Datatables CSS -->
     <link href="{{ asset('admin/assets/libs/datatables.net-bs4/css/dataTables.bootstrap4.css') }}" rel="stylesheet">

@@ -15,6 +15,7 @@ use App\Http\Controllers\Admin\UserAboutController;
 use App\Http\Controllers\WelcomeController;
 use App\Http\Controllers\Customer\CustomerController;
 use App\Http\Controllers\Admin\Inventory\EquipmentCategoryController;
+use App\Http\Controllers\Admin\Inventory\FacilityCategoryController;
 
 
 Route::group(['middleware' => 'prevent-back-history'], function () {
@@ -122,13 +123,22 @@ Route::group(['middleware' => 'prevent-back-history'], function () {
 
         // ========= Inventory Management =========
         // Equipment Category
-        Route::prefix('inventory')->group(function () {
-            Route::get('equipment/category/view', [EquipmentCategoryController::class, 'EquipmentCategoryView'])->name('equipment.category.view');
-            Route::get('equipment/category/add', [EquipmentCategoryController::class, 'EquipmentCategoryAdd'])->name('equipment.category.add');
-            Route::post('equipment/category/store', [EquipmentCategoryController::class, 'EquipmentCategoryStore'])->name('equipment.category.store');
-            Route::get('equipment/category/edit/{id}', [EquipmentCategoryController::class, 'EquipmentCategoryEdit'])->name('equipment.category.edit');
-            Route::post('equipment/category/update/{id}', [EquipmentCategoryController::class, 'EquipmentCategoryUpdate'])->name('equipment.category.update');
-            Route::get('equipment/category/delete/{id}', [EquipmentCategoryController::class, 'EquipmentCategoryDelete'])->name('equipment.category.delete');
+        Route::prefix('inventory/equipment')->group(function () {
+            Route::get('category/view', [EquipmentCategoryController::class, 'EquipmentCategoryView'])->name('equipment.category.view');
+            Route::get('category/add', [EquipmentCategoryController::class, 'EquipmentCategoryAdd'])->name('equipment.category.add');
+            Route::post('category/store', [EquipmentCategoryController::class, 'EquipmentCategoryStore'])->name('equipment.category.store');
+            Route::get('category/edit/{id}', [EquipmentCategoryController::class, 'EquipmentCategoryEdit'])->name('equipment.category.edit');
+            Route::post('category/update/{id}', [EquipmentCategoryController::class, 'EquipmentCategoryUpdate'])->name('equipment.category.update');
+            Route::get('category/delete/{id}', [EquipmentCategoryController::class, 'EquipmentCategoryDelete'])->name('equipment.category.delete');
+        });
+        // Facility Category
+        Route::prefix('inventory/facility')->group(function () {
+            Route::get('category/view', [FacilityCategoryController::class, 'FacilityCategoryView'])->name('facility.category.view');
+            Route::get('category/add', [FacilityCategoryController::class, 'FacilityCategoryAdd'])->name('facility.category.add');
+            Route::post('category/store', [FacilityCategoryController::class, 'FacilityCategoryStore'])->name('facility.category.store');
+            Route::get('category/edit/{id}', [FacilityCategoryController::class, 'FacilityCategoryEdit'])->name('facility.category.edit');
+            Route::post('category/update/{id}', [FacilityCategoryController::class, 'FacilityCategoryUpdate'])->name('facility.category.update');
+            Route::get('category/delete/{id}', [FacilityCategoryController::class, 'FacilityCategoryDelete'])->name('facility.category.delete');
         });
     });
 

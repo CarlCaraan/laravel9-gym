@@ -7,7 +7,7 @@ $route = Route::current()->getName();
     <div class="scroll-sidebar">
         <!-- Sidebar navigation-->
         <nav class="sidebar-nav">
-            <ul id="sidebarnav" class="p-t-30">
+            <ul id="sidebarnav" class="p-t-30" style="overflow-y: scroll; height: 85vh">
                 <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{ route('dashboard') }}" aria-expanded="false"><i class="mdi mdi-view-dashboard text-warning"></i><span class="hide-menu">Dashboard</span></a></li>
 
                 <!-- ========= SITE INFO MANAGEMENT ========= -->
@@ -67,20 +67,20 @@ $route = Route::current()->getName();
                 <li class="sidebar-item"> <a class="sidebar-link has-arrow waves-effect waves-dark {{ ($prefix == '/inventory') ? 'active' : '' }}" href="javascript:void(0)" aria-expanded="false"><i class="mdi mdi-collage text-warning"></i><span class="hide-menu">Inventory Management</span></a>
                     <ul aria-expanded="false" class="{{ ($prefix == '/inventory') ? 'collapsed' : 'collapse' }}">
                         <li class="sidebar-item"> <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="mdi mdi-collage text-info"></i><span class="hide-menu">Equipment Category</span></a>
-                            <ul aria-expanded="false" class="{{ ($prefix == '/inventory') ? 'collapsed' : 'collapse' }}  first-level">
+                            <ul aria-expanded="false" class="{{ ($prefix == '/inventory/equipment') ? 'collapsed' : 'collapse' }}  first-level">
                                 <li class="sidebar-item"><a href="{{ route('equipment.category.view') }}" class="sidebar-link"><span class="hide-menu pl-4"><i class="fas fa-list-alt"></i>View Category</span></a></li>
                                 <li class="sidebar-item"><a href="{{ route('equipment.category.add') }}" class="sidebar-link"><span class="hide-menu pl-4"><i class="fas fa-plus-circle"></i>Add Category</span></a></li>
                             </ul>
                         </li>
 
                         <li class="sidebar-item"> <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="mdi mdi-arrow-down-bold-hexagon-outline text-info"></i><span class="hide-menu">Facilities Category</span></a>
-                            <ul aria-expanded="false" class="collapse  first-level">
-                                <li class="sidebar-item"><a href="" class="sidebar-link"><span class="hide-menu pl-4"><i class="fas fa-list-alt"></i>View Category</span></a></li>
-                                <li class="sidebar-item"><a href="" class="sidebar-link"><span class="hide-menu pl-4"><i class="fas fa-plus-circle"></i>Add Category</span></a></li>
+                            <ul aria-expanded="false" class="{{ ($prefix == '/inventory/facility') ? 'collapsed' : 'collapse' }}  first-level">
+                                <li class="sidebar-item"><a href="{{ route('facility.category.view') }}" class="sidebar-link"><span class="hide-menu pl-4"><i class="fas fa-list-alt"></i>View Category</span></a></li>
+                                <li class="sidebar-item"><a href="{{ route('facility.category.add') }}" class="sidebar-link"><span class="hide-menu pl-4"><i class="fas fa-plus-circle"></i>Add Category</span></a></li>
                             </ul>
                         </li>
 
-                        <li class="sidebar-item"> <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="mdi mdi-basket text-info"></i><span class="hide-menu">Manage Equipments</span></a>
+                        <!-- <li class="sidebar-item"> <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="mdi mdi-basket text-info"></i><span class="hide-menu">Manage Equipments</span></a>
                             <ul aria-expanded="false" class="collapse  first-level">
                                 <li class="sidebar-item"><a href="" class="sidebar-link"><span class="hide-menu pl-4"><i class="fas fa-list-alt"></i>View Equipments</span></a></li>
                                 <li class="sidebar-item"><a href="" class="sidebar-link"><span class="hide-menu pl-4"><i class="fas fa-plus-circle"></i>Add Equipments</span></a></li>
@@ -91,7 +91,7 @@ $route = Route::current()->getName();
                             <ul aria-expanded="false" class="collapse  first-level">
                                 <li class="sidebar-item"><a href="" class="sidebar-link"><span class="hide-menu pl-4"><i class="fas fa-list-alt"></i>View Stocks</span></a></li>
                             </ul>
-                        </li>
+                        </li> -->
                     </ul>
                 </li>
 

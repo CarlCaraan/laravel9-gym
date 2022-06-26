@@ -14,6 +14,7 @@ use App\Http\Controllers\Admin\UserTrainersController;
 use App\Http\Controllers\Admin\UserAboutController;
 use App\Http\Controllers\WelcomeController;
 use App\Http\Controllers\Customer\CustomerController;
+use App\Http\Controllers\Admin\Inventory\EquipmentCategoryController;
 
 
 Route::group(['middleware' => 'prevent-back-history'], function () {
@@ -32,7 +33,7 @@ Route::group(['middleware' => 'prevent-back-history'], function () {
             return view('admin.index');
         })->name('dashboard');
 
-        // User Profile and Change Password
+        // ========= User Profile and Change Password =========
         Route::prefix('profile')->group(function () {
             Route::get('admin/view', [ProfileController::class, 'ProfileView'])->name('profile.view');
             Route::get('admin/edit', [ProfileController::class, 'ProfileEdit'])->name('profile.edit');
@@ -41,7 +42,7 @@ Route::group(['middleware' => 'prevent-back-history'], function () {
             Route::get('admin/remove_avatar', [ProfileController::class, 'RemoveAvatar'])->name('remove.avatar');
         });
 
-        // Account Management
+        // ========= Account Management =========
         Route::prefix('accounts')->group(function () {
             Route::get('admin/view', [UserController::class, 'UserView'])->name('user.view');
             Route::get('admin/add', [UserController::class, 'UserAdd'])->name('user.add');
@@ -51,6 +52,7 @@ Route::group(['middleware' => 'prevent-back-history'], function () {
             Route::get('admin/delete/{id}', [UserController::class, 'UserDelete'])->name('user.delete');
         });
 
+        // ========= SiteInfo Management =========
         // Site Info Management
         Route::prefix('siteinfo')->group(function () {
             Route::get('admin/edit', [AdminSiteInfoController::class, 'AdminSiteInfoEdit'])->name('admin.siteinfo.edit');
@@ -116,6 +118,17 @@ Route::group(['middleware' => 'prevent-back-history'], function () {
             Route::post('user/update/{id}', [UserAboutController::class, 'UserAboutUpdate'])->name('user.about.update');
             Route::get('user/remove_image', [UserAboutController::class, 'UserAboutRemoveImage'])->name('user.about.remove_image');
             Route::get('user/remove_background', [UserAboutController::class, 'UserAboutRemoveBackground'])->name('user.about.remove_background');
+        });
+
+        // ========= Inventory Management =========
+        // Equipment Category
+        Route::prefix('inventory')->group(function () {
+            Route::get('equipment/category/view', [EquipmentCategoryController::class, 'EquipmentCategoryView'])->name('equipment.category.view');
+            Route::get('equipment/category/add', [EquipmentCategoryController::class, 'EquipmentCategoryAdd'])->name('equipment.category.add');
+            Route::post('equipment/category/store', [EquipmentCategoryController::class, 'EquipmentCategoryStore'])->name('equipment.category.store');
+            Route::get('equipment/category/edit/{id}', [EquipmentCategoryController::class, 'EquipmentCategoryEdit'])->name('equipment.category.edit');
+            Route::post('equipment/category/update/{id}', [EquipmentCategoryController::class, 'EquipmentCategoryUpdate'])->name('equipment.category.update');
+            Route::get('equipment/category/delete/{id}', [EquipmentCategoryController::class, 'EquipmentCategoryDelete'])->name('equipment.category.delete');
         });
     });
 

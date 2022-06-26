@@ -132,6 +132,9 @@ Route::group(['middleware' => 'prevent-back-history'], function () {
             Route::get('equipment/inventory/view', [EquipmentController::class, 'EquipmentInventoryView'])->name('equipment.inventory.view');
             Route::get('equipment/inventory/add', [EquipmentController::class, 'EquipmentInventoryAdd'])->name('equipment.inventory.add');
             Route::post('equipment/inventory/store', [EquipmentController::class, 'EquipmentInventoryStore'])->name('equipment.inventory.store');
+            Route::get('equipment/inventory/edit/{id}', [EquipmentController::class, 'EquipmentInventoryEdit'])->name('equipment.inventory.edit');
+            Route::post('equipment/inventory/update/{id}', [EquipmentController::class, 'EquipmentInventoryUpdate'])->name('equipment.inventory.update');
+            Route::get('equipment/inventory/delete/{id}', [EquipmentController::class, 'EquipmentInventoryDelete'])->name('equipment.inventory.delete');
         });
     });
 

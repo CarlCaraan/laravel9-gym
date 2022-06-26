@@ -48,5 +48,47 @@ class EquipmentController extends Controller
             'alert-type' => 'success',
         );
         return redirect()->route('equipment.inventory.view')->with($notification);
+    } // End Method
+
+    public function EquipmentInventoryEdit($id)
+    {
+        $data['editData'] = EquipmentInventory::find($id);
+        $data['equipmentCategories'] = EquipmentCategory::all();
+        $data['facilityCategories'] = FacilityCategory::all();
+        return view('admin.inventory_backend.equipment_inventory.edit_equipment_inventory', $data);
+    }
+
+    public function EquipmentInventoryUpdate(Request $request, $id)
+    {
+        $validatedData = $request->validate([
+            'name' => 'required',
+            'dop' => 'required',
+            'facility_id' => 'required',
+            'equipment_id' => 'required',
+        ]);
+
+        $data = EquipmentInventory::find($id);
+        $data->name = $request->name;
+        $data->dop = $request->dop;
+        $data->facility_id = $request->facility_id;
+        $data->equipment_id = $request->equipment_id;
+        $data->save();
+
+        $notification = array(
+            'message' => 'Equipment Updated Successfully',
+            'alert-type' => 'success',
+        );
+        return redirect()->route('equipment.inventory.view')->with($notification);
+    } // End Method 
+
+    public function EquipmentInventoryDelete($id)
+    {
+        $data = EquipmentInventory::find($id)->delete();
+
+        $notification = array(
+            'message' => 'Equipment Deleted Successfully',
+            'alert-type' => 'success',
+        );
+        return redirect()->route('equipment.inventory.view')->with($notification);
     }
 }

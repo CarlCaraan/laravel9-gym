@@ -51,8 +51,8 @@
                                     <td>{{ $value['facility_category']['name'] }}</td>
                                     <td>{{ date('m-d-Y', strtotime($value->dop)) }}</td>
                                     <td>
-                                        <a href="{{ route('equipment.category.edit', $value->id) }}" class="btn btn-primary text-white">Edit</a>
-                                        <a href="{{ route('equipment.category.delete', $value->id) }}" class="btn btn-danger text-white" id="delete">Delete</a>
+                                        <a href="{{ route('equipment.inventory.edit', $value->id) }}" class="btn btn-primary text-white">Edit</a>
+                                        <a href="{{ route('equipment.inventory.delete', $value->id) }}" class="btn btn-danger text-white" id="delete">Delete</a>
                                     </td>
                                 </tr>
                                 @endforeach

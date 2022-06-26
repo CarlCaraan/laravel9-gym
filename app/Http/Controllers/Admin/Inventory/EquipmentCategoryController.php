@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin\Inventory;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\EquipmentCategory;
+use App\Models\EquipmentInventory;
 
 class EquipmentCategoryController extends Controller
 {
@@ -61,6 +62,15 @@ class EquipmentCategoryController extends Controller
 
     public function EquipmentCategoryDelete($id)
     {
+        $inventoryData = EquipmentInventory::where('equipment_id', $id)->get();
+        if (count($inventoryData) != 0) {
+            $notification = array(
+                'message' => 'Category is associated to some equipments!',
+                'alert-type' => 'error',
+            );
+            return redirect()->route('equipment.category.view')->with($notification);
+        }
+
         $data = EquipmentCategory::find($id)->delete();
 
         $notification = array(

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin\Inventory;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\FacilityCategory;
+use App\Models\EquipmentInventory;
 
 class FacilityCategoryController extends Controller
 {
@@ -61,6 +62,15 @@ class FacilityCategoryController extends Controller
 
     public function FacilityCategoryDelete($id)
     {
+        $inventoryData = EquipmentInventory::where('facility_id', $id)->get();
+        if (count($inventoryData) != 0) {
+            $notification = array(
+                'message' => 'Category is associated to some facility!',
+                'alert-type' => 'error',
+            );
+            return redirect()->route('facility.category.view')->with($notification);
+        }
+
         $data = FacilityCategory::find($id)->delete();
 
         $notification = array(

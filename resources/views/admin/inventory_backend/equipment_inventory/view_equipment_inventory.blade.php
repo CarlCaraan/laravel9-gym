@@ -35,7 +35,7 @@
                             <thead>
                                 <tr>
                                     <th>ID No.</th>
-                                    <th>Equipment Name</th>
+                                    <th>Equipment Item</th>
                                     <th>Equipment Type</th>
                                     <th>Facility</th>
                                     <th>Date of Purchase</th>

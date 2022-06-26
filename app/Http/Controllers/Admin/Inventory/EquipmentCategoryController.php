@@ -23,7 +23,7 @@ class EquipmentCategoryController extends Controller
     public function EquipmentCategoryStore(Request $request)
     {
         $validatedData = $request->validate([
-            'name' => 'required',
+            'name' => 'required|unique:equipment_categories',
         ]);
 
         $data = new EquipmentCategory();
@@ -46,8 +46,18 @@ class EquipmentCategoryController extends Controller
     public function EquipmentCategoryUpdate(Request $request, $id)
     {
         $validatedData = $request->validate([
-            'name' => 'required',
+            'name' => 'required|unique:equipment_categories,name,' . $id,
         ]);
+
+        // Dont Update if Associated to some post
+        $inventoryData = EquipmentInventory::where('equipment_id', $id)->get();
+        if (count($inventoryData) != 0) {
+            $notification = array(
+                'message' => 'Category is associated to some equipments!',
+                'alert-type' => 'error',
+            );
+            return redirect()->route('equipment.category.view')->with($notification);
+        }
 
         $data = EquipmentCategory::find($id);
         $data->name = $request->name;

@@ -23,7 +23,7 @@ class FacilityCategoryController extends Controller
     public function FacilityCategoryStore(Request $request)
     {
         $validatedData = $request->validate([
-            'name' => 'required',
+            'name' => 'required|unique:facility_categories',
         ]);
 
         $data = new FacilityCategory();
@@ -46,8 +46,18 @@ class FacilityCategoryController extends Controller
     public function FacilityCategoryUpdate(Request $request, $id)
     {
         $validatedData = $request->validate([
-            'name' => 'required',
+            'name' => 'required|unique:facility_categories,name,' . $id,
         ]);
+
+        // Dont Update if Associated to some post
+        $inventoryData = EquipmentInventory::where('facility_id', $id)->get();
+        if (count($inventoryData) != 0) {
+            $notification = array(
+                'message' => 'Category is associated to some facility!',
+                'alert-type' => 'error',
+            );
+            return redirect()->route('facility.category.view')->with($notification);
+        }
 
         $data = FacilityCategory::find($id);
         $data->name = $request->name;

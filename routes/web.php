@@ -18,6 +18,7 @@ use App\Http\Controllers\Admin\Inventory\EquipmentCategoryController;
 use App\Http\Controllers\Admin\Inventory\FacilityCategoryController;
 use App\Http\Controllers\Admin\Inventory\EquipmentController;
 use App\Http\Controllers\Admin\Inventory\StocksController;
+use App\Http\Controllers\Customer\CustomerProfileController;
 
 
 Route::group(['middleware' => 'prevent-back-history'], function () {
@@ -154,6 +155,15 @@ Route::group(['middleware' => 'prevent-back-history'], function () {
     ])->group(function () {
         Route::prefix('customer')->group(function () {
             Route::get('/home', [CustomerController::class, "WelcomeView"])->name('customer.home');
+        });
+
+        // ========= User Profile and Change Password =========
+        Route::prefix('profile')->group(function () {
+            Route::get('customer/view', [CustomerProfileController::class, 'ProfileView'])->name('customer.profile.view');
+            Route::get('customer/edit', [CustomerProfileController::class, 'ProfileEdit'])->name('customer.profile.edit');
+            Route::post('customer/update', [CustomerProfileController::class, 'ProfileUpdate'])->name('customer.profile.update');
+            Route::post('customer/update_password', [CustomerProfileController::class, 'PasswordUpdate'])->name('customer.password.update');
+            Route::get('customer/remove_avatar', [CustomerProfileController::class, 'RemoveAvatar'])->name('customer.remove.avatar');
         });
     });
 

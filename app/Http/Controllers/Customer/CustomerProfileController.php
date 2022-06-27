@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Customer;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -8,14 +8,14 @@ use Auth;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 
-class ProfileController extends Controller
+class CustomerProfileController extends Controller
 {
     public function ProfileView()
     {
         $id = Auth::user()->id;
         $user = User::find($id);
 
-        return view('admin.profile.view_profile', compact('user'));
+        return view('customer.profile.view_profile', compact('user'));
     }
 
     public function ProfileEdit()
@@ -23,7 +23,7 @@ class ProfileController extends Controller
         $id = Auth::user()->id;
         $editData = User::find($id);
 
-        return view('admin.profile.edit_profile', compact('editData'));
+        return view('customer.profile.edit_profile', compact('editData'));
     }
 
     public function ProfileUpdate(Request $request)
@@ -34,7 +34,6 @@ class ProfileController extends Controller
                 'last_name' => 'required',
                 'email' => 'required',
                 'gender' => 'required',
-                'user_type' => 'required',
                 'image' => 'image|mimes:jpeg,png,jpg|max:2048'
             ],
             // ~Custom Error messages
@@ -48,7 +47,6 @@ class ProfileController extends Controller
         $data->last_name = $request->last_name;
         $data->email = $request->email;
         $data->gender = $request->gender;
-        $data->user_type = $request->user_type;
 
         if ($request->file('image')) {
             $file = $request->file('image');
@@ -63,7 +61,7 @@ class ProfileController extends Controller
             'message' => 'User Profile Updated Successfully',
             'alert-type' => 'success',
         );
-        return redirect()->route('profile.view')->with($notification);
+        return redirect()->route('customer.profile.view')->with($notification);
     } //End Method
 
     public function PasswordUpdate(Request $request)
@@ -91,7 +89,7 @@ class ProfileController extends Controller
                 'alert-type' => 'error',
             );
 
-            return redirect()->back()->with($notification);
+            return redirect()->route('customer.profile.edit')->with($notification);
         }
     } // End Method
 
@@ -107,6 +105,6 @@ class ProfileController extends Controller
             'alert-type' => 'success',
         );
 
-        return redirect()->route('profile.view')->with($notification);
+        return redirect()->route('customer.profile.view')->with($notification);
     }
 }

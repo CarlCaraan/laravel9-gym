@@ -83,8 +83,10 @@
                 @auth
                 @if(Auth::user()->user_type == "Customer")
                 <a href="" class="nav-item nav-link">+ Add Schedule</a>
-                <a href="" class="nav-item nav-link">Account Settings</a>
-                <a href="#" class="nav-item nav-link">{{ Auth::user()->first_name . " " . Auth::user()->last_name }}</a>
+                <a href="{{ route('customer.profile.view') }}" class="nav-item nav-link">Account Settings</a>
+                <a href="{{ route('customer.profile.view') }}" class="nav-item nav-link">
+                    <img src="{{ (!empty(Auth::user()->profile_photo_path)) ? url('upload/user_images/'.Auth::user()->profile_photo_path) : asset('admin/assets/images/users/default_photo.jpg') }}" alt="user" class="img-fluid rounded-circle shadow-sm" width="25px">
+                    {{ Auth::user()->first_name . " " . Auth::user()->last_name }}</a>
                 @else
                 <a href="{{ url('/') }}" class="nav-item nav-link">Home</a>
                 <a href="#services" class="nav-item nav-link">Services</a>

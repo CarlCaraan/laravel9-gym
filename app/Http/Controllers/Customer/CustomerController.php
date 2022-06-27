@@ -10,6 +10,7 @@ use App\Models\UserHerosection;
 use App\Models\UserFacilities;
 use App\Models\UserTrainers;
 use App\Models\UserAbout;
+use Auth;
 
 class CustomerController extends Controller
 {

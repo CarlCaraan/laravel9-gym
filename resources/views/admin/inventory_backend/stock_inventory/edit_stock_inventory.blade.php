@@ -70,7 +70,7 @@
                             <div class="col-md-12">
                                 <h4>Filtered Items</h4>
                                 <div class="table-responsive">
-                                    <table class="table table-bordered table-stripped" id="zero_config" style="width: 100%;">
+                                    <table class="table table-bordered table-stripped" style="width: 100%;">
                                         <thead>
                                             <tr>
                                                 <th>ID No</th>
@@ -98,7 +98,7 @@
                 <div class="card-body">
                     <h4>All Equipment Stocks</h4>
                     <div class="table-responsive">
-                        <table class="table table-bordered table-stripped" id="myTable" style="width: 100%;">
+                        <table class="table table-bordered table-stripped" id="zero_config" style="width: 100%;">
                             <thead>
                                 <tr>
                                     <th>ID No</th>
@@ -146,7 +146,7 @@
                         '<td>' + (i++) + '<input type="hidden" name="id[]" value="' + v.id + '"><input type="hidden" name="facility_id[]" value="' + v.facility_id + '"><input type="hidden" name="equipment_id[]" value="' + v.equipment_id + '"></td>' +
                         '<td>' + v.name + '<input type="hidden" name="name[]" value="' + v.name + '"></td>' +
                         '<td>' + v.dop + '<input type="hidden" name="dop[]" value="' + v.dop + '"></td>' +
-                        '<td><input type="number" class="form-control form-control-sm" name="quantity[]" value="' + v.quantity + '" placeholder="0"></td>' +
+                        '<td><input type="number" class="form-control form-control-sm" name="quantity[]" min="0" value="' + v.quantity + '" placeholder="0"></td>' +
                         '</tr>';
                 });
                 html = $('#generate-tr').html(html);
@@ -179,11 +179,4 @@
     });
 </script>
 <!-- End Json Get Equipment Type Select Options -->
-
-<script>
-    $(document).ready(function() {
-        $('#myTable').DataTable();
-    });
-</script>
-
 @endsection

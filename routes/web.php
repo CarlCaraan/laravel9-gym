@@ -17,6 +17,7 @@ use App\Http\Controllers\Customer\CustomerController;
 use App\Http\Controllers\Admin\Inventory\EquipmentCategoryController;
 use App\Http\Controllers\Admin\Inventory\FacilityCategoryController;
 use App\Http\Controllers\Admin\Inventory\EquipmentController;
+use App\Http\Controllers\Admin\Inventory\StocksController;
 
 
 Route::group(['middleware' => 'prevent-back-history'], function () {
@@ -135,6 +136,12 @@ Route::group(['middleware' => 'prevent-back-history'], function () {
             Route::get('equipment/inventory/edit/{id}', [EquipmentController::class, 'EquipmentInventoryEdit'])->name('equipment.inventory.edit');
             Route::post('equipment/inventory/update/{id}', [EquipmentController::class, 'EquipmentInventoryUpdate'])->name('equipment.inventory.update');
             Route::get('equipment/inventory/delete/{id}', [EquipmentController::class, 'EquipmentInventoryDelete'])->name('equipment.inventory.delete');
+
+            // Stocks Inventory
+            Route::get('stock/inventory/edit', [StocksController::class, 'StockInventoryEdit'])->name('stock.inventory.edit');
+            Route::get('stock/inventory/getequipment', [StocksController::class, 'GetEquipment'])->name('stock.inventory.getequipment');
+            Route::get('stock/inventory/gettable', [StocksController::class, 'GetTable'])->name('stock.inventory.gettable');
+            Route::post('stock/inventory/update', [StocksController::class, 'StockInventoryUpdate'])->name('stock.inventory.update');
         });
     });
 

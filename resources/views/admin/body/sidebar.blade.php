@@ -29,7 +29,7 @@ $route = Route::current()->getName();
                         <li class="sidebar-item {{ ($route == 'equipment.category.edit' || $route == 'equipment.category.add') ? 'active' : '' }}"><a href="{{ route('equipment.category.view') }}" class="sidebar-link"><i class="mdi mdi-collage"></i><span class="hide-menu">Equipment Category</span></a></li>
                         <li class="sidebar-item {{ ($route == 'facility.category.edit' || $route == 'facility.category.add') ? 'active' : '' }}"><a href="{{ route('facility.category.view') }}" class="sidebar-link"><i class="mdi mdi-arrow-down-bold-hexagon-outline"></i><span class="hide-menu">Facilities Category</span></a></li>
                         <li class="sidebar-item {{ ($route == 'equipment.inventory.edit' || $route == 'equipment.inventory.add') ? 'active' : '' }}"><a href="{{ route('equipment.inventory.view') }}" class="sidebar-link"><i class="mdi mdi-basket"></i><span class="hide-menu">Equipments</span></a></li>
-                        <!-- <li class="sidebar-item"><a href="" class="sidebar-link"><i class="mdi mdi-archive"></i><span class="hide-menu">Stocks</span></a></li> -->
+                        <li class="sidebar-item"><a href="{{ route('stock.inventory.edit') }}" class="sidebar-link"><i class="mdi mdi-archive"></i><span class="hide-menu">Stocks</span></a></li>
                     </ul>
                 </li>
 

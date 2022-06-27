@@ -112,8 +112,8 @@ Route::group(['middleware' => 'prevent-back-history'], function () {
         });
 
         // ========= Inventory Management =========
-        // Equipment Category
         Route::prefix('inventory')->group(function () {
+            // Equipment Category
             Route::get('equipment/category/view', [EquipmentCategoryController::class, 'EquipmentCategoryView'])->name('equipment.category.view');
             Route::get('equipment/category/add', [EquipmentCategoryController::class, 'EquipmentCategoryAdd'])->name('equipment.category.add');
             Route::post('equipment/category/store', [EquipmentCategoryController::class, 'EquipmentCategoryStore'])->name('equipment.category.store');
@@ -136,6 +136,7 @@ Route::group(['middleware' => 'prevent-back-history'], function () {
             Route::get('equipment/inventory/edit/{id}', [EquipmentController::class, 'EquipmentInventoryEdit'])->name('equipment.inventory.edit');
             Route::post('equipment/inventory/update/{id}', [EquipmentController::class, 'EquipmentInventoryUpdate'])->name('equipment.inventory.update');
             Route::get('equipment/inventory/delete/{id}', [EquipmentController::class, 'EquipmentInventoryDelete'])->name('equipment.inventory.delete');
+            Route::get('equipment/remove_image/{id}', [EquipmentController::class, 'EquipmentInventoryRemoveImage'])->name('equipment.inventory.remove_image');
 
             // Stocks Inventory
             Route::get('stock/inventory/edit', [StocksController::class, 'StockInventoryEdit'])->name('stock.inventory.edit');

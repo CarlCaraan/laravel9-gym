@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('name')->nullable();
             $table->string('quantity')->nullable();
             $table->string('dop')->nullable();
+            $table->string('image')->nullable();
             $table->timestamps();
         });
     }

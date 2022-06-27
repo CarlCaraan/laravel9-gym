@@ -29,8 +29,22 @@
             <div class="card">
                 <div class="card-body">
                     <div class="col-12">
-                        <form class="form-horizontal" method="POST" action="{{ route('equipment.inventory.update', $editData->id) }}">
+                        <form class="form-horizontal" method="POST" action="{{ route('equipment.inventory.update', $editData->id) }}" enctype="multipart/form-data">
                             @csrf
+                            <div class="form-group row">
+                                <div class="form-group col-4">
+                                    <img class="img-thumbnail mb-3" style="width: 200; height: 200;" src="{{ (!empty($editData->image)) ? url('upload/inventory/'.$editData->image) : url('upload/inventory/default_photo.png') }}" id="show_image" alt="image">
+
+                                    <div class="custom-file">
+                                        <input type="file" class="custom-file-input" name="image" id="image">
+                                        <label class="custom-file-label" for="image">Choose file...</label>
+                                    </div>
+                                    @error('image')
+                                    <span class="text-danger">{{ $message }}</span>
+                                    @enderror
+                                    <a href="{{ route('equipment.inventory.remove_image', $editData->id) }}" class="btn btn-secondary mt-2">Remove</a>
+                                </div>
+                            </div>
                             <div class="form-group row">
                                 <div class="form-group col-4">
                                     <label for="facility_id" class="control-label">Facility Location</label>
@@ -91,4 +105,17 @@
     </div>
 </div>
 <br />
+
+<script>
+    // Show Chosen Image Ajax
+    $(document).ready(function() {
+        $('#image').change(function(e) {
+            var reader = new FileReader();
+            reader.onload = function(e) {
+                $('#show_image').attr('src', e.target.result);
+            }
+            reader.readAsDataURL(e.target.files['0']);
+        });
+    });
+</script>
 @endsection

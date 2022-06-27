@@ -28,6 +28,12 @@
             <div class="card">
                 <div class="card-header">
                     <a class="btn btn-primary" href="{{ route('equipment.inventory.add') }}">Add Equipment</a>
+                    @if ($imageCount != "0")
+                    <div class="alert alert-warning mt-2">
+                        Note: Some Equipments has <strong>No Image</strong>!<br />
+                        <small>Go to Edit Page and put some image.</small>
+                    </div>
+                    @endif
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
@@ -35,6 +41,7 @@
                             <thead>
                                 <tr>
                                     <th>ID No.</th>
+                                    <th>Image</th>
                                     <th>Equipment Item</th>
                                     <th>Equipment Type</th>
                                     <th>Facility</th>
@@ -46,6 +53,9 @@
                                 @foreach ($allInventories as $key => $value)
                                 <tr>
                                     <td>{{ $key+1 }}</td>
+                                    <td>
+                                        <img src="{{ (!empty($value->image)) ? url('upload/inventory/'.$value->image) : url('upload/inventory/default_photo.png') }}" alt="image" class="img-fluid" width="60px">
+                                    </td>
                                     <td>{{ $value->name }}</td>
                                     <td>{{ $value['equipment_category']['name'] }}</td>
                                     <td>{{ $value['facility_category']['name'] }}</td>

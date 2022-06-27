@@ -13,6 +13,8 @@ class EquipmentController extends Controller
     public function EquipmentInventoryView()
     {
         $data['allInventories'] = EquipmentInventory::all();
+        $data['imageCount'] = EquipmentInventory::where('image', NULL)->count();
+
         return view('admin.inventory_backend.equipment_inventory.view_equipment_inventory', $data);
     }
 
@@ -72,6 +74,15 @@ class EquipmentController extends Controller
         $data->dop = $request->dop;
         $data->facility_id = $request->facility_id;
         $data->equipment_id = $request->equipment_id;
+
+        // Updating Image
+        if ($request->file('image')) {
+            $file = $request->file('image');
+            @unlink(public_path('upload/inventory/' . $data->image));
+            $filename = date('YmdHi') . $file->getClientOriginalName();
+            $file->move(public_path('upload/inventory'), $filename);
+            $data['image'] = $filename;
+        }
         $data->save();
 
         $notification = array(
@@ -89,6 +100,21 @@ class EquipmentController extends Controller
             'message' => 'Equipment Deleted Successfully',
             'alert-type' => 'success',
         );
+        return redirect()->route('equipment.inventory.view')->with($notification);
+    } // End Method 
+
+    public function EquipmentInventoryRemoveImage($id)
+    {
+        $data = EquipmentInventory::find($id);
+        @unlink(public_path('upload/inventory/' . $data->image));
+        $data->image = NULL;
+        $data->save();
+
+        $notification = array(
+            'message' => 'Equipment Image removed successfully!',
+            'alert-type' => 'success',
+        );
+
         return redirect()->route('equipment.inventory.view')->with($notification);
     }
 }

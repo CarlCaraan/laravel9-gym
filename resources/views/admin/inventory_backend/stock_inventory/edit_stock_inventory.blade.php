@@ -25,75 +25,100 @@
 <!-- Container fluid  -->
 <div class="container-fluid">
     <div class="row">
-        <div class="col-12">
+        <div class="col-md-8">
             <div class="card">
                 <div class="card-body">
-                    <div class="col-6">
-                        <form class="form-horizontal" method="POST" action="{{ route('stock.inventory.update') }}">
-                            @csrf
-                            <!-- Start Filter Search -->
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <h5>Facility</h5>
-                                        <div class="controls">
-                                            <select name="facility_id" id="facility_id" class="form-control">
-                                                <option value="" selected="" disabled="">Select Facility</option>
-                                                @foreach ($facilityCategories as $facilityCategory)
-                                                <option value="{{ $facilityCategory->id }}">{{ $facilityCategory->name }}</option>
-                                                @endforeach
-                                            </select>
-                                        </div>
+                    <form class="form-horizontal" method="POST" action="{{ route('stock.inventory.update') }}">
+                        @csrf
+                        <!-- Start Filter Search -->
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <h5>Facility</h5>
+                                    <div class="controls">
+                                        <select name="facility_id" id="facility_id" class="form-control">
+                                            <option value="" selected="" disabled="">Select Facility</option>
+                                            @foreach ($facilityCategories as $facilityCategory)
+                                            <option value="{{ $facilityCategory->id }}">{{ $facilityCategory->name }}</option>
+                                            @endforeach
+                                        </select>
                                     </div>
-                                </div> <!-- End Col -->
-
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <h5>Equipment Category</h5>
-                                        <div class="controls">
-                                            <select name="equipment_id" id="equipment_id" class="form-control">
-                                                <option value="" selected="" disabled="">Select Type</option>
-
-                                            </select>
-                                        </div>
-                                    </div>
-                                </div> <!-- End Col -->
-
-                                <div class="col-md-3">
-                                    <a id="search" class="btn btn-primary text-white" name="search">Search</a>
-                                </div> <!-- End Col -->
-
-                            </div> <!-- End Row -->
-                            <!-- End Filter Search -->
-
-                            <!-- Start Table -->
-                            <div class="row mt-5 d-none" id="generate">
-                                <div class="col-md-12">
-                                    <h4>Filtered Items by Category</h4>
-                                    <div class="table-responsive">
-                                        <table class="table table-bordered table-stripped" id="zero_config" style="width: 100%;">
-                                            <thead>
-                                                <tr>
-                                                    <th>ID No</th>
-                                                    <th>Equipment Item</th>
-                                                    <th>Date of Purchase</th>
-                                                    <th>Quantity</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody id="generate-tr">
-
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                    <input type="submit" class="btn btn-success" value="Update">
                                 </div>
-                            </div>
-                            <!-- End Table -->
+                            </div> <!-- End Col -->
 
-                        </form>
-                    </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <h5>Equipment Category</h5>
+                                    <div class="controls">
+                                        <select name="equipment_id" id="equipment_id" class="form-control">
+                                            <option value="" selected="" disabled="">Select Type</option>
+
+                                        </select>
+                                    </div>
+                                </div>
+                            </div> <!-- End Col -->
+
+                            <div class="col-md-3">
+                                <a id="search" class="btn btn-primary text-white" name="search">Search</a>
+                            </div> <!-- End Col -->
+
+                        </div> <!-- End Row -->
+                        <!-- End Filter Search -->
+
+                        <!-- Start Table -->
+                        <div class="row mt-5 d-none" id="generate">
+                            <div class="col-md-12">
+                                <h4>Filtered Items</h4>
+                                <div class="table-responsive">
+                                    <table class="table table-bordered table-stripped" id="zero_config" style="width: 100%;">
+                                        <thead>
+                                            <tr>
+                                                <th>ID No</th>
+                                                <th>Equipment Item</th>
+                                                <th>Date of Purchase</th>
+                                                <th>Quantity</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="generate-tr">
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <input type="submit" class="btn btn-success" value="Update">
+                            </div>
+                        </div>
+                        <!-- End Table -->
+
+                    </form>
                 </div>
             </div> <!-- End Card -->
+        </div> <!-- End Col -->
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <h4>All Equipment Stocks</h4>
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-stripped" id="myTable" style="width: 100%;">
+                            <thead>
+                                <tr>
+                                    <th>ID No</th>
+                                    <th>Equipment Item</th>
+                                    <th>Quantity</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach ($equipmentInventories as $key => $equipmentInventory)
+                                <tr>
+                                    <th>{{ $key+1 }}</th>
+                                    <th>{{ $equipmentInventory->name }}</th>
+                                    <th>{{ $equipmentInventory->quantity }}</th>
+                                </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
@@ -143,7 +168,7 @@
                     facility_id: facility_id
                 },
                 success: function(data) {
-                    var html = '<option value="" disabled>Select Type</option>';
+                    var html = '<option value="" disabled selected>Select Type</option>';
                     $.each(data, function(key, v) {
                         html += '<option value="' + v.equipment_category.id + '">' + v.equipment_category.name + ' (' + v.name + ')' + '</option>';
                     });
@@ -154,4 +179,11 @@
     });
 </script>
 <!-- End Json Get Equipment Type Select Options -->
+
+<script>
+    $(document).ready(function() {
+        $('#myTable').DataTable();
+    });
+</script>
+
 @endsection

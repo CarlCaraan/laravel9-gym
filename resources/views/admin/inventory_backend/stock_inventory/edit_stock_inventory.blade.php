@@ -49,7 +49,7 @@
 
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <h5>Equipment Type</h5>
+                                        <h5>Equipment Category</h5>
                                         <div class="controls">
                                             <select name="equipment_id" id="equipment_id" class="form-control">
                                                 <option value="" selected="" disabled="">Select Type</option>
@@ -69,6 +69,7 @@
                             <!-- Start Table -->
                             <div class="row mt-5 d-none" id="generate">
                                 <div class="col-md-12">
+                                    <h4>Filtered Items by Category</h4>
                                     <div class="table-responsive">
                                         <table class="table table-bordered table-stripped" id="zero_config" style="width: 100%;">
                                             <thead>
@@ -113,10 +114,11 @@
             success: function(data) {
                 $('#generate').removeClass('d-none');
                 var html = '';
+                var i = 1;
                 $.each(data, function(key, v) {
                     html +=
                         '<tr>' +
-                        '<td>' + v.id + '<input type="hidden" name="id[]" value="' + v.id + '"><input type="hidden" name="facility_id[]" value="' + v.facility_id + '"><input type="hidden" name="equipment_id[]" value="' + v.equipment_id + '"></td>' +
+                        '<td>' + (i++) + '<input type="hidden" name="id[]" value="' + v.id + '"><input type="hidden" name="facility_id[]" value="' + v.facility_id + '"><input type="hidden" name="equipment_id[]" value="' + v.equipment_id + '"></td>' +
                         '<td>' + v.name + '<input type="hidden" name="name[]" value="' + v.name + '"></td>' +
                         '<td>' + v.dop + '<input type="hidden" name="dop[]" value="' + v.dop + '"></td>' +
                         '<td><input type="number" class="form-control form-control-sm" name="quantity[]" value="' + v.quantity + '" placeholder="0"></td>' +
@@ -141,9 +143,9 @@
                     facility_id: facility_id
                 },
                 success: function(data) {
-                    var html = '<option value="">Select Type</option>';
+                    var html = '<option value="" disabled>Select Type</option>';
                     $.each(data, function(key, v) {
-                        html += '<option value="' + v.equipment_category.id + '">' + v.equipment_category.name + '</option>';
+                        html += '<option value="' + v.equipment_category.id + '">' + v.equipment_category.name + ' (' + v.name + ')' + '</option>';
                     });
                     $('#equipment_id').html(html);
                 }

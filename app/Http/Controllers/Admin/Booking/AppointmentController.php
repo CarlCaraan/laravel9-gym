@@ -41,7 +41,7 @@ class AppointmentController extends Controller
         $data->save();
 
         // Adding Url and Color
-        $data->url = "http://127.0.0.1:8000/booking/all/appointment/view/edit/" . $data->id;
+        $data->url = "http://127.0.0.1:8000/booking/all/appointment/edit/" . $data->id;
         if ($request->status == "Paid") {
             $data->background_color = "#42ba96";
         } else {
@@ -51,9 +51,53 @@ class AppointmentController extends Controller
         $data->save();
 
         $notification = array(
-            'message' => 'User Appointment Inserted Successfully',
+            'message' => 'Customer Appointment Inserted Successfully',
             'alert-type' => 'success',
         );
         return redirect()->route('all.appointment.view')->with($notification);
     } // End Method
+
+    public function AllAppointmentEdit($id)
+    {
+        $data['editData'] = Booking::with(['user'])->find($id);
+        return view('admin.booking.edit_appointment', $data);
+    }
+
+    public function AllAppointmentUpdate(Request $request, $id)
+    {
+        $validatedData = $request->validate([
+            'status' => 'required',
+            'start_date' => 'required',
+            'price' => 'required',
+        ]);
+
+        $data = Booking::find($id);
+
+        $data->price = $request->price;
+        $data->status = $request->status;
+        $data->start_date = $request->start_date;
+
+        if ($request->status == "Paid") {
+            $data->background_color = "#42ba96";
+        } else {
+            $data->background_color = "#ff0000";
+        }
+        $data->save();
+
+        $notification = array(
+            'message' => 'Customer Appointment Updated Successfully',
+            'alert-type' => 'success',
+        );
+        return redirect()->route('all.appointment.view')->with($notification);
+    } // End Method
+
+    public function AllAppointmentDelete($id)
+    {
+        $data = Booking::find($id)->delete();
+        $notification = array(
+            'message' => 'Customer Deleted Updated Successfully',
+            'alert-type' => 'success',
+        );
+        return redirect()->route('all.appointment.view')->with($notification);
+    }
 }

@@ -57,8 +57,8 @@
                                     <td>{{ date('h:i A', strtotime($value->start_date)) }}</td>
                                     <td>{{ $value->price }}</td>
                                     <td>
-                                        <a href="{{ route('user.trainers.edit', $value->id) }}" class="btn btn-primary text-white">Edit</a>
-                                        <a href="{{ route('user.trainers.delete', $value->id) }}" class="btn btn-danger text-white" id="delete">Delete</a>
+                                        <a href="{{ route('all.appointment.edit', $value->id) }}" class="btn btn-primary text-white">Edit</a>
+                                        <a href="{{ route('all.appointment.delete', $value->id) }}" class="btn btn-danger text-white" id="delete">Delete</a>
                                     </td>
                                 </tr>
                                 @endforeach

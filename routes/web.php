@@ -157,6 +157,9 @@ Route::group(['middleware' => 'prevent-back-history'], function () {
             Route::get('all/appointment/view', [AppointmentController::class, 'AllAppointmentView'])->name('all.appointment.view');
             Route::get('all/appointment/add', [AppointmentController::class, 'AllAppointmentAdd'])->name('all.appointment.add');
             Route::post('all/appointment/store', [AppointmentController::class, 'AllAppointmentStore'])->name('all.appointment.store');
+            Route::get('all/appointment/edit/{id}', [AppointmentController::class, 'AllAppointmentEdit'])->name('all.appointment.edit');
+            Route::post('all/appointment/update/{id}', [AppointmentController::class, 'AllAppointmentUpdate'])->name('all.appointment.update');
+            Route::get('all/appointment/delete/{id}', [AppointmentController::class, 'AllAppointmentDelete'])->name('all.appointment.delete');
         });
     });
 

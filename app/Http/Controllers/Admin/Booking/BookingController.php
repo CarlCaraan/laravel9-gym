@@ -11,11 +11,11 @@ class BookingController extends Controller
     public function ScheduleAppointmentView()
     {
         $events = array();
-        $bookings = Booking::with('all_user')->get();
+        $bookings = Booking::with('user')->get();
 
         foreach ($bookings as $booking) {
             $events[] = [
-                'title' => $booking['all_user']['first_name'] . ' ' . $booking['all_user']['last_name'] . ' (' . $booking->price . ')',
+                'title' => $booking['user']['first_name'] . ' ' . $booking['user']['last_name'] . ' (' . $booking->price . ')',
                 'start' => $booking->start_date,
                 'end' => $booking->end_date,
                 'url' => $booking->url,

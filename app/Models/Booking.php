@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Booking extends Model
 {
-    public function all_user()
+    public function user()
     {
         return $this->belongsTo(User::class, 'user_id', 'id');
     }

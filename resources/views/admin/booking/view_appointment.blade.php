@@ -48,9 +48,9 @@
                                 @foreach ($allData as $key => $value)
                                 <tr>
                                     <td>{{ $key+1 }}</td>
-                                    <td>{{ $value['all_user']['first_name'] }} {{ $value['all_user']['last_name'] }}</td>
+                                    <td>{{ $value['user']['first_name'] }} {{ $value['user']['last_name'] }}</td>
                                     <td>
-                                        <img src="{{ (!empty($value['all_user']['profile_photo_path'])) ? url('upload/user_images/'.$value['all_user']['profile_photo_path']) : asset('admin/assets/images/users/default_photo.jpg') }}" alt="user" class="img-fluid" width="40px">
+                                        <img src="{{ (!empty($value['user']['profile_photo_path'])) ? url('upload/user_images/'.$value['user']['profile_photo_path']) : asset('admin/assets/images/users/default_photo.jpg') }}" alt="user" class="img-fluid" width="40px">
                                     </td>
                                     <td><span class="w-100 badge badge-{{($value->status == 'Paid' ? 'success' : 'warning' )}}"> {{ $value->status  }}</span></td>
                                     <td>{{ date('l - F / d / Y', strtotime($value->start_date)) }}</td>

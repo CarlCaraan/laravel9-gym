@@ -46,7 +46,7 @@
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label for="status" class="col-sm-3 text-right control-label col-form-label">Paid Status</label>
+                                <label for="status" class="col-sm-3 text-right control-label col-form-label">{!! ($editData->status == "Not Paid") ? "<i class='mdi mdi-information text-warning'></i>" : "<i class='mdi mdi-checkbox-marked-circle text-success'></i>" !!} Paid Status</label>
                                 <div class="col-sm-9">
                                     <select class="select2 form-control custom-select" style="width: 100%; height:36px;" name="status">
                                         <option disabled value="" selected>Select Status</option>

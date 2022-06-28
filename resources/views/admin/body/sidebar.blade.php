@@ -24,7 +24,7 @@ $route = Route::current()->getName();
                 </li>
 
                 <!-- ========= INVENTORY MANAGEMENT ========= -->
-                <li class="sidebar-item  {{ ($prefix == '/inventory') ? 'selected' : '' }}"> <a class="sidebar-link has-arrow waves-effect waves-dark {{ ($prefix == '/inventory') ? 'active' : '' }}" href="javascript:void(0)" aria-expanded="false"><i class="mdi mdi-cube text-warning"></i><span class="hide-menu">Inventory Management</span></a>
+                <li class="sidebar-item {{ ($prefix == '/inventory') ? 'selected' : '' }}"> <a class="sidebar-link has-arrow waves-effect waves-dark {{ ($prefix == '/inventory') ? 'active' : '' }}" href="javascript:void(0)" aria-expanded="false"><i class="mdi mdi-cube text-warning"></i><span class="hide-menu">Inventory Management</span></a>
                     <ul aria-expanded="false" class="{{ ($prefix == '/inventory') ? 'collapse  first-level in' : 'collapse first-level' }}">
                         <li class="sidebar-item {{ ($route == 'equipment.category.edit' || $route == 'equipment.category.add') ? 'active' : '' }}"><a href="{{ route('equipment.category.view') }}" class="sidebar-link"><i class="mdi mdi-collage"></i><span class="hide-menu">Equipment Category</span></a></li>
                         <li class="sidebar-item {{ ($route == 'facility.category.edit' || $route == 'facility.category.add') ? 'active' : '' }}"><a href="{{ route('facility.category.view') }}" class="sidebar-link"><i class="mdi mdi-arrow-down-bold-hexagon-outline"></i><span class="hide-menu">Facilities Category</span></a></li>
@@ -38,6 +38,14 @@ $route = Route::current()->getName();
                     <ul aria-expanded="false" class="collapse  first-level">
                         <li class="sidebar-item"><a href="{{ route('user.view') }}" class="sidebar-link"><i class="mdi mdi-account"></i><span class="hide-menu">View Users</span></a></li>
                         <li class="sidebar-item"><a href="{{ route('user.add') }}" class="sidebar-link"><i class="mdi mdi-account-multiple-plus"></i><span class="hide-menu">Add User</span></a></li>
+                    </ul>
+                </li>
+
+                <!-- ========= Booking MANAGEMENT ========= -->
+                <li class="sidebar-item {{ ($prefix == '/booking') ? 'selected' : '' }}"> <a class="sidebar-link has-arrow waves-effect waves-dark {{ ($prefix == '/booking') ? 'active' : '' }}" href="javascript:void(0)" aria-expanded="false"><i class="mdi mdi-calendar-multiple text-warning"></i><span class="hide-menu">Manage Booking</span></a>
+                    <ul aria-expanded="false" class="{{ ($prefix == '/booking') ? 'collapse  first-level in' : 'collapse first-level' }}">
+                        <li class="sidebar-item {{ ($route == 'schedule.appointment.view') ? 'active' : '' }}"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{ route('schedule.appointment.view') }}" aria-expanded="false"><i class="mdi mdi-calendar-multiple-check"></i><span class="hide-menu">Booking Schedule</span></a></li>
+                        <li class="sidebar-item {{ ($route == 'all.appointment.view' || $route == 'all.appointment.add' || $route == 'all.appointment.edit') ? 'active' : '' }}"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{ route('all.appointment.view') }}" aria-expanded="false"><i class="mdi mdi-calendar-text"></i><span class="hide-menu">All Appointment</span></a></li>
                     </ul>
                 </li>
             </ul>

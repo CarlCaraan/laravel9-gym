@@ -32,6 +32,13 @@
 
     <!-- Toastr CSS CDN -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css" />
+
+    <!-- Full Calendar CSS CDN -->
+    <link rel="stylesheet" href="{{ asset('admin/dist/css/full-calendar.min.css') }}" />
+
+    <!-- DatePicker Flatpickr -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 </head>
 
 <body>
@@ -175,6 +182,9 @@
 
     <!-- Trix Js CDN -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/trix/1.3.1/trix.js"></script>
+
+    <!-- Full Calendar CDN JS -->
+    <script src="{{ asset('admin/dist/js/full-calendar.min.js') }}"></script>
 </body>
 
 </html>

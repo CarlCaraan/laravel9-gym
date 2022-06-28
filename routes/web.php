@@ -19,6 +19,8 @@ use App\Http\Controllers\Admin\Inventory\FacilityCategoryController;
 use App\Http\Controllers\Admin\Inventory\EquipmentController;
 use App\Http\Controllers\Admin\Inventory\StocksController;
 use App\Http\Controllers\Customer\CustomerProfileController;
+use App\Http\Controllers\Admin\Booking\BookingController;
+use App\Http\Controllers\Admin\Booking\AppointmentController;
 
 
 Route::group(['middleware' => 'prevent-back-history'], function () {
@@ -144,6 +146,17 @@ Route::group(['middleware' => 'prevent-back-history'], function () {
             Route::get('stock/inventory/getequipment', [StocksController::class, 'GetEquipment'])->name('stock.inventory.getequipment');
             Route::get('stock/inventory/gettable', [StocksController::class, 'GetTable'])->name('stock.inventory.gettable');
             Route::post('stock/inventory/update', [StocksController::class, 'StockInventoryUpdate'])->name('stock.inventory.update');
+        });
+
+        // ========= Booking Management =========
+        Route::prefix('booking')->group(function () {
+            // Booking Calendar and Edit
+            Route::get('schedule/appointment/view', [BookingController::class, 'ScheduleAppointmentView'])->name('schedule.appointment.view'); // View Calendar
+
+            // All Appointment Routes
+            Route::get('all/appointment/view', [AppointmentController::class, 'AllAppointmentView'])->name('all.appointment.view');
+            Route::get('all/appointment/add', [AppointmentController::class, 'AllAppointmentAdd'])->name('all.appointment.add');
+            Route::post('all/appointment/store', [AppointmentController::class, 'AllAppointmentStore'])->name('all.appointment.store');
         });
     });
 

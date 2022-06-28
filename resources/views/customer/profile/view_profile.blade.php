@@ -6,7 +6,7 @@
 <div class="container-fluid">
     <div class="card mb-5">
         <div class="card-header bg-white pt-4">
-            <small class="text-muted float-end">Last Updated: {{ date('d-m-Y', strtotime($user->updated_at)) }}</small>
+            <small class="text-muted float-end mt-2">Last Updated: {{ date('d-m-Y', strtotime($user->updated_at)) }}</small>
             <a href="{{ route('customer.profile.edit') }}" class="btn btn-primary mb-3">
                 Edit Profile
             </a>

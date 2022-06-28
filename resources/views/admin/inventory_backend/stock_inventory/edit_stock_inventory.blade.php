@@ -115,7 +115,7 @@
                                         <img src="{{ (!empty($equipmentInventory->image)) ? url('upload/inventory/'.$equipmentInventory->image) : url('upload/inventory/default_photo.png') }}" alt="image" class="img-fluid" width="60px">
                                     </th>
                                     <th>{{ $equipmentInventory->name }}</th>
-                                    <th>{{ $equipmentInventory->quantity }}</th>
+                                    <th>{{ ($equipmentInventory->quantity == NULL) ? "0" : $equipmentInventory->quantity }}</th>
                                 </tr>
                                 @endforeach
                             </tbody>
@@ -148,7 +148,7 @@
                     html +=
                         '<tr>' +
                         '<td>' + (i++) + '<input type="hidden" name="id[]" value="' + v.id + '"><input type="hidden" name="facility_id[]" value="' + v.facility_id + '"><input type="hidden" name="equipment_id[]" value="' + v.equipment_id + '"></td>' +
-                        '<td>' + v.name + '<i }}nput type="hidden" name="name[]" value="' + v.name + '"></td>' +
+                        '<td>' + v.name + '<input type="hidden" name="name[]" value="' + v.name + '"></td>' +
                         '<td>' + v.dop + '<input type="hidden" name="dop[]" value="' + v.dop + '"></td>' +
                         '<td><input type="number" class="form-control form-control-sm" name="quantity[]" min="0" value="' + v.quantity + '" placeholder="0"></td>' +
                         '</tr>';

@@ -40,11 +40,11 @@ class StocksController extends Controller
     public function StockInventoryUpdate(Request $request)
     {
         $validatedData = $request->validate([
-            'equipment_id' => 'required',
-            'facility_id' => 'required',
-            'name' => 'required',
-            'dop' => 'required',
-            'quantity' => 'required',
+            // 'equipment_id' => 'required',
+            // 'facility_id' => 'required',
+            // 'name' => 'required',
+            // 'dop' => 'required',
+            // 'quantity' => 'required',
         ]);
 
         EquipmentInventory::where('facility_id', $request->facility_id)

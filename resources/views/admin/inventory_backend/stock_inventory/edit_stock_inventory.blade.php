@@ -25,7 +25,38 @@
 <!-- Container fluid  -->
 <div class="container-fluid">
     <div class="row">
-        <div class="col-md-8">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-body">
+                    <h4>All Equipment Stocks</h4>
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-stripped" id="zero_config" style="width: 100%;">
+                            <thead>
+                                <tr>
+                                    <th>ID No</th>
+                                    <th>Image</th>
+                                    <th>Equipment Item</th>
+                                    <th>Quantity</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach ($equipmentInventories as $key => $equipmentInventory)
+                                <tr>
+                                    <th>{{ $key+1 }}</th>
+                                    <th>
+                                        <img src="{{ (!empty($equipmentInventory->image)) ? url('upload/inventory/'.$equipmentInventory->image) : url('upload/inventory/default_photo.png') }}" alt="image" class="img-fluid" width="60px">
+                                    </th>
+                                    <th>{{ $equipmentInventory->name }}</th>
+                                    <th>{{ ($equipmentInventory->quantity == NULL) ? "0" : $equipmentInventory->quantity }}</th>
+                                </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div> <!-- End Col -->
+        <div class="col-md-6">
             <div class="card">
                 <div class="card-body">
                     <form class="form-horizontal" method="POST" action="{{ route('stock.inventory.update') }}">
@@ -93,37 +124,6 @@
                 </div>
             </div> <!-- End Card -->
         </div> <!-- End Col -->
-        <div class="col-md-4">
-            <div class="card">
-                <div class="card-body">
-                    <h4>All Equipment Stocks</h4>
-                    <div class="table-responsive">
-                        <table class="table table-bordered table-stripped" id="zero_config" style="width: 100%;">
-                            <thead>
-                                <tr>
-                                    <th>ID No</th>
-                                    <th>Image</th>
-                                    <th>Equipment Item</th>
-                                    <th>Quantity</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach ($equipmentInventories as $key => $equipmentInventory)
-                                <tr>
-                                    <th>{{ $key+1 }}</th>
-                                    <th>
-                                        <img src="{{ (!empty($equipmentInventory->image)) ? url('upload/inventory/'.$equipmentInventory->image) : url('upload/inventory/default_photo.png') }}" alt="image" class="img-fluid" width="60px">
-                                    </th>
-                                    <th>{{ $equipmentInventory->name }}</th>
-                                    <th>{{ ($equipmentInventory->quantity == NULL) ? "0" : $equipmentInventory->quantity }}</th>
-                                </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-        </div>
     </div>
 </div>
 <br />

@@ -90,7 +90,7 @@ class CustomerAppointmentController extends Controller
     // ========= Niklas PDF GENERATE =========
     public function CustomerAppointmentReceipt($id)
     {
-        $data['details'] = Booking::with(['user'])->find($id)->first();
+        $data['details'] = Booking::with(['user'])->find($id);
 
         $pdf = PDF::loadView('customer.booking.details_appointment_pdf', $data); // View of the Pdf
         $pdf->SetProtection(['copy', 'print'], '', 'pass');

@@ -21,6 +21,7 @@ use App\Http\Controllers\Admin\Inventory\StocksController;
 use App\Http\Controllers\Customer\CustomerProfileController;
 use App\Http\Controllers\Admin\Booking\BookingController;
 use App\Http\Controllers\Admin\Booking\AppointmentController;
+use App\Http\Controllers\Customer\Booking\CustomerAppointmentController;
 
 
 Route::group(['middleware' => 'prevent-back-history'], function () {
@@ -180,6 +181,11 @@ Route::group(['middleware' => 'prevent-back-history'], function () {
             Route::post('customer/update', [CustomerProfileController::class, 'ProfileUpdate'])->name('customer.profile.update');
             Route::post('customer/update_password', [CustomerProfileController::class, 'PasswordUpdate'])->name('customer.password.update');
             Route::get('customer/remove_avatar', [CustomerProfileController::class, 'RemoveAvatar'])->name('customer.remove.avatar');
+        });
+
+        // ========= Customer Appointment =========
+        Route::prefix('booking')->group(function () {
+            Route::get('customer/appointment/view', [CustomerAppointmentController::class, 'CustomerAppointmentView'])->name('customer.appointment.view');
         });
     });
 

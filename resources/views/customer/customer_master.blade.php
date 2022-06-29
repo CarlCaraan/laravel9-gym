@@ -52,7 +52,7 @@
         <!-- Spinner End -->
 
         <!-- Topbar Start -->
-        <div class="container-fluid bg-dark p-0 wow fadeIn" data-wow-delay="0.1s">
+        <!-- <div class="container-fluid bg-dark p-0 wow fadeIn" data-wow-delay="0.1s">
             <div class="row gx-0 d-none d-lg-flex">
                 <div class="col-lg-7 px-5 text-start">
                     <div class="h-100 d-inline-flex align-items-center py-3 me-3">
@@ -73,7 +73,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
         <!-- Topbar End -->
 
         <!-- Navbar Start -->
@@ -82,7 +82,9 @@
 
 
         <!-- Start Content -->
-        @yield('content')
+        <div class="customer-content-background w-100 py-5">
+            @yield('content')
+        </div>
         <!-- End Content -->
 
 
@@ -132,6 +134,37 @@
                     break;
             }
             @endif
+        </script>
+
+        <!-- SweetAlert2 -->
+        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <script>
+            // SweetAlert2
+            $(function() {
+                $(document).on('click', '#delete', function(e) {
+                    e.preventDefault();
+                    var link = $(this).attr("href");
+
+                    Swal.fire({
+                        title: 'Are you sure?',
+                        text: "Delete this Row?",
+                        icon: 'warning',
+                        showCancelButton: true,
+                        confirmButtonColor: '#3085d6',
+                        cancelButtonColor: '#d33',
+                        confirmButtonText: 'Yes, delete it!'
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            window.location.href = link
+                            Swal.fire(
+                                'Deleted!',
+                                'Your file has been deleted.',
+                                'success'
+                            )
+                        }
+                    })
+                });
+            });
         </script>
     </body>
 

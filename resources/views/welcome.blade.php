@@ -82,7 +82,7 @@
             <div class="navbar-nav ms-auto p-4 p-lg-0">
                 @auth
                 @if(Auth::user()->user_type == "Customer")
-                <a href="" class="nav-item nav-link">+ Add Schedule</a>
+                <a href="{{ route('customer.appointment.view') }}" class="nav-item nav-link">+ Add Schedule</a>
                 <a href="{{ route('customer.profile.view') }}" class="nav-item nav-link">Account Settings</a>
                 <a href="{{ route('customer.profile.view') }}" class="nav-item nav-link">
                     <img src="{{ (!empty(Auth::user()->profile_photo_path)) ? url('upload/user_images/'.Auth::user()->profile_photo_path) : asset('admin/assets/images/users/default_photo.jpg') }}" alt="user" class="img-fluid rounded-circle shadow-sm" width="25px">

@@ -5,3 +5,7 @@
     content: "";
     display: block;
 }
+/* ========= Customer Page ========= */
+.customer-content-background {
+    background: #ecf0f1;
+}

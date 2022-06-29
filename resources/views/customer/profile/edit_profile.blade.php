@@ -6,6 +6,16 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <!-- Container fluid  -->
 <div class="container">
+    <!-- Start Breadcrumb -->
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{{ route('customer.home') }}">Home</a></li>
+            <li class="breadcrumb-item" aria-current="page"><a href="{{ route('customer.profile.view') }}">My Profile</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Edit Profile</li>
+        </ol>
+    </nav>
+    <!-- End Breadcrumb -->
+
     <div class="row">
         <div class="col-md-6">
             <div class="card">

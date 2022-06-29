@@ -4,6 +4,15 @@
 
 @section('content')
 <div class="container">
+    <!-- Start Breadcrumb -->
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{{ route('customer.home') }}">Home</a></li>
+            <li class="breadcrumb-item active" aria-current="page">My Profile</li>
+        </ol>
+    </nav>
+    <!-- End Breadcrumb -->
+
     <h4 class="mt-4">My Profile</h4>
     <div class="card mb-5">
         <div class="card-header bg-white pt-4">

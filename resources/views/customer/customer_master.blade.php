@@ -41,6 +41,9 @@
 
         <!-- Toastr CSS CDN -->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css" />
+
+        <!-- Datatable CSS CDN -->
+        <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css" />
     </head>
 
     <body>
@@ -166,6 +169,9 @@
                 });
             });
         </script>
+
+        <!-- Datatable JS CDN -->
+        <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
     </body>
 
     </html>

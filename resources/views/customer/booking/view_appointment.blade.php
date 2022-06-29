@@ -3,7 +3,17 @@
 @section('title') Add Appointment @endsection
 
 @section('content')
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <div class="container">
+    <!-- Start Breadcrumb -->
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{{ route('customer.home') }}">Home</a></li>
+            <li class="breadcrumb-item active" aria-current="page">My Appointment</li>
+        </ol>
+    </nav>
+    <!-- End Breadcrumb -->
+
     <h4 class="mt-4">My Appointments</h4>
     <div class="card mb-5">
         <div class="card-header bg-white pt-4">
@@ -13,7 +23,7 @@
         </div>
         <div class="card-body py-5">
             <div class="table-responsive">
-                <table id="zero_config" class="table table-striped table-bordered">
+                <table class="table table-striped" id="appointmentTable">
                     <thead>
                         <tr>
                             <th width="5%">No. of Appointments</th>
@@ -44,4 +54,9 @@
         </div>
     </div>
 </div>
+<script>
+    $(document).ready(function() {
+        $('#appointmentTable').DataTable();
+    });
+</script>
 @endsection

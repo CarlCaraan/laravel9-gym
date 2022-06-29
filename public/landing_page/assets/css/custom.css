@@ -9,3 +9,7 @@
 .customer-content-background {
     background: #ecf0f1;
 }
+/* Custom style for changing separator  */
+.breadcrumb-item + .breadcrumb-item::before {
+    color: #191919;
+}

@@ -7,12 +7,12 @@
 <div class="page-breadcrumb">
     <div class="row">
         <div class="col-12 d-flex no-block align-items-center">
-            <h4 class="page-title">Edit Admin Site Info</h4>
+            <h4 class="page-title">Edit Customer Site Info</h4>
             <div class="ml-auto text-right">
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Home</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Edit Admin Site Info</li>
+                        <li class="breadcrumb-item active" aria-current="page">Edit Customer Site Info</li>
                     </ol>
                 </nav>
             </div>

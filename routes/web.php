@@ -191,6 +191,7 @@ Route::group(['middleware' => 'prevent-back-history'], function () {
             Route::get('customer/appointment/edit/{id}', [CustomerAppointmentController::class, 'CustomerAppointmentEdit'])->name('customer.appointment.edit');
             Route::post('customer/appointment/update/{id}', [CustomerAppointmentController::class, 'CustomerAppointmentUpdate'])->name('customer.appointment.update');
             Route::get('customer/appointment/delete/{id}', [CustomerAppointmentController::class, 'CustomerAppointmentDelete'])->name('customer.appointment.delete');
+            Route::get('customer/appointment/receipt/{id}', [CustomerAppointmentController::class, 'CustomerAppointmentReceipt'])->name('customer.appointment.receipt'); // Receipt
         });
     });
 

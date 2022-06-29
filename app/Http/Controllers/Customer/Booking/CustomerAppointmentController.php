@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Booking;
 use App\Models\User;
 use Auth;
+use PDF;
 
 class CustomerAppointmentController extends Controller
 {
@@ -84,5 +85,15 @@ class CustomerAppointmentController extends Controller
             'alert-type' => 'success',
         );
         return redirect()->route('customer.appointment.view')->with($notification);
+    }
+
+    // ========= Niklas PDF GENERATE =========
+    public function CustomerAppointmentReceipt($id)
+    {
+        $data['details'] = Booking::with(['user'])->find($id)->first();
+
+        $pdf = PDF::loadView('customer.booking.details_appointment_pdf', $data); // View of the Pdf
+        $pdf->SetProtection(['copy', 'print'], '', 'pass');
+        return $pdf->stream('receipt.pdf'); // Name of the Pdf File
     }
 }

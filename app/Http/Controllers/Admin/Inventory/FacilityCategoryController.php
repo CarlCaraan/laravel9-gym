@@ -22,9 +22,15 @@ class FacilityCategoryController extends Controller
 
     public function FacilityCategoryStore(Request $request)
     {
-        $validatedData = $request->validate([
-            'name' => 'required|unique:facility_categories',
-        ]);
+        $validatedData = $request->validate(
+            [
+                'name' => 'required|unique:facility_categories',
+            ],
+            [
+                'name.unique' => 'Facility Name Already Taken!',
+                'name.required' => 'Facility field is required!'
+            ]
+        );
 
         $data = new FacilityCategory();
         $data->name = $request->name;
@@ -45,9 +51,15 @@ class FacilityCategoryController extends Controller
 
     public function FacilityCategoryUpdate(Request $request, $id)
     {
-        $validatedData = $request->validate([
-            'name' => 'required|unique:facility_categories,name,' . $id,
-        ]);
+        $validatedData = $request->validate(
+            [
+                'name' => 'required|unique:facility_categories,name,' . $id,
+            ],
+            [
+                'name.unique' => 'Facility Name Already Taken!',
+                'name.required' => 'Facility field is required!'
+            ]
+        );
 
         // Dont Update if Associated to some post
         $inventoryData = EquipmentInventory::where('facility_id', $id)->get();

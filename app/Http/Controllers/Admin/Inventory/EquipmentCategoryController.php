@@ -22,9 +22,15 @@ class EquipmentCategoryController extends Controller
 
     public function EquipmentCategoryStore(Request $request)
     {
-        $validatedData = $request->validate([
-            'name' => 'required|unique:equipment_categories',
-        ]);
+        $validatedData = $request->validate(
+            [
+                'name' => 'required|unique:equipment_categories',
+            ],
+            [
+                'name.unique' => 'Equipment Type Already Taken!',
+                'name.required' => 'Equipment Type field is required!'
+            ]
+        );
 
         $data = new EquipmentCategory();
         $data->name = $request->name;
@@ -45,9 +51,15 @@ class EquipmentCategoryController extends Controller
 
     public function EquipmentCategoryUpdate(Request $request, $id)
     {
-        $validatedData = $request->validate([
-            'name' => 'required|unique:equipment_categories,name,' . $id,
-        ]);
+        $validatedData = $request->validate(
+            [
+                'name' => 'required|unique:equipment_categories,name,' . $id,
+            ],
+            [
+                'name.unique' => 'Equipment Type Already Taken!',
+                'name.required' => 'Equipment Type field is required!'
+            ]
+        );
 
         // Dont Update if Associated to some post
         $inventoryData = EquipmentInventory::where('equipment_id', $id)->get();

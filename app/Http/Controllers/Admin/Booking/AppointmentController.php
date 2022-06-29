@@ -23,12 +23,17 @@ class AppointmentController extends Controller
 
     public function AllAppointmentStore(Request $request)
     {
-        $validatedData = $request->validate([
-            'user_id' => 'required',
-            'status' => 'required',
-            'start_date' => 'required',
-            'price' => 'required',
-        ]);
+        $validatedData = $request->validate(
+            [
+                'user_id' => 'required',
+                'status' => 'required',
+                'start_date' => 'required',
+                'price' => 'required',
+            ],
+            [
+                'user_id.required' => 'customer field is required!'
+            ]
+        );
 
         $data = new Booking();
 

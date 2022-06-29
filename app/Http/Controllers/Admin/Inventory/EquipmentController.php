@@ -28,7 +28,7 @@ class EquipmentController extends Controller
     public function EquipmentInventoryStore(Request $request)
     {
         $validatedData = $request->validate([
-            'name' => 'required',
+            'name' => 'required|unique:equipment_inventories',
             'dop' => 'required',
             'facility_id' => 'required',
             'equipment_id' => 'required',
@@ -62,12 +62,18 @@ class EquipmentController extends Controller
 
     public function EquipmentInventoryUpdate(Request $request, $id)
     {
-        $validatedData = $request->validate([
-            'name' => 'required',
-            'dop' => 'required',
-            'facility_id' => 'required',
-            'equipment_id' => 'required',
-        ]);
+        $validatedData = $request->validate(
+            [
+                'name' => 'required|unique:equipment_inventories,name,' . $id,
+                'dop' => 'required',
+                'facility_id' => 'required',
+                'equipment_id' => 'required',
+            ],
+            [
+                'name.unique' => 'Equipment Name Already Taken!',
+                'name.required' => 'Equipment field is required!'
+            ]
+        );
 
         $data = EquipmentInventory::find($id);
         $data->name = $request->name;

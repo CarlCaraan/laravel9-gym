@@ -186,6 +186,11 @@ Route::group(['middleware' => 'prevent-back-history'], function () {
         // ========= Customer Appointment =========
         Route::prefix('booking')->group(function () {
             Route::get('customer/appointment/view', [CustomerAppointmentController::class, 'CustomerAppointmentView'])->name('customer.appointment.view');
+            Route::get('customer/appointment/add', [CustomerAppointmentController::class, 'CustomerAppointmentAdd'])->name('customer.appointment.add');
+            Route::post('customer/appointment/store', [CustomerAppointmentController::class, 'CustomerAppointmentStore'])->name('customer.appointment.store');
+            Route::get('customer/appointment/edit/{id}', [CustomerAppointmentController::class, 'CustomerAppointmentEdit'])->name('customer.appointment.edit');
+            Route::post('customer/appointment/update/{id}', [CustomerAppointmentController::class, 'CustomerAppointmentUpdate'])->name('customer.appointment.update');
+            Route::get('customer/appointment/delete/{id}', [CustomerAppointmentController::class, 'CustomerAppointmentDelete'])->name('customer.appointment.delete');
         });
     });
 

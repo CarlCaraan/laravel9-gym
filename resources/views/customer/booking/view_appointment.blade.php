@@ -1,6 +1,6 @@
 @extends('customer.customer_master')
 
-@section('title') Add Appointment @endsection
+@section('title') View Appointment @endsection
 
 @section('content')
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -17,8 +17,8 @@
     <h4 class="mt-4">My Appointments</h4>
     <div class="card mb-5">
         <div class="card-header bg-white pt-4">
-            <a href="{{ route('customer.profile.edit') }}" class="btn btn-primary mb-3">
-                Add Appointment
+            <a href="{{ route('customer.appointment.add') }}" class="btn btn-primary mb-3">
+                <i class="fas fa-plus-circle"></i> Add
             </a>
         </div>
         <div class="card-body py-5">
@@ -32,6 +32,7 @@
                             <th>Price</th>
                             <th>Paid Status</th>
                             <th>Action</th>
+                            <th></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -43,8 +44,14 @@
                             <td>{{ $user->price }}</td>
                             <td><span class="w-100 btn btn-{{($user->status == 'Paid' ? 'success' : 'warning' )}}"> {{ $user->status  }}</span></td>
                             <td>
-                                <a href="{{ route('user.edit', $user->id) }}" class="btn btn-primary text-white">Edit</a>
-                                <a href="{{ route('user.delete', $user->id) }}" class="btn btn-danger text-white" id="delete">Delete</a>
+                                @if ($user->status == "Paid")
+                                <a href="{{ route('customer.appointment.edit', $user->id) }}" class="btn btn-secondary text-white w-100">Receipt</a>
+                                @else
+                                <a href="{{ route('customer.appointment.edit', $user->id) }}" class="btn btn-primary text-white w-100">Change</a>
+                                @endif
+                            </td>
+                            <td>
+                                <a href="{{ route('customer.appointment.delete', $user->id) }}" class="btn btn-secondary rounded-circle text-white" id="delete">X</a>
                             </td>
                         </tr>
                         @endforeach

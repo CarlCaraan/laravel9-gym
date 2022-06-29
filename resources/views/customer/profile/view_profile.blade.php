@@ -18,7 +18,7 @@
         <div class="card-header bg-white pt-4">
             <small class="text-muted float-end mt-2">Last Updated: {{ date('d-m-Y', strtotime($user->updated_at)) }}</small>
             <a href="{{ route('customer.profile.edit') }}" class="btn btn-primary mb-3">
-                Edit Profile
+                <i class="fas fa-edit"></i> Edit Profile
             </a>
         </div>
         <div class="card-body py-5">

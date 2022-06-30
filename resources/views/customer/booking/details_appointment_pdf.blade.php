@@ -132,8 +132,11 @@
 
 <body>
     <div id="invoice-POS">
-
         <center id="top">
+            <div style="background: #acacac;">
+                <?php $image_path = '/upload/admin_siteinfo/202206301105brand.png'; ?>
+                <img src="{{ public_path(). $image_path }}" alt="logo">
+            </div>
             <!-- <div class="logo"></div> -->
             <div class="info">
                 <h2>Respond Fitness</h2>

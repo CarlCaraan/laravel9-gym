@@ -207,14 +207,21 @@
                         </td>
                     </tr>
 
-
                     <tr class="tabletitle">
                         <td></td>
                         <td class="Rate">
                             <h2>Total</h2>
                         </td>
                         <td class="payment">
-                            <h2>{{ $details->price }}</h2>
+                            <h2>
+                                @if($details->price == "60")
+                                4hrs - ₱60
+                                @elseif ($details->price == "50")
+                                3hrs - ₱50
+                                @else
+                                2hrs - ₱40
+                                @endif
+                            </h2>
                         </td>
                     </tr>
 

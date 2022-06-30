@@ -41,9 +41,9 @@
                             <select class="select2 form-select" style="width: 100%; height:36px;" name="price">
                                 <option disabled value="" selected>Select No. Hours</option>
                                 <optgroup label="Choose price">
-                                    <option value="2hrs - ₱40">2 hrs (₱40)</option>
-                                    <option value="3hrs - ₱50">3 hrs (₱50)</option>
-                                    <option value="4hrs - ₱60">4 hrs (₱60)</option>
+                                    <option value="40">2 hrs (₱40)</option>
+                                    <option value="50">3 hrs (₱50)</option>
+                                    <option value="60">4 hrs (₱60)</option>
                                 </optgroup>
                             </select>
                             @error('price')

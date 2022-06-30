@@ -41,7 +41,13 @@
                             <td>{{ $key+1 }}</td>
                             <td>{{ date('l - F / d / Y', strtotime($user->start_date)) }}</td>
                             <td>{{ date('h:i A', strtotime($user->start_date)) }}</td>
-                            <td>{{ $user->price }}</td>
+                            <td> @if($user->price == "60")
+                                4hrs - ₱60
+                                @elseif ($user->price == "50")
+                                3hrs - ₱50
+                                @else
+                                2hrs - ₱40
+                                @endif</td>
                             <td><span class="w-100 btn btn-{{($user->status == 'Paid' ? 'success' : 'warning' )}}"> {{ $user->status  }}</span></td>
                             <td>
                                 @if ($user->status == "Paid")

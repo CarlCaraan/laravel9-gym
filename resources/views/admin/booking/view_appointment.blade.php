@@ -55,7 +55,15 @@
                                     <td><span class="w-100 badge badge-{{($value->status == 'Paid' ? 'success' : 'warning' )}}"> {{ $value->status  }}</span></td>
                                     <td>{{ date('l - F / d / Y', strtotime($value->start_date)) }}</td>
                                     <td>{{ date('h:i A', strtotime($value->start_date)) }}</td>
-                                    <td>{{ $value->price }}</td>
+                                    <td>
+                                        @if($value->price == "60")
+                                        4hrs - ₱60
+                                        @elseif ($value->price == "50")
+                                        3hrs - ₱50
+                                        @else
+                                        2hrs - ₱40
+                                        @endif
+                                    </td>
                                     <td>
                                         <a href="{{ route('all.appointment.edit', $value->id) }}" class="btn btn-primary text-white">Edit</a>
                                         <a href="{{ route('all.appointment.delete', $value->id) }}" class="btn btn-danger text-white" id="delete">Delete</a>

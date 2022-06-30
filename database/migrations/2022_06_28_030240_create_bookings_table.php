@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('status')->nullable();
             $table->text('url')->nullable();
             $table->dateTime('start_date')->nullable();
-            $table->string('price')->nullable();
+            $table->double('price')->nullable();
             $table->dateTime('end_date')->nullable();
             $table->string('background_color')->nullable();
             $table->timestamps();

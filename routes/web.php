@@ -22,6 +22,7 @@ use App\Http\Controllers\Customer\CustomerProfileController;
 use App\Http\Controllers\Admin\Booking\BookingController;
 use App\Http\Controllers\Admin\Booking\AppointmentController;
 use App\Http\Controllers\Customer\Booking\CustomerAppointmentController;
+use App\Http\Controllers\Admin\Report\IncomeController;
 
 
 Route::group(['middleware' => 'prevent-back-history'], function () {
@@ -161,6 +162,13 @@ Route::group(['middleware' => 'prevent-back-history'], function () {
             Route::get('all/appointment/edit/{id}', [AppointmentController::class, 'AllAppointmentEdit'])->name('all.appointment.edit');
             Route::post('all/appointment/update/{id}', [AppointmentController::class, 'AllAppointmentUpdate'])->name('all.appointment.update');
             Route::get('all/appointment/delete/{id}', [AppointmentController::class, 'AllAppointmentDelete'])->name('all.appointment.delete');
+        });
+
+        // ========= Report Management =========
+        Route::prefix('report')->group(function () {
+            Route::get('income/report/view', [IncomeController::class, 'IncomeReportView'])->name('income.report.view');
+            Route::get('income/report/datawise/get', [IncomeController::class, 'IncomeReportDatawiseGet'])->name('income.report.datawise.get');
+            Route::get('income/report/get/pdf', [IncomeController::class, 'IncomeReportGetPdf'])->name('income.report.get.pdf');
         });
     });
 

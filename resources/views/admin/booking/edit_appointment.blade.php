@@ -77,9 +77,9 @@
                                     <select class="select2 form-control custom-select" style="width: 100%; height:36px;" name="price">
                                         <option disabled value="" selected>Select No. Hours</option>
                                         <optgroup label="Choose price">
-                                            <option value="2hrs - ₱40" {{ ($editData->price == "2hrs - ₱40") ? "selected" : ""}}>2 hrs (₱40)</option>
-                                            <option value="3hrs - ₱50" {{ ($editData->price == "3hrs - ₱50") ? "selected" : ""}}>3 hrs (₱50)</option>
-                                            <option value="4hrs - ₱60" {{ ($editData->price == "4hrs - ₱60") ? "selected" : ""}}>4 hrs (₱60)</option>
+                                            <option value="40" {{ ($editData->price == "40") ? "selected" : ""}}>2 hrs (₱40)</option>
+                                            <option value="50" {{ ($editData->price == "50") ? "selected" : ""}}>3 hrs (₱50)</option>
+                                            <option value="60" {{ ($editData->price == "60") ? "selected" : ""}}>4 hrs (₱60)</option>
                                         </optgroup>
                                     </select>
                                     @error('price')

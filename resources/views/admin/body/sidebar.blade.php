@@ -41,11 +41,18 @@ $route = Route::current()->getName();
                     </ul>
                 </li>
 
-                <!-- ========= Booking MANAGEMENT ========= -->
+                <!-- ========= BOOKING MANAGEMENT ========= -->
                 <li class="sidebar-item {{ ($prefix == '/booking') ? 'selected' : '' }}"> <a class="sidebar-link has-arrow waves-effect waves-dark {{ ($prefix == '/booking') ? 'active' : '' }}" href="javascript:void(0)" aria-expanded="false"><i class="mdi mdi-calendar-multiple text-warning"></i><span class="hide-menu">Manage Booking</span></a>
                     <ul aria-expanded="false" class="{{ ($prefix == '/booking') ? 'collapse  first-level in' : 'collapse first-level' }}">
                         <li class="sidebar-item {{ ($route == 'schedule.appointment.view') ? 'active' : '' }}"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{ route('schedule.appointment.view') }}" aria-expanded="false"><i class="mdi mdi-calendar-multiple-check"></i><span class="hide-menu">Booking Schedule</span></a></li>
                         <li class="sidebar-item {{ ($route == 'all.appointment.view' || $route == 'all.appointment.add' || $route == 'all.appointment.edit') ? 'active' : '' }}"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{ route('all.appointment.view') }}" aria-expanded="false"><i class="mdi mdi-calendar-text"></i><span class="hide-menu">All Appointment</span></a></li>
+                    </ul>
+                </li>
+
+                <!-- ========= REPORT MANAGEMENT ========= -->
+                <li class="sidebar-item {{ ($prefix == '/report') ? 'selected' : '' }}"> <a class="sidebar-link has-arrow waves-effect waves-dark {{ ($prefix == '/report') ? 'active' : '' }}" href="javascript:void(0)" aria-expanded="false"><i class="mdi mdi-file-document text-warning"></i><span class="hide-menu">Report Management</span></a>
+                    <ul aria-expanded="false" class="{{ ($prefix == '/report') ? 'collapse  first-level in' : 'collapse first-level' }}">
+                        <li class="sidebar-item {{ ($route == 'income.report.view') ? 'active' : '' }}"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{ route('income.report.view') }}" aria-expanded="false"><i class="mdi mdi-cash-multiple"></i><span class="hide-menu">Monthly / Yearly Income</span></a></li>
                     </ul>
                 </li>
             </ul>

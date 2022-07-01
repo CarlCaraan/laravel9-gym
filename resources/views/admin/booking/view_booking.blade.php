@@ -53,7 +53,6 @@
 
 <script>
     document.addEventListener('DOMContentLoaded', function() {
-
         var booking = @json($events);
 
         var calendarEl = document.getElementById('calendar');
@@ -64,11 +63,11 @@
                 center: 'title',
             }, // buttons for switching between views
             events: booking,
-            eventDidMount: function(info) {
-                console.log(info.event.extendedProps); {
-                    status: booking
-                }
-            }
+            // eventDidMount: function(info) {
+            //     console.log(info.event.extendedProps); {
+            //         status: booking
+            //     }
+            // }
         });
         calendar.render();
     });

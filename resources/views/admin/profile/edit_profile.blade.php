@@ -129,7 +129,7 @@
         <div class="col-md-6">
             <div class="card">
                 <div class="card-body">
-                    <div class="col-6">
+                    <div class="col-12">
                         <form class="form-horizontal" method="POST" action="{{ route('admin.password.update') }}">
                             @csrf
                             <h4 class="card-title">Change Password</h4>

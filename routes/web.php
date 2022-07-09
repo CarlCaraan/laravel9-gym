@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\AdminSiteInfoController;
@@ -37,9 +38,7 @@ Route::group(['middleware' => 'prevent-back-history'], function () {
         'verified',
         'admin'
     ])->group(function () {
-        Route::get('/dashboard', function () {
-            return view('admin.index');
-        })->name('dashboard');
+        Route::get('/dashboard', [DashboardController::class, 'DashboardView'])->name('dashboard');
 
         // ========= User Profile and Change Password =========
         Route::prefix('profile')->group(function () {

@@ -103,12 +103,12 @@
     }
 
     td {
-        /*padding: 5px 0 5px 15px; */
-        /*border: 1px solid #EEE */
+        padding: 5px 0 5px 15px;
+        border: 1px solid #EEE
     }
 
     .tabletitle {
-        /*padding: 5px; */
+        padding: 5px;
         font-size: 0.5em;
         background: #eee;
     }
@@ -122,7 +122,7 @@
     }
 
     .itemtext {
-        font-size: 0.5em;
+        font-size: 1rem;
     }
 
     #legalcopy {
@@ -160,31 +160,25 @@
         <div id="bot">
 
             <div id="table">
-                <table>
+                <table class="table">
                     <tr class="tabletitle">
-                        <td class="item">
-                            <h2>First Name</h2>
-                        </td>
-                        <td class="item">
-                            <h2>Last Name</h2>
-                        </td>
-                        <td class="item">
+                        <th class="item">
+                            <h2>Full Name</h2>
+                        </th>
+                        <th class="item">
                             <h2>Email Address</h2>
-                        </td>
-                        <td class="Rate">
+                        </th>
+                        <th class="Rate">
                             <h2>Appointment Date</h2>
-                        </td>
-                        <td class="Rate">
+                        </th>
+                        <th class="Rate">
                             <h2>Start Date</h2>
-                        </td>
+                        </th>
                     </tr>
 
                     <tr class="service">
                         <td class="tableitem">
-                            <p class="itemtext">{{ $details['user']['first_name'] }}</p>
-                        </td>
-                        <td class="tableitem">
-                            <p class="itemtext">{{ $details['user']['last_name'] }}</p>
+                            <p class="itemtext">{{ $details['user']['first_name'] . " " . $details['user']['last_name'] }}</p>
                         </td>
                         <td class="tableitem">
                             <p class="itemtext">{{ $details['user']['email'] }}</p>
@@ -200,7 +194,7 @@
                     <tr class="tabletitle">
                         <td></td>
                         <td class="Rate">
-                            <h2>tax</h2>
+                            <h2>VAT</h2>
                         </td>
                         <td class="payment">
                             <h2>₱0.00</h2>

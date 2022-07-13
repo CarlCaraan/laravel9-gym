@@ -32,7 +32,7 @@
                 padding-top: 12px;
                 padding-bottom: 12px;
                 text-align: left;
-                background-color: #04AA6D;
+                background-color: #B88E65;
                 color: white;
             }
         </style>
@@ -58,19 +58,53 @@
         </table>
 
         <table id="customers">
-            <tr>
-                <td colspan="2" style="text-align: center;">
-                    <h4>Reporting Date: {{ date('d M Y', strtotime($sdate)) }} - {{ date('d M Y', strtotime($edate)) }}</h4>
-                </td>
-            </tr>
-            <tr>
-                <td>Total Appointments</td>
-                <td>{{ $total_customer }}</td>
-            </tr>
-            <tr>
-                <td>Total Income</td>
-                <td>₱ {{ $total_income }}</td>
-            </tr>
+            <thead>
+                <tr>
+                    <th colspan="5" style="text-align: center;">
+                        <h4>Report Date: From {{ date('d M Y', strtotime($sdate)) }} To {{ date('d M Y', strtotime($edate)) }}</h4>
+                    </th>
+                </tr>
+                <tr>
+                    <th>SL No</th>
+                    <th>Customer Name</th>
+                    <th>Appointment Date</th>
+                    <th>No of Hours</th>
+                    <th>Price</th>
+                </tr>
+            </thead>
+            <tbody>
+
+                @php
+                $user_data = App\Models\Booking::whereBetween('start_date', [$start_date, $end_date])->where('status', 'Paid')->get();
+                @endphp
+                @foreach ($user_data as $key => $data)
+                @php
+                if ($data->price == 60) {
+                $no_hrs = '4 hours';
+                } else if ($data->price == 40) {
+                $no_hrs = '3 hours';
+                } else {
+                $no_hrs = '2 hours';
+                }
+                @endphp
+
+                <tr>
+                    <td>{{ ($key+1) }}</td>
+                    <td>{{ $data['user']['first_name'] . " " . $data['user']['last_name'] }}</td>
+                    <td>{{ date('l - F / d / Y', strtotime($data->start_date)) }}</td>
+                    <td>{{ $no_hrs }}</td>
+                    <td>₱{{ $data->price }}</td>
+                </tr>
+                @endforeach
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td><strong>Total Appointments</strong>:<br> {{ $total_customer }}</td>
+                    <td><strong>Total Income</strong>:<br> ₱ {{ $total_income }}</td>
+                </tr>
+            </tbody>
+
         </table>
         <br><br>
         <i style="font-size: 10px; float-right;">Print Data : {{ date("d M Y") }}</i>

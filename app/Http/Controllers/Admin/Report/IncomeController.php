@@ -23,15 +23,39 @@ class IncomeController extends Controller
         $edate = $request->end_date;
 
         $total_income = Booking::whereBetween('start_date', [$start_date, $end_date])->sum('price');
+        $user_data = Booking::whereBetween('start_date', [$start_date, $end_date])->where('status', 'Paid')->get();
 
-        $html['thsource']  = '<th>Total Income</th>';
-        $html['thsource'] .= '<th>Action</th>';
+        $html['thsource']  = '<th>SL No</th>';
+        $html['thsource'] .= '<th>Customer Name</th>';
+        $html['thsource'] .= '<th>Appointment Date</th>';
+        $html['thsource'] .= '<th>No of Hours</th>';
+        $html['thsource'] .= '<th>Price</th>';
 
         $color = 'success';
-        $html['tdsource']  = '<td>' . '₱' . $total_income . '</td>';
-        $html['tdsource'] .= '<td>';
-        $html['tdsource'] .= '<a class="btn btn-sm btn-' . $color . '" title="PDF" target="_blanks" href="' . route("income.report.get.pdf") . '?start_date=' . $sdate . '&end_date=' . $edate . '">Pay Slip</a>';
-        $html['tdsource'] .= '</td>';
+        $html['trsource']  = '';
+        foreach ($user_data as $key => $data) {
+            if ($data->price == 60) {
+                $no_hrs = '4 hours';
+            } else if ($data->price == 40) {
+                $no_hrs = '3 hours';
+            } else {
+                $no_hrs = '2 hours';
+            }
+            $html['trsource'] .= '<tr>';
+            $html['trsource'] .= '<td>' . ($key + 1) . '</td>';
+            $html['trsource'] .=  '<td>' . $data['user']['first_name'] . ' ' . $data['user']['last_name'] . '</td>';
+            $html['trsource'] .= '<td>' . date('l - F / d / Y', strtotime($data->start_date)) . '</td>';
+            $html['trsource'] .= '<td>' . $no_hrs . '</td>';
+            $html['trsource'] .= '<td>₱' . $data->price . '</td>';
+            $html['trsource'] .= '</td>';
+        }
+        $html['trsource'] .= '<tr>';
+        $html['trsource'] .= '<td>';
+        $html['trsource'] .= '<strong>Print</strong>: <a class="btn btn-sm btn-' . $color . '" title="PDF" target="_blanks" href="' . route("income.report.get.pdf") . '?start_date=' . $sdate . '&end_date=' . $edate . '">Pay Slip</a>';
+        $html['trsource'] .= '</td>';
+        $html['trsource'] .= '<td colspan="3"></td>';
+        $html['trsource'] .= '<td><strong>Total Income: ₱' . $total_income . '</strong></td>';
+        $html['trsource'] .= '</tr>';
 
         return response()->json(@$html);
     } // End Method

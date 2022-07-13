@@ -60,9 +60,7 @@
                                                         </tr>
                                                     </thead>
                                                     <tbody>
-                                                        <tr>
-                                                            @{{{tdsource}}}
-                                                        </tr>
+                                                        @{{{trsource}}}
                                                     </tbody>
                                                 </table>
                                             </script>

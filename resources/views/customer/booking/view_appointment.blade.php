@@ -51,7 +51,7 @@
                             <td><span class="w-100 btn btn-{{($user->status == 'Paid' ? 'success' : 'warning' )}}"> {{ $user->status  }}</span></td>
                             <td>
                                 @if ($user->status == "Paid")
-                                <a href="{{ route('customer.appointment.receipt', $user->id) }}" class="btn btn-secondary text-white w-100">Receipt</a>
+                                <a href="{{ route('customer.appointment.receipt', $user->id) }}" class="btn btn-secondary text-white w-100" target="_blank">Receipt</a>
                                 @else
                                 <a href="{{ route('customer.appointment.edit', $user->id) }}" class="btn btn-primary text-white w-100">Change</a>
                                 @endif

@@ -1,6 +1,6 @@
     @php
-    $total_income = App\Models\Booking::whereBetween('start_date', [$start_date, $end_date])->sum('price');
-    $total_customer = App\Models\Booking::whereBetween('start_date', [$start_date, $end_date])->count();
+    $total_income = App\Models\Booking::whereBetween('start_date', [$start_date, $end_date])->where('status', 'Paid')->sum('price');
+    $total_customer = App\Models\Booking::whereBetween('start_date', [$start_date, $end_date])->where('status', 'Paid')->count();
     $user_siteinfo = App\Models\UserSiteInfo::first();
     @endphp
     <!DOCTYPE html>

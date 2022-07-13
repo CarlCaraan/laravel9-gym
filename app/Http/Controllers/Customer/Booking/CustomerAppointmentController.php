@@ -94,6 +94,6 @@ class CustomerAppointmentController extends Controller
 
         $pdf = PDF::loadView('customer.booking.details_appointment_pdf', $data); // View of the Pdf
         $pdf->SetProtection(['copy', 'print'], '', 'pass');
-        return $pdf->stream('receipt.pdf'); // Name of the Pdf File
+        return $pdf->stream('receipt' . now() . '.pdf'); // Name of the Pdf File
     }
 }

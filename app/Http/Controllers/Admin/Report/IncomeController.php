@@ -22,7 +22,7 @@ class IncomeController extends Controller
         $sdate = $request->start_date;
         $edate = $request->end_date;
 
-        $total_income = Booking::whereBetween('start_date', [$start_date, $end_date])->sum('price');
+        $total_income = Booking::whereBetween('start_date', [$start_date, $end_date])->where('status', 'Paid')->sum('price');
         $user_data = Booking::whereBetween('start_date', [$start_date, $end_date])->where('status', 'Paid')->get();
 
         $html['thsource']  = '<th>SL No</th>';
@@ -50,9 +50,13 @@ class IncomeController extends Controller
             $html['trsource'] .= '</td>';
         }
         $html['trsource'] .= '<tr>';
-        $html['trsource'] .= '<td>';
-        $html['trsource'] .= '<strong>Print</strong>: <a class="btn btn-sm btn-' . $color . '" title="PDF" target="_blanks" href="' . route("income.report.get.pdf") . '?start_date=' . $sdate . '&end_date=' . $edate . '">Pay Slip</a>';
-        $html['trsource'] .= '</td>';
+        if ($total_income != 0) {
+            $html['trsource'] .= '<td>';
+            $html['trsource'] .= '<strong>Print</strong>: 
+            <a class="btn btn-sm btn-' . $color . '" title="PDF" target="_blanks" href="' . route("income.report.get.pdf") . '?start_date=' . $sdate . '&end_date=' . $edate . '">Payslip</a>
+            ';
+            $html['trsource'] .= '</td>';
+        }
         $html['trsource'] .= '<td colspan="3"></td>';
         $html['trsource'] .= '<td><strong>Total Income: ₱' . $total_income . '</strong></td>';
         $html['trsource'] .= '</tr>';
@@ -70,7 +74,7 @@ class IncomeController extends Controller
         // ========= Start Niklas Laravel PDF =========
         $pdf = PDF::loadView('admin.report.income_report_pdf', $data);
         $pdf->SetProtection(['copy', 'print'], '', 'pass');
-        return $pdf->stream('payslip.pdf');
+        return $pdf->stream('payslip' . now() . '.pdf');
         // ========= End Niklas Laravel PDF =========
     }
 }

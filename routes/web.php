@@ -29,7 +29,7 @@ use App\Http\Controllers\Admin\Report\IncomeController;
 Route::group(['middleware' => 'prevent-back-history'], function () {
 
     // ========= Landing Page Routes =========
-    Route::get('/', [WelcomeController::class, 'WelcomeView']);
+    Route::get('/', [WelcomeController::class, 'WelcomeView'])->name('customer.home');
 
     // ========= Admin Routes =========
     Route::middleware([
@@ -177,10 +177,6 @@ Route::group(['middleware' => 'prevent-back-history'], function () {
         config('jetstream.auth_session'),
         'verified',
     ])->group(function () {
-        Route::prefix('customer')->group(function () {
-            Route::get('/home', [CustomerController::class, "WelcomeView"])->name('customer.home');
-        });
-
         // ========= User Profile and Change Password =========
         Route::prefix('profile')->group(function () {
             Route::get('customer/view', [CustomerProfileController::class, 'ProfileView'])->name('customer.profile.view');

@@ -16,7 +16,7 @@
     <h4 class="mt-4">My Profile</h4>
     <div class="card mb-5">
         <div class="card-header bg-white pt-4">
-            <small class="text-muted float-end mt-2">Last Updated: {{ date('d-m-Y', strtotime($user->updated_at)) }}</small>
+            <small class="text-muted float-end mt-2">Last Updated: {{ Carbon\Carbon::parse($user->updated_at)->diffForHumans() }}</small>
             <a href="{{ route('customer.profile.edit') }}" class="btn btn-primary mb-3">
                 <i class="fas fa-edit"></i> Edit Profile
             </a>

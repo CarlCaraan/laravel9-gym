@@ -55,11 +55,13 @@ $route = Route::current()->getName();
                 <!-- ============================================================== -->
                 <!-- Search -->
                 <!-- ============================================================== -->
+
                 <li class="nav-item search-box"> <a class="nav-link waves-effect waves-dark" href="javascript:void(0)"><i class="ti-search"></i></a>
                     <form class="app-search position-absolute">
                         <input type="text" class="form-control" placeholder="Search &amp; enter"> <a class="srh-btn"><i class="ti-close"></i></a>
                     </form>
                 </li>
+
             </ul>
             <!-- ============================================================== -->
             <!-- Right side toggle and nav items -->
@@ -68,6 +70,7 @@ $route = Route::current()->getName();
                 <!-- ============================================================== -->
                 <!-- Comment -->
                 <!-- ============================================================== -->
+
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle waves-effect waves-dark" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="mdi mdi-bell font-24"></i>
                     </a>
@@ -78,6 +81,7 @@ $route = Route::current()->getName();
                         <a class="dropdown-item" href="#">Something else here</a>
                     </div>
                 </li>
+
                 <!-- ============================================================== -->
                 <!-- End Comment -->
                 <!-- ============================================================== -->

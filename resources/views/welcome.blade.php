@@ -54,8 +54,8 @@
             </div>
             <div class="col-lg-5 px-5 text-end">
                 <div class="h-100 d-inline-flex align-items-center py-3 me-2">
-                    <a class="text-light px-2" href="{{ route('terms.show') }}">Terms</a>
-                    <a class="text-light px-2" href="{{ route('policy.show') }}">Privacy</a>
+                    <a class="text-light px-2" href="{{ route('terms.show') }}" target="_blank">Terms</a>
+                    <a class="text-light px-2" href="{{ route('policy.show') }}" target="_blank">Privacy</a>
                 </div>
                 <div class="h-100 d-inline-flex align-items-center">
                     <a class="btn btn-sm-square btn-outline-body me-1" href="{{ $userSiteInfos->facebook_link }}" target="_blank"><i class="fab fa-facebook-f"></i></a>
